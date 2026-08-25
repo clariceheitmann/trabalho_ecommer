@@ -1,0 +1,76 @@
+### =====================================================
+### CONFIGURAÇÃO
+### =====================================================
+
+@baseUrl = http://localhost:3000
+
+### =====================================================
+### USUÁRIOS
+### =====================================================
+
+
+### 1 - CADASTRAR USUÁRIO
+POST {{baseUrl}}/usuarios
+Content-Type: application/json
+
+{
+    "nome": "Clarice",
+    "sobreNome": "Heitmann",
+    "idade": "18",
+    "email": "clarice@email.com",
+    "senha": "123456",
+    "telefone": "47999999999",
+    "cpf": "12345678901",
+    "cep": "88220000",
+    "rua": "Rua Exemplo",
+    "numero": "100",
+    "bairro": "Centro",
+    "cidade": "Itapema",
+    "estado": "SC"
+}
+
+
+### 2 - LISTAR USUÁRIOS
+GET {{baseUrl}}/usuarios
+
+
+### 3 - CONSULTAR USUÁRIO POR ID
+GET {{baseUrl}}/usuarios/1
+
+
+### 4 - CONSULTAR USUÁRIO POR NOME
+GET {{baseUrl}}/usuarios/nome/Clarice
+
+
+### 5 - ATUALIZAR USUÁRIO - PUT
+PUT {{baseUrl}}/usuarios/1
+Content-Type: application/json
+
+{
+    "nome": "Clarice",
+    "sobreNome": "Heitmann",
+    "idade": "18",
+    "email": "clarice@email.com",
+    "senha": "123456",
+    "telefone": "47988888888",
+    "cpf": "12345678901",
+    "cep": "88220000",
+    "rua": "Rua Exemplo",
+    "numero": "200",
+    "bairro": "Centro",
+    "cidade": "Itapema",
+    "estado": "SC"
+}
+
+
+### 6 - ATUALIZAR USUÁRIO - PATCH
+PATCH {{baseUrl}}/usuarios/1
+Content-Type: application/json
+
+{
+    "telefone": "47977777777"
+}
+
+
+### 7 - EXCLUIR USUÁRIO
+DELETE {{baseUrl}}/usuarios/1
