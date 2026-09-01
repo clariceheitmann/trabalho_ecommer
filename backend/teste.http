@@ -4,13 +4,15 @@
 
 @baseUrl = http://localhost:3000
 
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJjbGFyaWNlQGVtYWlsLmNvbSIsImlhdCI6MTc4ODI2NTc0MiwiZXhwIjoxNzg4MjcyOTQyfQ.NZ-hs3gIN2YuUYc87NFuGkPn1FLa_Kf3xRp5KRCL9Mo
+
+
 ### =====================================================
 ### USUÁRIOS
 ### =====================================================
 
-
 ### 1 - CADASTRAR USUÁRIO
-POST {{baseUrl}}/usuarios
+POST {{baseUrl}}/usuario
 Content-Type: application/json
 
 {
@@ -20,7 +22,7 @@ Content-Type: application/json
     "email": "clarice@email.com",
     "senha": "123456",
     "telefone": "47999999999",
-    "cpf": "12345678901",
+    "cpf": "52998224725",
     "cep": "88220000",
     "rua": "Rua Exemplo",
     "numero": "100",
@@ -35,15 +37,15 @@ GET {{baseUrl}}/usuarios
 
 
 ### 3 - CONSULTAR USUÁRIO POR ID
-GET {{baseUrl}}/usuarios/1
+GET {{baseUrl}}/usuario/1
 
 
 ### 4 - CONSULTAR USUÁRIO POR NOME
-GET {{baseUrl}}/usuarios/nome/Clarice
+GET {{baseUrl}}/usuario/buscar/Clarice
 
 
-### 5 - ATUALIZAR USUÁRIO - PUT
-PUT {{baseUrl}}/usuarios/1
+### 5 - ATUALIZAR USUÁRIO COMPLETO
+PUT {{baseUrl}}/usuario/1
 Content-Type: application/json
 
 {
@@ -63,8 +65,8 @@ Content-Type: application/json
 }
 
 
-### 6 - ATUALIZAR USUÁRIO - PATCH
-PATCH {{baseUrl}}/usuarios/1
+### 6 - ATUALIZAR USUÁRIO PARCIALMENTE
+PUT {{baseUrl}}/usuario/1
 Content-Type: application/json
 
 {
@@ -73,4 +75,425 @@ Content-Type: application/json
 
 
 ### 7 - EXCLUIR USUÁRIO
-DELETE {{baseUrl}}/usuarios/1
+DELETE {{baseUrl}}/usuario/1
+
+
+### 8 - TESTAR USUÁRIO INEXISTENTE
+GET {{baseUrl}}/usuario/9999
+
+
+
+### =====================================================
+### CATEGORIAS
+### =====================================================
+
+### 9 - CADASTRAR CATEGORIA
+POST {{baseUrl}}/categoria
+Content-Type: application/json
+
+{
+    "nome": "Rock",
+    "descricao": "Álbuns de Rock"
+}
+
+
+### 10 - CADASTRAR SEGUNDA CATEGORIA
+POST {{baseUrl}}/categoria
+Content-Type: application/json
+
+{
+    "nome": "Pop",
+    "descricao": "Álbuns de música Pop"
+}
+
+
+### 11 - LISTAR CATEGORIAS
+GET {{baseUrl}}/categorias
+
+
+### 12 - CONSULTAR CATEGORIA POR ID
+GET {{baseUrl}}/categoria/1
+
+
+### 13 - CONSULTAR CATEGORIA POR NOME
+GET {{baseUrl}}/categoria/buscar/Rock
+
+
+### 14 - ATUALIZAR CATEGORIA
+PUT {{baseUrl}}/categoria/1
+Content-Type: application/json
+
+{
+    "nome": "Rock Clássico",
+    "descricao": "Álbuns de Rock Clássico"
+}
+
+
+### 15 - ATUALIZAR CATEGORIA PARCIALMENTE
+PUT {{baseUrl}}/categoria/1
+Content-Type: application/json
+
+{
+    "descricao": "Rock clássico e grandes sucessos"
+}
+
+
+### 16 - EXCLUIR CATEGORIA
+DELETE {{baseUrl}}/categoria/2
+
+
+### 17 - TESTAR CATEGORIA INEXISTENTE
+GET {{baseUrl}}/categoria/9999
+
+
+
+### =====================================================
+### PRODUTOS
+### =====================================================
+
+### 18 - CADASTRAR PRODUTO - VINIL
+POST {{baseUrl}}/produto
+Content-Type: application/json
+
+{
+    "nome": "The Dark Side of the Moon",
+    "artista": "Pink Floyd",
+    "album": "The Dark Side of the Moon",
+    "formato": "VINIL",
+    "ano": 1973,
+    "preco": 149.90,
+    "imagem": "dark-side-of-the-moon.jpg",
+    "categoria_id": 1
+}
+
+
+### 19 - CADASTRAR PRODUTO - CD
+POST {{baseUrl}}/produto
+Content-Type: application/json
+
+{
+    "nome": "Abbey Road",
+    "artista": "The Beatles",
+    "album": "Abbey Road",
+    "formato": "CD",
+    "ano": 1969,
+    "preco": 89.90,
+    "imagem": "abbey-road.jpg",
+    "categoria_id": 1
+}
+
+
+### 20 - CADASTRAR PRODUTO - CASSETE
+POST {{baseUrl}}/produto
+Content-Type: application/json
+
+{
+    "nome": "Nevermind",
+    "artista": "Nirvana",
+    "album": "Nevermind",
+    "formato": "CASSETE",
+    "ano": 1991,
+    "preco": 59.90,
+    "imagem": "nevermind.jpg",
+    "categoria_id": 1
+}
+
+
+### 21 - LISTAR PRODUTOS
+GET {{baseUrl}}/produtos
+
+
+### 22 - CONSULTAR PRODUTO POR ID
+GET {{baseUrl}}/produto/1
+
+
+### 23 - CONSULTAR PRODUTO POR NOME
+GET {{baseUrl}}/produto/buscar/The%20Dark%20Side%20of%20the%20Moon
+
+
+### 24 - ATUALIZAR PRODUTO COMPLETO
+PUT {{baseUrl}}/produto/1
+Content-Type: application/json
+
+{
+    "nome": "The Dark Side of the Moon",
+    "artista": "Pink Floyd",
+    "album": "The Dark Side of the Moon",
+    "formato": "VINIL",
+    "ano": 1973,
+    "preco": 159.90,
+    "imagem": "dark-side-of-the-moon.jpg",
+    "categoria_id": 1
+}
+
+
+### 25 - ATUALIZAR PRODUTO PARCIALMENTE
+PUT {{baseUrl}}/produto/1
+Content-Type: application/json
+
+{
+    "preco": 169.90
+}
+
+
+### 26 - EXCLUIR PRODUTO
+DELETE {{baseUrl}}/produto/3
+
+
+### 27 - TESTAR PRODUTO INEXISTENTE
+GET {{baseUrl}}/produto/9999
+
+
+
+### =====================================================
+### ESTOQUE
+### =====================================================
+
+### 28 - CADASTRAR ESTOQUE
+POST {{baseUrl}}/estoque
+Content-Type: application/json
+
+{
+    "produto_id": 1,
+    "quantidade": 10
+}
+
+
+### 29 - LISTAR ESTOQUES
+GET {{baseUrl}}/estoques
+
+
+### 30 - CONSULTAR ESTOQUE POR ID
+GET {{baseUrl}}/estoque/1
+
+
+### 31 - ATUALIZAR ESTOQUE
+PUT {{baseUrl}}/estoque/1
+Content-Type: application/json
+
+{
+    "produto_id": 1,
+    "quantidade": 15
+}
+
+
+### 32 - TESTAR PRODUTO INEXISTENTE NO ESTOQUE
+POST {{baseUrl}}/estoque
+Content-Type: application/json
+
+{
+    "produto_id": 9999,
+    "quantidade": 10
+}
+
+
+
+### =====================================================
+### PEDIDOS
+### =====================================================
+
+### 33 - CADASTRAR PEDIDO
+POST {{baseUrl}}/pedido
+Content-Type: application/json
+
+{
+    "usuario_id": 1,
+    "data_pedido": "2026-09-01",
+    "valor_total": 169.90,
+    "status": "AGUARDANDO_PAGAMENTO"
+}
+
+
+### 34 - LISTAR PEDIDOS
+GET {{baseUrl}}/pedidos
+
+
+### 35 - CONSULTAR PEDIDO POR ID
+GET {{baseUrl}}/pedido/1
+
+
+### 36 - ATUALIZAR PEDIDO COMPLETO
+PUT {{baseUrl}}/pedido/1
+Content-Type: application/json
+
+{
+    "usuario_id": 1,
+    "data_pedido": "2026-09-01",
+    "valor_total": 169.90,
+    "status": "PAGO"
+}
+
+
+### 37 - ATUALIZAR PEDIDO PARCIALMENTE
+PUT {{baseUrl}}/pedido/1
+Content-Type: application/json
+
+{
+    "status": "PAGO"
+}
+
+
+### 38 - EXCLUIR PEDIDO
+DELETE {{baseUrl}}/pedido/1
+
+
+
+### =====================================================
+### ITENS DO PEDIDO
+### =====================================================
+
+### 39 - CADASTRAR ITEM DO PEDIDO
+POST {{baseUrl}}/itemPedido
+Content-Type: application/json
+
+{
+    "pedido_id": 1,
+    "produto_id": 1,
+    "quantidade": 1,
+    "preco_unitario": 169.90,
+    "subtotal": 169.90
+}
+
+
+### 40 - LISTAR ITENS DOS PEDIDOS
+GET {{baseUrl}}/itemPedidos
+
+
+### 41 - CONSULTAR ITEM DO PEDIDO
+GET {{baseUrl}}/itemPedido/1
+
+
+### 42 - EXCLUIR ITEM DO PEDIDO
+DELETE {{baseUrl}}/itemPedido/1
+
+
+
+### =====================================================
+### ENTREGAS
+### =====================================================
+
+### 43 - CADASTRAR ENTREGA
+POST {{baseUrl}}/entrega
+Content-Type: application/json
+
+{
+    "pedido_id": 1,
+    "endereco": "Rua Exemplo, 200 - Centro - Itapema - SC",
+    "status": "AGUARDANDO"
+}
+
+
+### 44 - LISTAR ENTREGAS
+GET {{baseUrl}}/entregas
+
+
+### 45 - CONSULTAR ENTREGA
+GET {{baseUrl}}/entrega/1
+
+
+### 46 - ATUALIZAR ENTREGA
+PUT {{baseUrl}}/entrega/1
+Content-Type: application/json
+
+{
+    "pedido_id": 1,
+    "endereco": "Rua Exemplo, 200 - Centro - Itapema - SC",
+    "status": "EM_TRANSITO"
+}
+
+
+### 47 - ATUALIZAR ENTREGA PARCIALMENTE
+PUT {{baseUrl}}/entrega/1
+Content-Type: application/json
+
+{
+    "status": "ENTREGUE"
+}
+
+
+
+### =====================================================
+### TESTES DE REGISTROS INEXISTENTES
+### =====================================================
+
+### 48 - USUÁRIO INEXISTENTE
+GET {{baseUrl}}/usuario/9999
+
+
+### 49 - PRODUTO INEXISTENTE
+GET {{baseUrl}}/produto/9999
+
+
+### 50 - CATEGORIA INEXISTENTE
+GET {{baseUrl}}/categoria/9999
+
+
+### 51 - PEDIDO INEXISTENTE
+GET {{baseUrl}}/pedido/9999
+
+
+### 52 - ESTOQUE INEXISTENTE
+GET {{baseUrl}}/estoque/9999
+
+
+### 53 - ENTREGA INEXISTENTE
+GET {{baseUrl}}/entrega/9999
+
+
+### 54 - ITEM DE PEDIDO INEXISTENTE
+GET {{baseUrl}}/itemPedido/9999
+
+
+
+### =====================================================
+### LOGIN
+### =====================================================
+
+
+### 55 - LOGIN COM DADOS CORRETOS
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+    "email": "clarice@email.com",
+    "senha": "123456"
+}
+
+### 56 - LOGIN COM SENHA ERRADA
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+    "email": "clarice@email.com",
+    "senha": "senhaerrada"
+}
+
+### 57 - LOGIN COM USUÁRIO INEXISTENTE
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+    "email": "naoexiste@email.com",
+    "senha": "123456"
+}
+
+
+
+### =====================================================
+### TESTES DE AUTENTICAÇÃO JWT
+### =====================================================
+
+### 58 - TESTAR ACESSO SEM TOKEN
+GET {{baseUrl}}/teste-protegido
+
+
+### 59 - TESTAR ACESSO COM TOKEN
+GET {{baseUrl}}/teste-protegido
+Authorization: Bearer {{token}}
+
+
+### 60 - TESTAR TOKEN INVÁLIDO
+GET {{baseUrl}}/teste-protegido
+Authorization: Bearer token_inventado
+
+
