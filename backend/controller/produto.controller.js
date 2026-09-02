@@ -1,4 +1,5 @@
 const Produto = require('../models/Produto')
+const { Estoque } = require('../models/rel')
 
 const cadastrar = async (req, res) => {
 
@@ -37,7 +38,14 @@ const listar = async (req, res) => {
 
     try {
 
-        const produtos = await Produto.findAll()
+        const produtos = await Produto.findAll({
+            include: [
+                {
+                    model: Estoque,
+                    as: 'estoque'
+                }
+            ]
+        })
 
         res.status(200).json(produtos)
 

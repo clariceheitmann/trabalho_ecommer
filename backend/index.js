@@ -159,6 +159,12 @@ app.post(
     pedidoController.cadastrar
 )
 
+app.post(
+    '/pedido/:id/finalizar',
+    verificarToken,
+    pedidoController.finalizar
+)
+
 // Listar pedidos
 app.get(
     '/pedidos',

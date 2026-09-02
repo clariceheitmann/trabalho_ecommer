@@ -4,7 +4,7 @@
 
 @baseUrl = http://localhost:3000
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJjbGFyaWNlQGVtYWlsLmNvbSIsImlhdCI6MTc4ODI2NTc0MiwiZXhwIjoxNzg4MjcyOTQyfQ.NZ-hs3gIN2YuUYc87NFuGkPn1FLa_Kf3xRp5KRCL9Mo
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJjbGFyaWNlQGVtYWlsLmNvbSIsImlhdCI6MTc4ODM1Mzk2MSwiZXhwIjoxNzg4MzYxMTYxfQ.NbWAm-M9ZEXHLHB0tWAEG1aS1B-qQoCFiWtjYpUuspo
 
 
 ### =====================================================
@@ -154,6 +154,7 @@ GET {{baseUrl}}/categoria/9999
 ### 18 - CADASTRAR PRODUTO - VINIL
 POST {{baseUrl}}/produto
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "nome": "The Dark Side of the Moon",
@@ -170,6 +171,7 @@ Content-Type: application/json
 ### 19 - CADASTRAR PRODUTO - CD
 POST {{baseUrl}}/produto
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "nome": "Abbey Road",
@@ -186,6 +188,7 @@ Content-Type: application/json
 ### 20 - CADASTRAR PRODUTO - CASSETE
 POST {{baseUrl}}/produto
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "nome": "Nevermind",
@@ -252,6 +255,7 @@ GET {{baseUrl}}/produto/9999
 ### 28 - CADASTRAR ESTOQUE
 POST {{baseUrl}}/estoque
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "produto_id": 1,
@@ -261,6 +265,7 @@ Content-Type: application/json
 
 ### 29 - LISTAR ESTOQUES
 GET {{baseUrl}}/estoques
+Authorization: Bearer {{token}}
 
 
 ### 30 - CONSULTAR ESTOQUE POR ID
@@ -295,6 +300,7 @@ Content-Type: application/json
 ### 33 - CADASTRAR PEDIDO
 POST {{baseUrl}}/pedido
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
     "usuario_id": 1,
@@ -306,6 +312,7 @@ Content-Type: application/json
 
 ### 34 - LISTAR PEDIDOS
 GET {{baseUrl}}/pedidos
+Authorization: Bearer {{token}}
 
 
 ### 35 - CONSULTAR PEDIDO POR ID
@@ -497,3 +504,76 @@ GET {{baseUrl}}/teste-protegido
 Authorization: Bearer token_inventado
 
 
+
+### =====================================================
+### TESTES DE ESTOQUE
+### =====================================================
+
+### CADASTRAR ESTOQUE - ABBEY ROAD
+POST {{baseUrl}}/estoque
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "produto_id": 6,
+    "quantidade": 5
+}
+
+### CADASTRAR ESTOQUE - THRILLER
+POST {{baseUrl}}/estoque
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "produto_id": 2,
+    "quantidade": 2
+}
+
+
+### CADASTRAR ESTOQUE - SEM ESTOQUE
+POST {{baseUrl}}/estoque
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "produto_id": 7,
+    "quantidade": 0
+}
+
+
+
+### CRIAR ITEM DO PEDIDO
+POST {{baseUrl}}/itemPedido
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "pedido_id": 2,
+    "produto_id": 6,
+    "quantidade": 2
+}
+
+### CRIAR ENTREGA
+POST {{baseUrl}}/entrega
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "pedido_id": 2,
+    "endereco": "Rua Exemplo, 123 - Centro, Itapema - SC"
+}
+
+### FINALIZAR PEDIDO
+POST {{baseUrl}}/pedido/3/finalizar
+Authorization: Bearer {{token}}
+
+### Criar item para o pedido 3
+POST http://localhost:3000/itemPedido
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "pedido_id": 3,
+    "produto_id": 2,
+    "quantidade": 1
+}
