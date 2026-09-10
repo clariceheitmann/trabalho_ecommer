@@ -260,7 +260,7 @@ function finalizarCompra() {
 
     }
 
-    alert('Vamos para o checkout!')
+    window.location.href = 'checkout.html'
 
 }
 
@@ -278,16 +278,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-const produtoTeste = {
-    id: 1,
-    nome: 'Abbey Road',
-    preco: 120,
-    imagem: '../img/abbey-road.jpg'
-}
-
-if (carrinho.length === 0) {
-
-    adicionarCarrinho(produtoTeste)
-
-}

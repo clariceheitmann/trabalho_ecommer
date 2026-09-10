@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Painel Administrativo | Analog Dreams</title>
+
+    <link rel="stylesheet" href="../css/principal.css">
+</head>
+
+<body>
+
+    <nav>
+
+        <h2>🎵 Analog Dreams</h2>
+
+        <div>
+            <a href="../index.html">Início</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="admin.html">Administração</a>
+            <a href="login.html">Sair</a>
+        </div>
+
+    </nav>
+
+
+    <main>
+
+        <section>
+
+            <h1>Painel Administrativo</h1>
+
+            <p>Gerencie os produtos e pedidos da sua loja.</p>
+
+            <br>
+
+            <button onclick="novoProduto()">
+                ➕ Cadastrar novo produto
+            </button>
+
+            <br>
+
+
+            <div id="resumoAdmin">
+
+                <div class="card-admin">
+                    <h2>📦 Produtos</h2>
+                    <p id="quantidadeProdutos">Carregando...</p>
+                </div>
+
+
+                <div class="card-admin">
+                    <h2>🛒 Pedidos</h2>
+                    <p id="quantidadePedidos">Carregando...</p>
+                </div>
+
+
+                <div class="card-admin">
+                    <h2>💰 Vendas</h2>
+                    <p id="valorVendas">Carregando...</p>
+                </div>
+
+            </div>
+
+
+            <br><br>
+
+
+            <h2>Produtos cadastrados</h2>
+
+            <div id="listaProdutosAdmin">
+
+                <p>Carregando produtos...</p>
+
+            </div>
+
+
+            <br>
+
+
+            <h2>Pedidos realizados</h2>
+
+            <div id="listaPedidosAdmin">
+
+                <p>Carregando pedidos...</p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>🎵 Analog Dreams</p>
+        <p>Sua loja de música física</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+
+    </footer>
+
+
+    <script src="../js/admin.js"></script>
+
+</body>
+
+</html>
