@@ -276,6 +276,12 @@ async function excluirProduto(id) {
 
 }
 
+function novoProduto() {
+
+    window.location.href = 'produto-form.html'
+
+}
+
 
 // Inicializar painel
 carregarProdutos()

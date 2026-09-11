@@ -4,7 +4,7 @@
 
 @baseUrl = http://localhost:3000
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJjbGFyaWNlQGVtYWlsLmNvbSIsImlhdCI6MTc4ODM1Mzk2MSwiZXhwIjoxNzg4MzYxMTYxfQ.NbWAm-M9ZEXHLHB0tWAEG1aS1B-qQoCFiWtjYpUuspo
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJjbGFyaWNlQGVtYWlsLmNvbSIsImlhdCI6MTc4OTEzNzkyNCwiZXhwIjoxNzkxNzI5OTI0fQ.OkyCt1qk_dC0g8PboIBeDIwEXNG8BbTAHQDHyXfkuMs
 
 
 ### =====================================================
@@ -577,3 +577,11 @@ Content-Type: application/json
     "produto_id": 2,
     "quantidade": 1
 }
+
+### Teste relatório vendas
+GET http://localhost:3000/relatorios/vendas
+Authorization: Bearer {{token}}
+
+### Teste relatório estoque
+GET http://localhost:3000/relatorios/estoque
+Authorization: Bearer {{token}}

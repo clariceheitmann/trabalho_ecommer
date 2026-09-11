@@ -11,6 +11,7 @@ const itemPedidoController = require('./controller/itemPedido.controller')
 const estoqueController = require('./controller/estoque.controller')
 const entregaController = require('./controller/entrega.controller')
 const categoriaController = require('./controller/categoria.controller')
+const relatorioController = require('./controller/relatorio.controller')
 
 const loginController = require('./controller/login.controller')
 const verificarToken = require('./middleware/auth.middleware')
@@ -256,6 +257,22 @@ app.put(
     '/estoque/:id',
     verificarToken,
     estoqueController.atualizar
+)
+
+// -------------------------
+// RELATÓRIOS
+// -------------------------
+
+app.get(
+    '/relatorios/vendas',
+    verificarToken,
+    relatorioController.vendas
+)
+
+app.get(
+    '/relatorios/estoque',
+    verificarToken,
+    relatorioController.estoque
 )
 
 

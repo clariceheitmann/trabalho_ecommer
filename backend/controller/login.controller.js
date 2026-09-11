@@ -56,7 +56,7 @@ const login = async (req, res) => {
             'CHAVE_SECRETA_DO_PROJETO',
 
             {
-                expiresIn: '2h'
+                expiresIn: '30d'
             }
 
         )

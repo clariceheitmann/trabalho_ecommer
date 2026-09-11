@@ -4,6 +4,8 @@ const token = localStorage.getItem('token')
 
 const formulario = document.getElementById('formProduto')
 
+const categoriaSelect = document.getElementById('categoria_id')
+
 const tituloPagina = document.getElementById('tituloPagina')
 
 
@@ -26,7 +28,49 @@ if (produtoId) {
 
     tituloPagina.textContent = 'Editar produto'
 
-    carregarProduto()
+}
+
+// CARREGAR CATEGORIAS
+async function carregarCategorias() {
+
+    try {
+
+        const resposta = await fetch(`${baseUrl}/categorias`)
+
+        const categorias = await resposta.json()
+
+        if (!resposta.ok) {
+
+            alert(
+                categorias.message ||
+                'Não foi possível carregar as categorias.'
+            )
+
+            return
+        }
+
+
+        categorias.forEach(categoria => {
+
+            categoriaSelect.innerHTML += `
+                <option value="${categoria.id}">
+                    ${categoria.nome}
+                </option>
+            `
+
+        })
+
+
+    } catch (erro) {
+
+        console.error(
+            'Erro ao carregar categorias:',
+            erro
+        )
+
+        alert('Não foi possível carregar as categorias.')
+
+    }
 
 }
 
@@ -238,3 +282,11 @@ formulario.addEventListener('submit', async (event) => {
     }
 
 })
+
+carregarCategorias()
+
+if (produtoId) {
+
+    carregarProduto()
+
+}
