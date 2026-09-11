@@ -1,5 +1,4 @@
 const baseUrl = 'http://localhost:3000'
-
 const token = localStorage.getItem('token')
 
 
@@ -12,16 +11,13 @@ if (!token) {
 }
 
 
-// Elementos da página
 const quantidadeProdutos = document.getElementById('quantidadeProdutos')
 const quantidadePedidos = document.getElementById('quantidadePedidos')
 const valorVendas = document.getElementById('valorVendas')
-
 const listaProdutosAdmin = document.getElementById('listaProdutosAdmin')
 const listaPedidosAdmin = document.getElementById('listaPedidosAdmin')
 
 
-// Carregar produtos
 async function carregarProdutos() {
 
     try {
@@ -107,7 +103,6 @@ async function carregarProdutos() {
 }
 
 
-// Carregar pedidos
 async function carregarPedidos() {
 
     try {
@@ -212,7 +207,6 @@ async function carregarPedidos() {
 }
 
 
-// Botão editar
 function editarProduto(id) {
 
     window.location.href = `produto-form.html?id=${id}`
@@ -220,7 +214,6 @@ function editarProduto(id) {
 }
 
 
-// Botão excluir
 async function excluirProduto(id) {
 
     const confirmar = confirm(
@@ -283,6 +276,5 @@ function novoProduto() {
 }
 
 
-// Inicializar painel
 carregarProdutos()
 carregarPedidos()

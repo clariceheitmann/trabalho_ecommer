@@ -32,7 +32,7 @@ const ItemPedido = conn.define("itens_pedido", {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false
     }
-},{
+}, {
     tableName: 'itensPedidos',
     timestamps: false
 });

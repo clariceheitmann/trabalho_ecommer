@@ -36,7 +36,7 @@ const Pedido = conn.define("pedidos", {
         allowNull: false,
         defaultValue: "AGUARDANDO_PAGAMENTO"
     }
-},{
+}, {
     tableName: 'pedidos',
     timestamps: false
 });

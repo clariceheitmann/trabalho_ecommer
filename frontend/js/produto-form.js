@@ -1,11 +1,7 @@
 const baseUrl = 'http://localhost:3000'
-
 const token = localStorage.getItem('token')
-
 const formulario = document.getElementById('formProduto')
-
 const categoriaSelect = document.getElementById('categoria_id')
-
 const tituloPagina = document.getElementById('tituloPagina')
 
 
@@ -18,7 +14,6 @@ if (!token) {
 }
 
 
-// Verifica se estamos editando um produto
 const parametros = new URLSearchParams(window.location.search)
 
 const produtoId = parametros.get('id')
@@ -30,7 +25,6 @@ if (produtoId) {
 
 }
 
-// CARREGAR CATEGORIAS
 async function carregarCategorias() {
 
     try {
@@ -75,7 +69,6 @@ async function carregarCategorias() {
 }
 
 
-// CARREGAR PRODUTO PARA EDIÇÃO
 async function carregarProduto() {
 
     try {
@@ -150,7 +143,6 @@ async function carregarProduto() {
 }
 
 
-// SALVAR PRODUTO
 formulario.addEventListener('submit', async (event) => {
 
     event.preventDefault()
@@ -188,7 +180,6 @@ formulario.addEventListener('submit', async (event) => {
         let resposta
 
 
-        // EDITAR
         if (produtoId) {
 
             resposta = await fetch(
@@ -216,7 +207,6 @@ formulario.addEventListener('submit', async (event) => {
         }
 
 
-        // CADASTRAR
         else {
 
             resposta = await fetch(

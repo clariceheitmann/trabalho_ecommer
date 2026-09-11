@@ -74,7 +74,7 @@ const Usuario = conn.define("usuarios", {
         type: DataTypes.STRING(2),
         allowNull: false
     }
-},{
+}, {
     tableName: 'usuarios',
     timestamps: false
 });

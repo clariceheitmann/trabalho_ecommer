@@ -47,7 +47,7 @@ const Produto = conn.define("produtos", {
         type: DataTypes.INTEGER,
         allowNull: false
     }
-},{
+}, {
     tableName: 'produtos',
     timestamps: false
 });

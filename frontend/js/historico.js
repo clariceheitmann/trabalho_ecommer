@@ -1,7 +1,5 @@
 const baseUrl = 'http://localhost:3000'
-
 const token = localStorage.getItem('token')
-
 const listaPedidos = document.getElementById('listaPedidos')
 
 
@@ -14,7 +12,6 @@ if (!token) {
 }
 
 
-// Pega o ID do usuário dentro do token
 function pegarIdDoToken() {
 
     const partes = token.split('.')
@@ -58,7 +55,6 @@ async function carregarPedidos() {
         const pedidos = dados.pedidos || dados
 
 
-        // Filtra apenas os pedidos do usuário logado
         const meusPedidos = pedidos.filter(
             pedido => pedido.usuario_id === usuarioId
         )

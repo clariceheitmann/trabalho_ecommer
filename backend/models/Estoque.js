@@ -19,7 +19,7 @@ const Estoque = conn.define("estoques", {
         allowNull: false,
         defaultValue: 0
     }
-},{
+}, {
     tableName: 'estoques',
     timestamps: false
 });

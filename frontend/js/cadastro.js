@@ -1,5 +1,4 @@
 const baseUrl = 'http://localhost:3000'
-
 const formulario = document.getElementById('formCadastro')
 
 formulario.addEventListener('submit', async (event) => {

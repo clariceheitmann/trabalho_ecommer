@@ -1,14 +1,5 @@
-// =====================================================
-// CARRINHO DE COMPRAS
-// =====================================================
-
-// Recupera o carrinho salvo no LocalStorage
 let carrinho = JSON.parse(localStorage.getItem('carrinho')) || []
 
-
-// =====================================================
-// SALVAR CARRINHO
-// =====================================================
 
 function salvarCarrinho() {
 
@@ -16,10 +7,6 @@ function salvarCarrinho() {
 
 }
 
-
-// =====================================================
-// ADICIONAR PRODUTO
-// =====================================================
 
 function adicionarCarrinho(produto) {
 
@@ -50,10 +37,6 @@ function adicionarCarrinho(produto) {
 }
 
 
-// =====================================================
-// REMOVER PRODUTO
-// =====================================================
-
 function removerDoCarrinho(id) {
 
     carrinho = carrinho.filter(
@@ -66,10 +49,6 @@ function removerDoCarrinho(id) {
 
 }
 
-
-// =====================================================
-// AUMENTAR QUANTIDADE
-// =====================================================
 
 function aumentarQuantidade(id) {
 
@@ -89,10 +68,6 @@ function aumentarQuantidade(id) {
 
 }
 
-
-// =====================================================
-// DIMINUIR QUANTIDADE
-// =====================================================
 
 function diminuirQuantidade(id) {
 
@@ -121,20 +96,12 @@ function diminuirQuantidade(id) {
 }
 
 
-// =====================================================
-// CALCULAR SUBTOTAL
-// =====================================================
-
 function calcularSubtotal(produto) {
 
     return produto.preco * produto.quantidade
 
 }
 
-
-// =====================================================
-// CALCULAR TOTAL
-// =====================================================
 
 function calcularTotal() {
 
@@ -147,10 +114,6 @@ function calcularTotal() {
 
 }
 
-
-// =====================================================
-// EXIBIR CARRINHO
-// =====================================================
 
 function exibirCarrinho() {
 
@@ -246,10 +209,6 @@ function exibirCarrinho() {
 }
 
 
-// =====================================================
-// FINALIZAR COMPRA
-// =====================================================
-
 function finalizarCompra() {
 
     if (carrinho.length === 0) {
@@ -264,9 +223,6 @@ function finalizarCompra() {
 
 }
 
-// =====================================================
-// CARREGAR CARRINHO AO ABRIR A PÁGINA
-// =====================================================
 
 document.addEventListener('DOMContentLoaded', () => {
 

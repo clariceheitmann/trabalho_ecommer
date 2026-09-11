@@ -1,5 +1,4 @@
 const baseUrl = 'http://localhost:3000'
-
 const token = localStorage.getItem('token')
 
 if (!token) {
@@ -8,7 +7,6 @@ if (!token) {
 }
 
 
-// Pega o ID do usuário dentro do token
 function pegarIdDoToken() {
 
     const partes = token.split('.')
@@ -24,7 +22,6 @@ const usuarioId = pegarIdDoToken()
 const formulario = document.getElementById('formPerfil')
 
 
-// BUSCAR DADOS DO USUÁRIO
 async function carregarPerfil() {
 
     try {
@@ -74,7 +71,6 @@ async function carregarPerfil() {
 }
 
 
-// ATUALIZAR PERFIL
 formulario.addEventListener('submit', async (event) => {
 
     event.preventDefault()

@@ -1,7 +1,5 @@
 const baseUrl = 'http://localhost:3000'
-
 const token = localStorage.getItem('token')
-
 const listaEstoque = document.getElementById('listaEstoque')
 
 
@@ -13,8 +11,6 @@ if (!token) {
 
 }
 
-
-// CARREGAR PRODUTOS E ESTOQUE
 
 async function carregarEstoque() {
 
@@ -72,21 +68,20 @@ async function carregarEstoque() {
 
                     <br>
 
-                    ${
-                        estoque
-                        ?
-                        `
+                    ${estoque
+                    ?
+                    `
                             <button onclick="alterarEstoque(${estoqueId}, ${quantidade})">
                                 Atualizar estoque
                             </button>
                         `
-                        :
-                        `
+                    :
+                    `
                             <button onclick="cadastrarEstoque(${produto.id})">
                                 Cadastrar estoque
                             </button>
                         `
-                    }
+                }
 
                 </div>
 
@@ -108,8 +103,6 @@ async function carregarEstoque() {
 
 }
 
-
-// CADASTRAR ESTOQUE
 
 async function cadastrarEstoque(produtoId) {
 
@@ -171,7 +164,7 @@ async function cadastrarEstoque(produtoId) {
         }
 
 
-        alert('Estoque cadastrado com sucesso! 📦')
+        alert('Estoque cadastrado com sucesso!')
 
         carregarEstoque()
 
@@ -186,8 +179,6 @@ async function cadastrarEstoque(produtoId) {
 
 }
 
-
-// ATUALIZAR ESTOQUE
 
 async function alterarEstoque(estoqueId, quantidadeAtual) {
 
@@ -256,7 +247,7 @@ async function alterarEstoque(estoqueId, quantidadeAtual) {
         }
 
 
-        alert('Estoque atualizado com sucesso! 📦')
+        alert('Estoque atualizado com sucesso!')
 
         carregarEstoque()
 

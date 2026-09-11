@@ -4,7 +4,6 @@ require('./models/rel')
 
 async function syncDataBase() {
     try {
-        // Sincroniza as tabelas e seus relacionamentos
         await conn.sync()
 
         console.log('Tabelas sincronizadas com sucesso!')

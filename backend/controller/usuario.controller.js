@@ -24,10 +24,6 @@ const cadastrar = async (req, res) => {
         }
 
 
-        // =========================
-        // VALIDAR CPF
-        // =========================
-
         if (!validarCPF(valores.cpf)) {
 
             return res.status(400).json({
@@ -36,10 +32,6 @@ const cadastrar = async (req, res) => {
 
         }
 
-
-        // =========================
-        // VERIFICAR E-MAIL
-        // =========================
 
         const emailExiste = await Usuario.findOne({
             where: {
@@ -56,10 +48,6 @@ const cadastrar = async (req, res) => {
         }
 
 
-        // =========================
-        // VERIFICAR CPF
-        // =========================
-
         const cpfExiste = await Usuario.findOne({
             where: {
                 cpf: valores.cpf.replace(/\D/g, '')
@@ -75,26 +63,14 @@ const cadastrar = async (req, res) => {
         }
 
 
-        // =========================
-        // BUSCAR CEP
-        // =========================
-
         const endereco = await buscarCEP(valores.cep)
 
-
-        // =========================
-        // CRIPTOGRAFAR SENHA
-        // =========================
 
         const senhaCriptografada = await bcrypt.hash(
             valores.senha,
             10
         )
 
-
-        // =========================
-        // CRIAR USUÁRIO
-        // =========================
 
         await Usuario.create({
 
@@ -318,14 +294,12 @@ const validarCPF = (cpf) => {
         return false
     }
 
-    // Impede CPFs como 11111111111
     if (/^(\d)\1+$/.test(cpf)) {
         return false
     }
 
     let soma = 0
 
-    // Primeiro dígito verificador
     for (let i = 0; i < 9; i++) {
         soma += Number(cpf[i]) * (10 - i)
     }
@@ -342,7 +316,6 @@ const validarCPF = (cpf) => {
 
     soma = 0
 
-    // Segundo dígito verificador
     for (let i = 0; i < 10; i++) {
         soma += Number(cpf[i]) * (11 - i)
     }

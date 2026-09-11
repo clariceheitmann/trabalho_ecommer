@@ -1,20 +1,8 @@
-const resumoCheckout =
-    document.getElementById('resumoCheckout')
-
-const formulario =
-    document.getElementById('formCheckout')
-
-
-const carrinho =
-    JSON.parse(localStorage.getItem('carrinho')) || []
-
-
+const resumoCheckout = document.getElementById('resumoCheckout')
+const formulario = document.getElementById('formCheckout')
+const carrinho = JSON.parse(localStorage.getItem('carrinho')) || []
 const baseUrl = 'http://localhost:3000'
 
-
-// =====================================================
-// VERIFICAR CARRINHO
-// =====================================================
 
 if (carrinho.length === 0) {
 
@@ -32,10 +20,6 @@ if (carrinho.length === 0) {
 
 }
 
-
-// =====================================================
-// MOSTRAR RESUMO
-// =====================================================
 
 function mostrarResumo() {
 
@@ -89,10 +73,6 @@ function mostrarResumo() {
 mostrarResumo()
 
 
-// =====================================================
-// FINALIZAR CHECKOUT
-// =====================================================
-
 formulario.addEventListener('submit', async (event) => {
 
     event.preventDefault()
@@ -129,7 +109,6 @@ formulario.addEventListener('submit', async (event) => {
 
     try {
 
-        // Criar pedido
 
         const respostaPedido = await fetch(
             `${baseUrl}/pedido`,
@@ -172,8 +151,6 @@ formulario.addEventListener('submit', async (event) => {
         const pedidoId =
             dadosPedido.pedido.id
 
-
-        // Criar os itens do pedido
 
         for (const produto of carrinho) {
 
@@ -221,8 +198,6 @@ formulario.addEventListener('submit', async (event) => {
         }
 
 
-        // Criar entrega
-
         const respostaEntrega = await fetch(
             `${baseUrl}/entrega`,
             {
@@ -263,8 +238,6 @@ formulario.addEventListener('submit', async (event) => {
         }
 
 
-        // Finalizar pedido
-
         const respostaFinalizar = await fetch(
             `${baseUrl}/pedido/${pedidoId}/finalizar`,
             {
@@ -294,8 +267,6 @@ formulario.addEventListener('submit', async (event) => {
 
         }
 
-
-        // Limpar carrinho
 
         localStorage.removeItem('carrinho')
 

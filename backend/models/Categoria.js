@@ -18,7 +18,7 @@ const Categoria = conn.define("categorias", {
         type: DataTypes.STRING(255),
         allowNull: true
     }
-},{
+}, {
     tableName: 'categorias',
     timestamps: false
 });

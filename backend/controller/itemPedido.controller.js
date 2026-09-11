@@ -28,7 +28,6 @@ const cadastrar = async (req, res) => {
 
     try {
 
-        // Verifica se o pedido existe
         const pedido = await Pedido.findByPk(pedido_id)
 
         if (!pedido) {
@@ -40,7 +39,6 @@ const cadastrar = async (req, res) => {
         }
 
 
-        // Verifica se o produto existe
         const produto = await Produto.findByPk(produto_id)
 
         if (!produto) {
@@ -52,13 +50,11 @@ const cadastrar = async (req, res) => {
         }
 
 
-        // Usa o preço que está cadastrado no banco
         const preco_unitario = Number(produto.preco)
 
         const subtotal = preco_unitario * quantidade
 
 
-        // Cria o item
         const item = await ItemPedido.create({
 
             pedido_id,

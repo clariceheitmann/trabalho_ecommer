@@ -44,7 +44,7 @@ const Entrega = conn.define("entregas", {
         type: DataTypes.DATE,
         allowNull: true
     }
-},{
+}, {
     tableName: 'entregas',
     timestamps: false
 });

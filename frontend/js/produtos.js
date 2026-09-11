@@ -1,13 +1,8 @@
 const listaProdutos = document.getElementById('listaProdutos')
-
 const baseUrl = 'http://localhost:3000'
 
 let produtosEncontrados = []
 
-
-// =====================================================
-// CARREGAR PRODUTOS
-// =====================================================
 
 async function carregarProdutos() {
 
@@ -36,15 +31,10 @@ async function carregarProdutos() {
 }
 
 
-// =====================================================
-// MOSTRAR PRODUTOS
-// =====================================================
-
 function mostrarProdutos() {
 
     listaProdutos.innerHTML = ''
 
-    // Recupera o carrinho atual
     const carrinho = JSON.parse(
         localStorage.getItem('carrinho')
     ) || []
@@ -57,25 +47,21 @@ function mostrarProdutos() {
         card.classList.add('card-produto')
 
 
-        // Estoque cadastrado no banco
         const estoqueTotal = produto.estoque
             ? produto.estoque.quantidade
             : 0
 
 
-        // Procura o produto no carrinho
         const produtoNoCarrinho = carrinho.find(
             item => item.id === produto.id
         )
 
 
-        // Quantidade desse produto que já está no carrinho
         const quantidadeNoCarrinho = produtoNoCarrinho
             ? produtoNoCarrinho.quantidade
             : 0
 
 
-        // Estoque que ainda pode ser adicionado
         const estoqueDisponivel =
             estoqueTotal - quantidadeNoCarrinho
 
@@ -117,7 +103,7 @@ function mostrarProdutos() {
 
                     ? `
                         <button onclick="adicionarAoCarrinho(${produto.id})">
-                            🛒 Adicionar ao carrinho
+                            Adicionar ao carrinho
                         </button>
                     `
 
@@ -139,10 +125,6 @@ function mostrarProdutos() {
 }
 
 
-// =====================================================
-// ADICIONAR AO CARRINHO
-// =====================================================
-
 function adicionarAoCarrinho(id) {
 
     const produto = produtosEncontrados.find(
@@ -158,13 +140,11 @@ function adicionarAoCarrinho(id) {
     }
 
 
-    // Estoque total do produto
     const estoqueTotal = produto.estoque
         ? produto.estoque.quantidade
         : 0
 
 
-    // Se não possui estoque
     if (estoqueTotal <= 0) {
 
         alert('Este produto está sem estoque!')
@@ -173,30 +153,25 @@ function adicionarAoCarrinho(id) {
     }
 
 
-    // Recupera o carrinho
     let carrinho = JSON.parse(
         localStorage.getItem('carrinho')
     ) || []
 
 
-    // Procura o produto no carrinho
     const produtoExistente = carrinho.find(
         item => item.id === produto.id
     )
 
 
-    // Quantidade que já está no carrinho
     const quantidadeNoCarrinho = produtoExistente
         ? produtoExistente.quantidade
         : 0
 
 
-    // Calcula quanto ainda pode ser adicionado
     const estoqueDisponivel =
         estoqueTotal - quantidadeNoCarrinho
 
 
-    // Impede ultrapassar o estoque
     if (estoqueDisponivel <= 0) {
 
         alert('Você já adicionou todo o estoque disponível ao carrinho!')
@@ -205,7 +180,6 @@ function adicionarAoCarrinho(id) {
     }
 
 
-    // Se o produto já está no carrinho
     if (produtoExistente) {
 
         produtoExistente.quantidade++
@@ -232,23 +206,17 @@ function adicionarAoCarrinho(id) {
     }
 
 
-    // Salva o carrinho
     localStorage.setItem(
         'carrinho',
         JSON.stringify(carrinho)
     )
 
 
-    // Atualiza os cards
     mostrarProdutos()
 
 
     alert(`${produto.nome} foi adicionado ao carrinho!`)
 }
 
-
-// =====================================================
-// INICIAR
-// =====================================================
 
 carregarProdutos()

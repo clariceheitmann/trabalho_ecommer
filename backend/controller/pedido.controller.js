@@ -193,7 +193,6 @@ const finalizar = async (req, res) => {
 
     try {
 
-        // Procura o pedido
         const pedido = await Pedido.findByPk(id)
 
         if (!pedido) {
@@ -203,7 +202,6 @@ const finalizar = async (req, res) => {
         }
 
 
-        // Verifica se o pedido já foi finalizado
         if (pedido.status !== 'AGUARDANDO_PAGAMENTO') {
 
             return res.status(400).json({
@@ -213,7 +211,6 @@ const finalizar = async (req, res) => {
         }
 
 
-        // Busca os itens desse pedido
         const itens = await ItemPedido.findAll({
             where: {
                 pedido_id: id
@@ -230,7 +227,6 @@ const finalizar = async (req, res) => {
         }
 
 
-        // Primeiro verifica TODO o estoque
         for (const item of itens) {
 
             const estoque = await Estoque.findOne({
@@ -262,8 +258,6 @@ const finalizar = async (req, res) => {
         }
 
 
-        // Agora que todos possuem estoque suficiente,
-        // podemos diminuir as quantidades
         for (const item of itens) {
 
             const estoque = await Estoque.findOne({
@@ -279,7 +273,6 @@ const finalizar = async (req, res) => {
         }
 
 
-        // Atualiza o status do pedido
         await pedido.update({
             status: 'PAGO'
         })
