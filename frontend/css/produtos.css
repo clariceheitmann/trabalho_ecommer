@@ -1,191 +1,374 @@
+/* ======================================================
+   RESET
+====================================================== */
+
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f5eadb;
-    color: #3b2020;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f5ead7;
+
+    color: #2b1818;
+
 }
 
 
-/* HEADER */
+/* ======================================================
+   CABEÇALHO
+====================================================== */
 
 header {
-    background-color: #742727;
+
+    background: #6d2323;
+
     color: white;
-    padding: 25px 50px;
+
+    padding: 20px 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
 }
 
 
 header h1 {
-    font-size: 32px;
-    margin-bottom: 15px;
+
+    font-size: 28px;
+
 }
 
 
 nav {
+
     display: flex;
-    gap: 25px;
+
+    gap: 20px;
+
 }
 
 
 nav a {
+
     color: white;
+
     text-decoration: none;
-    font-size: 17px;
+
+    font-weight: bold;
+
 }
 
 
 nav a:hover {
+
     text-decoration: underline;
+
 }
 
 
-/* CONTEÚDO */
+/* ======================================================
+   CONTEÚDO
+====================================================== */
 
 main {
-    max-width: 1200px;
+
+    width: 90%;
+
+    max-width: 1250px;
+
     margin: 40px auto;
-    padding: 0 20px;
+
 }
 
 
 main h2 {
-    font-size: 30px;
+
     margin-bottom: 30px;
+
+    color: #6d2323;
+
+    font-size: 30px;
+
 }
 
 
-/* CARDS */
+/* ======================================================
+   GRID DOS PRODUTOS
+====================================================== */
 
 .produtos-container {
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+
 }
 
 
+/* ======================================================
+   CARD
+====================================================== */
+
 .card-produto {
-    background-color: white;
-    border-radius: 12px;
+
+    background: white;
+
+    border-radius: 10px;
+
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-    transition: transform 0.2s;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.12);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
 }
 
 
 .card-produto:hover {
-    transform: translateY(-5px);
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.18);
+
 }
 
 
-/* IMAGEM */
+/* ======================================================
+   ÁREA DA CAPA
+====================================================== */
 
 .imagem-produto {
-    height: 220px;
-    background-color: #e5d0ac;
+
+    width: 100%;
+
+    height: 250px;
+
+    background: #e5d0ac;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    font-size: 70px;
+    overflow: hidden;
+
 }
 
 
-/* INFORMAÇÕES */
+/* ======================================================
+   IMAGEM DA CAPA
+====================================================== */
+
+.imagem-produto img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    display: block;
+
+}
+
+
+/* ======================================================
+   CAPA INDISPONÍVEL
+====================================================== */
+
+.capa-indisponivel {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    color: #6d2323;
+
+    font-size: 55px;
+
+}
+
+
+.capa-indisponivel span {
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+}
+
+
+/* ======================================================
+   INFORMAÇÕES
+====================================================== */
 
 .info-produto {
-    padding: 20px;
+
+    padding: 16px;
+
+    background: white;
+
 }
 
 
 .info-produto h3 {
-    font-size: 22px;
-    margin-bottom: 8px;
+
+    color: #2b1818;
+
+    font-size: 18px;
+
+    margin-bottom: 7px;
+
+    line-height: 1.25;
+
 }
 
 
 .info-produto p {
-    margin-bottom: 8px;
+
+    color: #4b3030;
+
+    font-size: 14px;
+
+    margin-bottom: 5px;
+
 }
 
 
-.artista {
+.info-produto .artista {
+
+    color: #6d2323;
+
     font-weight: bold;
+
+    margin-bottom: 12px;
+
 }
 
 
-.preco {
-    font-size: 22px;
+/* ======================================================
+   PREÇO
+====================================================== */
+
+.info-produto .preco {
+
+    color: #a10000;
+
+    font-size: 17px;
+
     font-weight: bold;
-    color: #742727;
-    margin-top: 15px;
+
+    margin-top: 12px;
+
 }
 
 
-/* BOTÃO */
-
-.info-produto button {
-    width: 100%;
-    padding: 12px;
-
-    border: none;
-    border-radius: 6px;
-
-    background-color: #742727;
-    color: white;
-
-    font-size: 16px;
-
-    cursor: pointer;
-
-    margin-top: 10px;
-}
-
-
-.info-produto button:hover {
-    background-color: #531c1c;
-}
-
-
-/* ERRO */
+/* ======================================================
+   ERRO
+====================================================== */
 
 .erro {
-    color: #a00000;
+
+    text-align: center;
+
+    color: #a10000;
+
     font-weight: bold;
+
 }
 
 
-/* RESPONSIVIDADE */
+/* ======================================================
+   RESPONSIVIDADE
+====================================================== */
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
 
     .produtos-container {
-        grid-template-columns: repeat(2, 1fr);
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
     }
 
 }
 
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
 
     header {
+
+        flex-direction: column;
+
         padding: 20px;
+
+        text-align: center;
+
     }
 
 
-    .produtos-container {
-        grid-template-columns: 1fr;
+    nav {
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
     }
 
 
     main {
-        margin-top: 25px;
+
+        width: 94%;
+
+        margin: 25px auto;
+
+    }
+
+
+    .produtos-container {
+
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+
+    }
+
+
+    .imagem-produto {
+
+        height: 300px;
+
     }
 
 }

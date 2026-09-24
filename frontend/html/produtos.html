@@ -4,9 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Produtos | Analog Dreams</title>
+
     <link rel="stylesheet" href="../css/produtos.css">
-    <script src="../js/produtos.js"></script>
+
+    <script src="../js/produtos.js"defer></script>
 </head>
 
 <body>
@@ -24,6 +27,7 @@
 
     </header>
 
+
     <main>
 
         <h2>Nossos produtos</h2>
@@ -31,6 +35,26 @@
         <section id="listaProdutos" class="produtos-container"></section>
 
     </main>
+
+
+    <!-- MODAL DO PRODUTO -->
+
+    <div id="modalProduto" class="modal-produto">
+
+        <div class="conteudo-modal">
+
+            <button
+                class="fechar-modal"
+                onclick="fecharModal()"
+            >
+                ×
+            </button>
+
+            <div id="detalhesProduto"></div>
+
+        </div>
+
+    </div>
 
 </body>
 

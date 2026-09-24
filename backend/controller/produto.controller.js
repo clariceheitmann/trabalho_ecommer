@@ -1,5 +1,5 @@
 const Produto = require('../models/Produto')
-const { Estoque } = require('../models/rel')
+const { Estoque, Categoria } = require('../models/rel')
 
 const cadastrar = async (req, res) => {
 
@@ -43,6 +43,10 @@ const listar = async (req, res) => {
                 {
                     model: Estoque,
                     as: 'estoque'
+                },
+                {
+                    model: Categoria,
+                    as: 'categoria'
                 }
             ]
         })

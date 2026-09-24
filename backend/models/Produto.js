@@ -43,6 +43,11 @@ const Produto = conn.define("produtos", {
         allowNull: true
     },
 
+    descricao: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
+
     categoria_id: {
         type: DataTypes.INTEGER,
         allowNull: false
