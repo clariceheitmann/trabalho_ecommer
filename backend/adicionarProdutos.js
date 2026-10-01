@@ -10,7 +10,8 @@ require('./models/rel')
 // Carrega descrições e configurações das capas
 const {
     obterDescricao,
-    obterArtistaParaCapa
+    obterArtistaParaCapa,
+    obterCapaManual
 } = require('./catalogoDetalhes')
 
 
@@ -571,27 +572,6 @@ const produtos = [
         estoque: 8
     },
 
-    {
-        artista: 'Gorillaz',
-        album: 'Humanz',
-        ano: 2017,
-        categoria: 'Pop',
-        formato: 'VINIL',
-        preco: 139.90,
-        estoque: 5
-    },
-
-    {
-        artista: 'Gorillaz',
-        album: 'The Now Now',
-        ano: 2018,
-        categoria: 'Pop',
-        formato: 'VINIL',
-        preco: 139.90,
-        estoque: 5
-    },
-
-
     // =========================
     // HER'S
     // =========================
@@ -645,37 +625,6 @@ const produtos = [
         preco: 79.90,
         estoque: 8
     },
-
-    {
-        artista: 'Lady Gaga',
-        album: 'The Fame Monster',
-        ano: 2009,
-        categoria: 'Pop',
-        formato: 'CD',
-        preco: 79.90,
-        estoque: 7
-    },
-
-    {
-        artista: 'Lady Gaga',
-        album: 'ARTPOP',
-        ano: 2013,
-        categoria: 'Pop',
-        formato: 'VINIL',
-        preco: 149.90,
-        estoque: 5
-    },
-
-    {
-        artista: 'Lady Gaga',
-        album: 'Chromatica',
-        ano: 2020,
-        categoria: 'Pop',
-        formato: 'VINIL',
-        preco: 149.90,
-        estoque: 5
-    },
-
 
     // =========================
     // LANA DEL REY
@@ -2983,41 +2932,49 @@ async function adicionarProdutos() {
                 // CAPA
                 // ------------------------------------------
 
-                let imagem = existente.imagem
+                let imagem = obterCapaManual(
+                    item.artista,
+                    item.album
+                )
 
+                if (imagem) {
 
-                if (!imagem) {
+                    console.log('   🖼️ Usando capa manual!')
 
-                    console.log('   🔎 Procurando capa...')
+                } else {
 
-                    imagem =
-                        await buscarCapa(
-                            item.artista,
-                            item.album
-                        )
+                    imagem = existente.imagem
 
-                    if (imagem) {
+                    if (!imagem) {
 
-                        capasEncontradas++
+                        console.log('   🔎 Procurando capa automaticamente...')
 
-                        console.log(
-                            '   🖼️ Capa encontrada!'
-                        )
+                        imagem =
+                            await buscarCapa(
+                                item.artista,
+                                item.album
+                            )
 
-                    } else {
+                        if (imagem) {
 
-                        capasNaoEncontradas++
+                            capasEncontradas++
 
-                        console.log(
-                            '   ⚠️ Capa não encontrada.'
-                        )
+                            console.log(
+                                '   🖼️ Capa encontrada automaticamente!'
+                            )
+
+                        } else {
+
+                            capasNaoEncontradas++
+
+                            console.log(
+                                '   ⚠️ Capa não encontrada.'
+                            )
+                        }
+
+                        await esperar(1100)
                     }
-
-                    // Evita mandar muitas requisições
-                    // seguidas para o MusicBrainz.
-                    await esperar(1100)
                 }
-
 
                 // ------------------------------------------
                 // ATUALIZA PRODUTO
@@ -3095,13 +3052,30 @@ async function adicionarProdutos() {
             // CAPA
             // ------------------------------------------
 
-            console.log('   🔎 Procurando capa...')
-
-            const imagem =
-                await buscarCapa(
+            let imagem =
+                obterCapaManual(
                     item.artista,
                     item.album
                 )
+
+            if (imagem) {
+
+                console.log(
+                    '   🖼️ Usando capa manual!'
+                )
+
+            } else {
+
+                console.log(
+                    '   🔎 Procurando capa automaticamente...'
+                )
+
+                imagem =
+                    await buscarCapa(
+                        item.artista,
+                        item.album
+                    )
+            }
 
 
             if (imagem) {

@@ -373,6 +373,48 @@ function obterDescricao(artista, album) {
     return `${album} é um trabalho de ${artista}, lançado em sua respectiva fase da carreira, reunindo características marcantes de sua sonoridade e identidade artística.`
 }
 
+const capasManuais = {
+    "ABBA|Super Trouper": "../imagens/capas/super_trouper.jpg",
+    "ABBA|Waterloo": "../imagens/capas/waterloo.jpg",
+    "Alice In Chains|Alice In Chains": "../imagens/capas/alice_in_chains.jpg",
+    "Alice In Chains|Unplugged": "../imagens/capas/alice_unplugged.jpg",
+    "The Beatles|White Album": "../imagens/capas/white_album.jpg",
+    "The Beatles|Revolver": "../imagens/capas/revolver.jpg",
+    "The Beatles|A Hard Day's Night": "../imagens/capas/a_hard_days_night.jpg",
+    "Deftones|Around The Fur": "../imagens/capas/around_the_fur.jpg",
+    "Deftones|Diamond Eyes": "../imagens/capas/diamond_eyes.jpg",
+    "Deftones|Deftones": "../imagens/capas/deftones.jpg",
+    "Fleetwood Mac|Fleetwood Mac": "../imagens/capas/fleetwood_mac.png",
+    "Fleetwood Mac|Tusk": "../imagens/capas/tusk.jpg",
+    "Gorillaz|Plastic Beach": "../imagens/capas/plastic_beach.jpg",
+    "Jordana|Summer's Over": "../imagens/capas/summers_over.jpg",
+    "Lady Gaga|Born This Way": "../imagens/capas/born_this_way.jpg",
+    "Lana Del Rey|Honeymoon": "../imagens/capas/honeymoon.jpg",
+    "Lana Del Rey|Norman Fucking Rockwell": "../imagens/capas/nfr.jpg",
+    "Lana Del Rey|Paradise": "../imagens/capas/paradise.jpg",
+    "Lana Del Rey|Blue Banisters": "../imagens/capas/blue_banisters.jpg",
+    "Linkin Park|Meteora": "../imagens/capas/meteora.jpg",
+    "Linkin Park|Minutes To Midnight": "../imagens/capas/minutes_to_midnight.jpg",
+    "Mac DeMarco|This Old Dog": "../imagens/capas/this_old_dog.jpg",
+    "Masayoshi Takanaka|All Of Me": "../imagens/capas/all_of_me.jpg",
+    "Mt Bloody Valentine|m b v": "../imagens/capas/mvb.jpg",
+    "Nirvana|Nevermind": "../imagens/capas/nevermind.jpg",
+    "The Notorius Big|Ready To Die": "../imagens/capas/ready_to_die.jpg",
+    "Pearl Jam|Ten": "../imagens/capas/ten.jpg",
+    "Pearl Jam|Vitalogy": "../imagens/capas/vitalogy.jpg",
+    "Pink Floyd|The Dark Side Of The Moon": "../imagens/capas/dark_side_of_the_moon.jpg",
+    "Pink Floyd|Animals": "../imagens/capas/animals.jpg",
+    "Jordana|Summer's Over": "../imagens/capas/summers_over.jpg",
+    "Jordana|Summer's Over": "../imagens/capas/summers_over.jpg",
+    "Jordana|Summer's Over": "../imagens/capas/summers_over.jpg",
+    "Jordana|Summer's Over": "../imagens/capas/summers_over.jpg",
+    "Jordana|Summer's Over": "../imagens/capas/summers_over.jpg",
+    "Jordana|Summer's Over": "../imagens/capas/summers_over.jpg",
+    "Jordana|Summer's Over": "../imagens/capas/summers_over.jpg",
+    "Jordana|Summer's Over": "../imagens/capas/summers_over.jpg",
+
+
+}
 
 // ======================================================
 // ALIASES PARA BUSCA DAS CAPAS
@@ -387,8 +429,14 @@ function obterArtistaParaCapa(artista) {
     return aliasesArtistas[artista] || artista
 }
 
+function obterCapaManual(artista, album) {
+    const chave = `${artista}|${album}`
+    return capasManuais[chave] || null
+}
+
 
 module.exports = {
     obterDescricao,
-    obterArtistaParaCapa
+    obterArtistaParaCapa,
+    obterCapaManual
 }
