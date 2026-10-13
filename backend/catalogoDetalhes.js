@@ -25,9 +25,6 @@ const descricoes = {
     "2Pac|R U Still Down? (Remember Me)":
         "Álbum que reúne gravações de diferentes períodos da carreira de 2Pac, explorando temas pessoais, sociais e a realidade das ruas.",
 
-    "2Pac|Me Against the World":
-        "Um dos trabalhos mais pessoais de 2Pac, com letras introspectivas sobre conflitos, violência, relações e as dificuldades de sua trajetória.",
-
     "2Pac|Strictly 4 My N.I.G.G.A.Z...":
         "Segundo álbum de estúdio de 2Pac, marcado por sua energia característica e por letras que abordam a vida nas ruas, questões sociais e sua identidade.",
 
@@ -374,47 +371,153 @@ function obterDescricao(artista, album) {
 }
 
 const capasManuais = {
+    // ABBA
     "ABBA|Super Trouper": "../imagens/capas/super_trouper.jpg",
     "ABBA|Waterloo": "../imagens/capas/waterloo.jpg",
-    "Alice In Chains|Alice In Chains": "../imagens/capas/alice_in_chains.jpg",
+    "ABBA|ABBA": "../imagens/capas/abba.jpg",
+// Alice in Chains
+    "Alice In Chains|Alice in Chains": "../imagens/capas/alice_in_chains.jpg",
     "Alice In Chains|Unplugged": "../imagens/capas/alice_unplugged.jpg",
-    "The Beatles|White Album": "../imagens/capas/white_album.jpg",
-    "The Beatles|Revolver": "../imagens/capas/revolver.jpg",
+// The Beatles
     "The Beatles|A Hard Day's Night": "../imagens/capas/a_hard_days_night.jpg",
-    "Deftones|Around The Fur": "../imagens/capas/around_the_fur.jpg",
+    "The Beatles|The Beatles": "../imagens/capas/white_album.jpg",
+    "The Beatles|Revolver": "../imagens/capas/revolver.jpg",
+    "The Beatles|Sgt. Pepper's Lonely Hearts Club Band": "../imagens/capas/sgt_peppers.jpg",
+// Pink Floyd
+    "Pink Floyd|Animals": "../imagens/capas/animals.jpg",
+    "Pink Floyd|The Dark Side of the Moon": "../imagens/capas/dark_side_of_the_moon.png",
+    "Pink Floyd|Wish You Were Here": "../imagens/capas/wish_you_were_here.jpg",
+    "Pink Floyd|The Wall": "../imagens/capas/the_wall.jpg",
+// Deftones
+    "Deftones|Around the Fur": "../imagens/capas/around_the_fur.jpg",
     "Deftones|Diamond Eyes": "../imagens/capas/diamond_eyes.jpg",
     "Deftones|Deftones": "../imagens/capas/deftones.jpg",
+// Fleetwood Mac
     "Fleetwood Mac|Fleetwood Mac": "../imagens/capas/fleetwood_mac.png",
     "Fleetwood Mac|Tusk": "../imagens/capas/tusk.jpg",
-    "Gorillaz|Plastic Beach": "../imagens/capas/plastic_beach.jpg",
-    "Jordana|Summer's Over": "../imagens/capas/summers_over.jpg",
+// Outros artistas
     "Lady Gaga|Born This Way": "../imagens/capas/born_this_way.jpg",
+// Lana Del Rey
     "Lana Del Rey|Honeymoon": "../imagens/capas/honeymoon.jpg",
+    "Lana Del Rey|Blue Banisters": "../imagens/capas/blue_banisters.jpg",
     "Lana Del Rey|Norman Fucking Rockwell": "../imagens/capas/nfr.jpg",
     "Lana Del Rey|Paradise": "../imagens/capas/paradise.jpg",
-    "Lana Del Rey|Blue Banisters": "../imagens/capas/blue_banisters.jpg",
+    "Lana Del Rey|Born to Die": "../imagens/capas/born_to_die.jpg",
+    "Lana Del Rey|Did you know that there's a tunnel under Ocean Blvd": "../imagens/capas/did_you_know.jpg",
+    "Lana Del Rey|Chemtrails Over The Country Club": "../imagens/capas/cotcc.jpg",
+// Linkin Park
     "Linkin Park|Meteora": "../imagens/capas/meteora.jpg",
-    "Linkin Park|Minutes To Midnight": "../imagens/capas/minutes_to_midnight.jpg",
+    "Linkin Park|Minutes to Midnight": "../imagens/capas/minutes_to_midnight.jpg",
+// Mac DeMarco
     "Mac DeMarco|This Old Dog": "../imagens/capas/this_old_dog.jpg",
-    "Masayoshi Takanaka|All Of Me": "../imagens/capas/all_of_me.jpg",
-    "Mt Bloody Valentine|m b v": "../imagens/capas/mvb.jpg",
+    "Mac DeMarco|2": "../imagens/capas/2.jpg",
+// Masayoshi Takanaka
+    "Masayoshi Takanaka|All of Me": "../imagens/capas/all_of_me.jpg",
+// My Bloody Valentine
+    "My Bloody Valentine|m b v": "../imagens/capas/mvb.jpg",
+// Nirvana
     "Nirvana|Nevermind": "../imagens/capas/nevermind.jpg",
-    "The Notorius Big|Ready To Die": "../imagens/capas/ready_to_die.jpg",
+    "Nirvana|In Utero": "../imagens/capas/in_utero.jpg",
+// The Notorious B.I.G.
+    "The Notorious B.I.G.|Ready to Die": "../imagens/capas/ready_to_die.jpg",
+    "The Notorious B.I.G.|Born Again": "../imagens/capas/born_again.jpg",
+// Pearl Jam
     "Pearl Jam|Ten": "../imagens/capas/ten.jpg",
     "Pearl Jam|Vitalogy": "../imagens/capas/vitalogy.jpg",
-    "Pink Floyd|The Dark Side Of The Moon": "../imagens/capas/dark_side_of_the_moon.jpg",
-    "Pink Floyd|Animals": "../imagens/capas/animals.jpg",
-    "Jordana|Summer's Over": "../imagens/capas/summers_over.jpg",
-    "Jordana|Summer's Over": "../imagens/capas/summers_over.jpg",
-    "Jordana|Summer's Over": "../imagens/capas/summers_over.jpg",
-    "Jordana|Summer's Over": "../imagens/capas/summers_over.jpg",
-    "Jordana|Summer's Over": "../imagens/capas/summers_over.jpg",
-    "Jordana|Summer's Over": "../imagens/capas/summers_over.jpg",
-    "Jordana|Summer's Over": "../imagens/capas/summers_over.jpg",
-    "Jordana|Summer's Over": "../imagens/capas/summers_over.jpg",
+// Gorillaz
+    "Gorillaz|Plastic Beach": "../imagens/capas/plastic_beach.jpg",
+    "Gorillaz|Gorillaz": "../imagens/capas/gorillaz.jpg",
+// Queen
+    "Queen|A Night at the Opera": "../imagens/capas/a_night_at_the_opera.jpg",
+    "Queen|Queen": "../imagens/capas/queen.jpg",
+    "Queen|A Kind of Magic": "../imagens/capas/a_kind_of_magic.jpg",
+// Radiohead
+    "Radiohead|Amnesiac": "../imagens/capas/amnesiac.jpg",
+    "Radiohead|The Bends": "../imagens/capas/the_bends.jpg",
+// Red Hot Chili Peppers
+    "Red Hot Chili Peppers|Californication": "../imagens/capas/californication.jpg",
+    "Red Hot Chili Peppers|By the Way": "../imagens/capas/by_the_way.jpg",
+// Slowdive
+    "Slowdive|Just for a Day": "../imagens/capas/just_for_a_day.jpg",
+// The Smiths
+    "The Smiths|Strangeways, Here We Come": "../imagens/capas/strangeways_here_we_come.jpg",
+    "The Smiths|The Smiths": "../imagens/capas/the_smiths.jpg",
+    "The Smiths|Hatful Of Hollow": "../imagens/capas/hatful_of_hollow.jpg",
+// MPB
+    "Jorge Ben Jor|Ben": "../imagens/capas/ben.jpg",
+    "O Rappa|Lado B Lado A": "../imagens/capas/ladoB_ladoA.jpg",
+    "Vinícius de Moraes|Vinícius e Odette Lara": "../imagens/capas/vinicius_e_odette_lara.jpg",
+    "Cazuza|Só Se For a Dois": "../imagens/capas/so_se_for_a_dois.jpg",
+    "Cazuza|O Tempo Não Para": "../imagens/capas/o_tempo_nao_para.jpg",
+    "Ana Frango Elétrico|Mormaço Queima": "../imagens/capas/mormaco_queima.jpg",
+    "Rita Lee|Rita Lee": "../imagens/capas/rita_lee.jpg",
+    "Tim Maia|Racional Vol. 2": "../imagens/capas/racional.jpg",
+    "Elis Regina|Falso Brilhante": "../imagens/capas/falso_brilhante.jpg",
+    "Chico Buarque|Construção": "../imagens/capas/construcao.jpg",
+    
+// Led Zeppelin
+    "Led Zeppelin|Led Zeppelin IV": "../imagens/capas/led_zeppelin_iv.jpg",
+    "Led Zeppelin|Physical Graffiti": "../imagens/capas/physical_graffiti.jpg",
+// Rolling Stones
+    "Rolling Stones|Let It Bleed": "../imagens/capas/let_it_bleed.jpg",
+// The Clash
+    "The Clash|London Calling": "../imagens/capas/london_calling.jpg",
+// The Cure
+    "The Cure|Disintegration": "../imagens/capas/disintegration.jpg",
+// The Strokes
+    "The Strokes|Is This It": "../imagens/capas/is_this_it.jpg",
+// U2
+    "U2|The Joshua Tree": "../imagens/capas/the_joshua_tree.png",
+// Green Day
+    "Green Day|Dookie": "../imagens/capas/dookie.jpg",
+    "Green Day|American Idiot": "../imagens/capas/american_idiot.jpg",
+// Blink-182
+    "blink-182|Enema of the State": "../imagens/capas/enema_of_the_state.jpg",
+// Black Sabbath
+    "Black Sabbath|Black Sabbath": "../imagens/capas/black_sabbath.jpg",
+    "Black Sabbath|Paranoid": "../imagens/capas/paranoid.jpg",
+// Metallica
+    "Metallica|Kill 'Em All": "../imagens/capas/kill_em_all.jpg",
+    "Metallica|...And Justice for All": "../imagens/capas/an_justice_for_all.jpg",
+    "Metallica|Metallica": "../imagens/capas/metallica.jpg",
+// Megadeth
+    "Megadeth|Rust in Peace": "../imagens/capas/rust_in_peace.jpg",
+// Slayer
+    "Slayer|Reign in Blood": "../imagens/capas/reign_in_blood.jpg",
+// System of a Down
+    "System of a Down|Toxicity": "../imagens/capas/toxicity.jpg",
+// Slipknot
+    "Slipknot|Slipknot": "../imagens/capas/slipknot.jpg",
+// Korn
+    "Korn|Korn": "../imagens/capas/korn.jpg",
+    "Korn|Follow the Leader": "../imagens/capas/follow_the_leader.jpg",
+// Rage Against the Machine
+    "Rage Against the Machine|Rage Against the Machine": "../imagens/capas/rage_against_the_machine.jpg",
+// Pantera
+    "Pantera|Cowboys from Hell": "../imagens/capas/cowboys_from_hell.jpg",
+// Jazz
+    "Miles Davis|Bitches Brew": "../imagens/capas/bitches_brew.jpg",
+    "John Coltrane|A Love Supreme": "../imagens/capas/a_love_supreme.jpg",
+    "Charles Mingus|Mingus Ah Um": "../imagens/capas/mingus_ah_um.jpg",
+    "Ella Fitzgerald & Louis Armstrong|Ella and Louis": "../imagens/capas/ella_and_louis.jpg",
+    "Cannonball Adderley|Somethin’ Else": "../imagens/capas/somethin_else.jpg",
+    "Stan Getz & João Gilberto|Getz/Gilberto": "../imagens/capas/getz_gilberto.jpg",
+    "Dave Brubeck|Time Out": "../imagens/capas/time_out.jpg",
+// Hip hop
+    "Snoop Dogg|Doggystyle": "../imagens/capas/doggystyle.jpg",
+
+    "2Pac|Greatest Hits": "../imagens/capas/greatest_hits.jpg",
+
+    "Alice In Chains|Facelift": "../imagens/capas/facelift.jpg",
+
+    "The Beatles|Help!": "../imagens/capas/help.jpg",
+    "Gorillaz|Demon Days": "../imagens/capas/demon_days.jpg",
+    "Linkin Park|From Zero": "../imagens/capas/from_zero.jpg",
+    "50 Cent|The Massacre": "../imagens/capas/the_massacre.jpg",
+    "DR. DRE|The Chronic": "../imagens/capas/the_chronic.jpg",
 
 
-}
+};
 
 // ======================================================
 // ALIASES PARA BUSCA DAS CAPAS

@@ -22,6 +22,16 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cors())
 
+const path = require('path')
+
+// Disponibiliza as capas dos álbuns
+app.use(
+    '/imagens',
+    express.static(
+        path.join(__dirname, '../frontend/imagens')
+    )
+)
+
 
 // =====================================================
 // ROTAS PÚBLICAS

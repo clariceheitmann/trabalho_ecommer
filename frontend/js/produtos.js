@@ -81,14 +81,29 @@ function mostrarProdutos() {
 
         if (produto.imagem) {
 
+            // Converte caminhos relativos em endereços acessíveis pelo servidor
+            let caminhoImagem = produto.imagem
+
+            if (
+                caminhoImagem.startsWith('../imagens/') ||
+                caminhoImagem.startsWith('./imagens/')
+            ) {
+                caminhoImagem = caminhoImagem.replace(
+                    /^(\.\.\/|\.\/)/,
+                    ''
+                )
+
+                caminhoImagem = `${baseUrl}/${caminhoImagem}`
+            }
+
             imagemHTML = `
-                <img
-                    src="${produto.imagem}"
-                    alt="Capa de ${produto.album}"
-                    loading="lazy"
-                    onerror="mostrarCapaIndisponivel(this)"
-                >
-            `
+        <img
+            src="${caminhoImagem}"
+            alt="Capa de ${produto.album}"
+            loading="lazy"
+            onerror="mostrarCapaIndisponivel(this)"
+        >
+    `
 
         } else {
 

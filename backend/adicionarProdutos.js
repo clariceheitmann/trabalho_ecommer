@@ -34,7 +34,6 @@ function esperar(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-
 // ======================================================
 // BUSCAR CAPA AUTOMATICAMENTE
 // ======================================================
@@ -53,9 +52,9 @@ async function buscarCapa(artista, album) {
         try {
 
             const url =
-                `https://musicbrainz.org/ws/2/release-group/` +
+                'https://musicbrainz.org/ws/2/release-group/' +
                 `?query=${encodeURIComponent(consulta)}` +
-                `&fmt=json&limit=10`
+                '&fmt=json&limit=10'
 
             const resposta = await fetch(url, {
                 headers: {
@@ -66,14 +65,12 @@ async function buscarCapa(artista, album) {
 
             if (!resposta.ok) {
                 console.log(
-                    `   ⚠️ MusicBrainz respondeu ${resposta.status}`
+                    `⚠️ MusicBrainz respondeu ${resposta.status}`
                 )
-
                 continue
             }
 
             const dados = await resposta.json()
-
             const resultados = dados['release-groups'] || []
 
             if (resultados.length === 0) {
@@ -81,26 +78,22 @@ async function buscarCapa(artista, album) {
             }
 
             const albumNormalizado = normalizarTexto(album)
-            const artistaNormalizado = normalizarTexto(artistaBusca)
+            const artistaNormalizado =
+                normalizarTexto(artistaBusca)
 
-            // Primeiro tenta encontrar o álbum exatamente
-            let resultado = resultados.find(item => {
-
-                const titulo = normalizarTexto(item.title)
-
-                return titulo === albumNormalizado
+            // Procura o título exato do álbum
+            const resultado = resultados.find(item => {
+                return normalizarTexto(item.title) === albumNormalizado
             })
 
-            // Se não encontrar exatamente, usa o primeiro resultado
-            if (!resultado) {
-                resultado = resultados[0]
-            }
-
             if (!resultado || !resultado.id) {
+                console.log(
+                    `⚠️ Álbum não encontrado exatamente: ${album}`
+                )
                 continue
             }
 
-            // Confere se existe artista no resultado quando possível
+            // Confere o artista quando o resultado disponibiliza essa informação
             if (resultado['artist-credit']) {
 
                 const nomesArtistas =
@@ -111,27 +104,28 @@ async function buscarCapa(artista, album) {
                 const nomesNormalizados =
                     normalizarTexto(nomesArtistas)
 
-                // Não bloqueamos a capa se o MusicBrainz
-                // usar uma variação do nome do artista.
                 if (
-                    !nomesNormalizados.includes(artistaNormalizado) &&
-                    !albumNormalizado
+                    !nomesNormalizados.includes(artistaNormalizado)
                 ) {
+                    console.log(
+                        `⚠️ O artista não corresponde a ${artista}`
+                    )
                     continue
                 }
             }
 
+            // Retorna o endereço da capa encontrada
             return `https://coverartarchive.org/release-group/${resultado.id}/front-500`
         }
 
         catch (erro) {
-
             console.log(
-                `   ⚠️ Erro ao buscar capa: ${erro.message}`
+                `⚠️ Erro ao buscar capa: ${erro.message}`
             )
         }
     }
 
+    // Nenhuma correspondência adequada foi encontrada
     return null
 }
 
@@ -170,16 +164,6 @@ const produtos = [
         formato: 'CD',
         preco: 79.90,
         estoque: 8
-    },
-
-    {
-        artista: '2Pac',
-        album: 'Me Against the World',
-        ano: 1995,
-        categoria: 'Hip Hop / Rap',
-        formato: 'VINIL',
-        preco: 139.90,
-        estoque: 5
     },
 
     {
@@ -581,21 +565,6 @@ const produtos = [
         album: 'Invitation to Her’s',
         ano: 2018,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 139.90,
-        estoque: 5
-    },
-
-
-    // =========================
-    // JORDANA / TV GIRL
-    // =========================
-
-    {
-        artista: 'Jordana, TV Girl',
-        album: 'Summer’s Over',
-        ano: 2021,
-        categoria: 'Pop',
         formato: 'VINIL',
         preco: 139.90,
         estoque: 5
@@ -1795,26 +1764,6 @@ const produtos = [
         estoque: 5
     },
 
-    {
-        artista: 'Toquinho',
-        album: 'Toquinho & Vinicius',
-        ano: 1971,
-        categoria: 'MPB',
-        formato: 'VINIL',
-        preco: 139.90,
-        estoque: 5
-    },
-
-    {
-        artista: 'Toquinho',
-        album: 'Casa de Brinquedos',
-        ano: 1983,
-        categoria: 'MPB',
-        formato: 'CD',
-        preco: 69.90,
-        estoque: 7
-    },
-
 
     // =========================
     // VINICIUS DE MORAES
@@ -1865,16 +1814,6 @@ const produtos = [
         estoque: 5
     },
 
-    {
-        artista: 'Cartola',
-        album: 'Cartola 2',
-        ano: 1976,
-        categoria: 'MPB',
-        formato: 'VINIL',
-        preco: 159.90,
-        estoque: 5
-    },
-
 
     // =========================
     // GAL COSTA
@@ -1894,16 +1833,6 @@ const produtos = [
         artista: 'Gal Costa',
         album: 'Índia',
         ano: 1973,
-        categoria: 'MPB',
-        formato: 'VINIL',
-        preco: 159.90,
-        estoque: 5
-    },
-
-    {
-        artista: 'Gal Costa',
-        album: 'Fa-Tal – Gal a Todo Vapor',
-        ano: 1971,
         categoria: 'MPB',
         formato: 'VINIL',
         preco: 159.90,
@@ -2158,16 +2087,6 @@ const produtos = [
         formato: 'VINIL',
         preco: 149.90,
         estoque: 5
-    },
-
-    {
-        artista: 'Djavan',
-        album: 'Seduz',
-        ano: 1981,
-        categoria: 'MPB',
-        formato: 'CD',
-        preco: 69.90,
-        estoque: 7
     },
 
 
@@ -2646,26 +2565,6 @@ const produtos = [
     },
 
     {
-        artista: 'Tool',
-        album: 'Ænima',
-        ano: 1996,
-        categoria: 'Metal',
-        formato: 'VINIL',
-        preco: 179.90,
-        estoque: 5
-    },
-
-    {
-        artista: 'Tool',
-        album: 'Lateralus',
-        ano: 2001,
-        categoria: 'Metal',
-        formato: 'VINIL',
-        preco: 179.90,
-        estoque: 5
-    },
-
-    {
         artista: 'Pantera',
         album: 'Cowboys from Hell',
         ano: 1990,
@@ -2932,6 +2831,7 @@ async function adicionarProdutos() {
                 // CAPA
                 // ------------------------------------------
 
+
                 let imagem = obterCapaManual(
                     item.artista,
                     item.album
@@ -2943,17 +2843,17 @@ async function adicionarProdutos() {
 
                 } else {
 
+                    // Mantém a imagem que já está salva no banco
                     imagem = existente.imagem
 
                     if (!imagem) {
 
                         console.log('   🔎 Procurando capa automaticamente...')
 
-                        imagem =
-                            await buscarCapa(
-                                item.artista,
-                                item.album
-                            )
+                        imagem = await buscarCapa(
+                            item.artista,
+                            item.album
+                        )
 
                         if (imagem) {
 
