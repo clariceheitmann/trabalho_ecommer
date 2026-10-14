@@ -9,7 +9,7 @@
 
     <link rel="stylesheet" href="../css/produtos.css">
 
-    <script src="../js/produtos.js"defer></script>
+    <script src="../js/produtos.js" defer></script>
 </head>
 
 <body>
@@ -30,9 +30,34 @@
 
     <main>
 
+
         <h2>Nossos produtos</h2>
 
+        <div class="barra-busca">
+            <input type="text" id="campoBusca" placeholder="Buscar por álbum ou artista...">
+            <button type="button" id="btnBuscar">Buscar</button>
+            <button type="button" id="btnLimparBusca">Limpar</button>
+        </div>
+
+
+        <div class="filtros-produtos">
+            <label for="filtroFormato">Formato:</label>
+            <select id="filtroFormato">
+                <option value="">Todos os formatos</option>
+                <option value="VINIL">Vinil</option>
+                <option value="CD">CD</option>
+                <option value="FITA CASSETE">Fita cassete</option>
+            </select>
+
+            <label for="filtroGenero">Gênero musical:</label>
+            <select id="filtroGenero">
+                <option value="">Todos os gêneros</option>
+            </select>
+        </div>
+
+
         <section id="listaProdutos" class="produtos-container"></section>
+
 
     </main>
 
@@ -43,10 +68,7 @@
 
         <div class="conteudo-modal">
 
-            <button
-                class="fechar-modal"
-                onclick="fecharModal()"
-            >
+            <button class="fechar-modal" onclick="fecharModal()">
                 ×
             </button>
 

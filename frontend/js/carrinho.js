@@ -50,23 +50,39 @@ function removerDoCarrinho(id) {
 }
 
 
-function aumentarQuantidade(id) {
 
-    const produto = carrinho.find(
+function aumentarQuantidade(id) {
+    const produto = carrinho.find(item => item.id === id)
+
+    if (!produto) return
+
+    // Busca o produto original carregado pela API
+    const produtoOriginal = JSON.parse(
+        localStorage.getItem('produtos')
+    ) || []
+
+    const dadosProduto = produtoOriginal.find(
         item => item.id === id
     )
 
-    if (produto) {
+    const estoqueTotal = dadosProduto?.estoque?.quantidade
 
-        produto.quantidade++
-
-        salvarCarrinho()
-
-        exibirCarrinho()
-
+    if (estoqueTotal === undefined) {
+        alert('Não foi possível verificar o estoque deste produto.')
+        return
     }
 
+    if (produto.quantidade >= estoqueTotal) {
+        alert('Você já atingiu o limite de estoque disponível!')
+        return
+    }
+
+    produto.quantidade++
+
+    salvarCarrinho()
+    exibirCarrinho()
 }
+
 
 
 function diminuirQuantidade(id) {
