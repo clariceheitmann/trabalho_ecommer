@@ -14,6 +14,7 @@ const categoriaController = require('./controller/categoria.controller')
 const relatorioController = require('./controller/relatorio.controller')
 const loginController = require('./controller/login.controller')
 const verificarToken = require('./middleware/auth.middleware')
+require('./models/rel')
 
 const hostname = 'localhost'
 const PORT = 3000
@@ -63,11 +64,26 @@ app.post('/login', loginController.login)
 // =====================================================
 
 
-// USUÁRIOS
+//USUÁRIOS
+// Cadastro
+app.post('/usuario', usuarioController.cadastrar)
+
+// Listagem
+app.get('/usuarios', verificarToken, usuarioController.listar)
+
+// Consulta por código
 app.get('/usuario/:id', verificarToken, usuarioController.consultarPorCod)
+
+// Consulta por nome
 app.get('/usuario/buscar/:nome', verificarToken, usuarioController.consultarPorNome)
+
+// Atualização completa
 app.put('/usuario/:id', verificarToken, usuarioController.atualizar)
+
+// Atualização parcial
 app.patch('/usuario/:id', verificarToken, usuarioController.atualizarParcial)
+
+// Exclusão
 app.delete('/usuario/:id', verificarToken, usuarioController.excluir)
 
 

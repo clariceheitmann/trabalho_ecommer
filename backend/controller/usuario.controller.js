@@ -3,9 +3,10 @@ const bcrypt = require('bcrypt')
 
 const cadastrar = async (req, res) => {
 
-    try {
+    const valores = req.body
+    console.log('CPF recebido:', valores.cpf)
 
-        const valores = req.body
+    try {
 
         if (
             !valores.nome ||
@@ -124,7 +125,9 @@ const cadastrar = async (req, res) => {
 const listar = async (req, res) => {
 
     try {
-        const dados = await Usuario.findAll()
+        const dados = await Usuario.findAll({
+        attributes: { exclude: ['senha'] }
+    })
 
         res.status(200).json(dados)
 
@@ -138,29 +141,34 @@ const listar = async (req, res) => {
 }
 
 
-const consultarPorCod = async (req, res) => {
 
-    const id = req.params.id
+const consultarPorCod = async (req, res) => {
+    const id = Number(req.params.id)
 
     try {
-        const dados = await Usuario.findByPk(id)
+        // Busca o usuário pelo código, sem retornar a senha
+        const dados = await Usuario.findByPk(id, {
+            attributes: { exclude: ['senha'] }
+        })
 
+        // Verifica se o usuário existe
         if (!dados) {
             return res.status(404).json({
-                message: 'Usuario não encontrado!'
+                message: 'Usuário não encontrado!'
             })
         }
 
-        res.status(200).json(dados)
+        return res.status(200).json(dados)
 
     } catch (err) {
-        console.error('Erro ao consultar usuario!', err)
+        console.error('Erro ao consultar usuário!', err)
 
-        res.status(500).json({
-            message: 'Erro ao consultar usuario!'
+        return res.status(500).json({
+            message: 'Erro ao consultar usuário!'
         })
     }
 }
+
 
 
 const consultarPorNome = async (req, res) => {
@@ -225,66 +233,73 @@ const excluir = async (req, res) => {
 }
 
 
+
 const atualizar = async (req, res) => {
-
-    const id = req.params.id
-    const valores = req.body
+    const id = Number(req.params.id)
+    const valores = { ...req.body }
 
     try {
+        // Procura o usuário que será atualizado
         const dados = await Usuario.findByPk(id)
 
         if (!dados) {
             return res.status(404).json({
-                message: 'Usuario não encontrado!'
-            })
-        }
-
-        await Usuario.update(valores, {
-            where: {
-                id: id
-            }
-        })
-
-        const usuarioAtualizado = await Usuario.findByPk(id)
-
-        res.status(200).json(usuarioAtualizado)
-
-    } catch (err) {
-        console.error('Erro ao atualizar usuario!', err)
-
-        res.status(500).json({
-            message: 'Erro ao atualizar usuario!'
-        })
-    }
-}
-
-
-const atualizarParcial = async (req, res) => {
-
-    const id = req.params.id
-    const valores = req.body
-
-    try {
-        const dados = await Usuario.findByPk(id)
-
-        if (!dados) {
-            return res.status(404).json({
-                message: 'Usuario não encontrado!'
+                message: 'Usuário não encontrado!'
             })
         }
 
         await dados.update(valores)
 
-        res.status(200).json(dados)
+        // Não envia a senha na resposta
+        const usuarioAtualizado = await Usuario.findByPk(id, {
+            attributes: { exclude: ['senha'] }
+        })
+
+        return res.status(200).json(usuarioAtualizado)
 
     } catch (err) {
-        console.error('Erro ao atualizar usuario!', err)
+        console.error('Erro ao atualizar usuário!', err)
 
-        res.status(500).json({
-            message: 'Erro ao atualizar usuario!'
+        return res.status(500).json({
+            message: 'Erro ao atualizar usuário!'
         })
     }
 }
+
+
+
+
+const atualizarParcial = async (req, res) => {
+    const id = Number(req.params.id)
+    const valores = { ...req.body }
+
+    try {
+        const dados = await Usuario.findByPk(id)
+
+        if (!dados) {
+            return res.status(404).json({
+                message: 'Usuário não encontrado!'
+            })
+        }
+
+        await dados.update(valores)
+
+        // Retorna os dados sem a senha
+        const usuarioAtualizado = await Usuario.findByPk(id, {
+            attributes: { exclude: ['senha'] }
+        })
+
+        return res.status(200).json(usuarioAtualizado)
+
+    } catch (err) {
+        console.error('Erro ao atualizar usuário!', err)
+
+        return res.status(500).json({
+            message: 'Erro ao atualizar usuário!'
+        })
+    }
+}
+
 
 const validarCPF = (cpf) => {
 

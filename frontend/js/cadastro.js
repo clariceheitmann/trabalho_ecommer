@@ -39,12 +39,15 @@ formulario.addEventListener('submit', async (event) => {
 
         const dados = await resposta.json()
 
+        console.log('Status da resposta:', resposta.status)
+        console.log('Resposta do backend:', dados)
+
         if (!resposta.ok) {
-
-            alert(dados.message)
-
-            return
-        }
+    console.log('Status:', resposta.status)
+    console.log('Erro retornado pelo servidor:', dados)
+    alert('Erro no cadastro: ' + (dados.message || 'Motivo não informado'))
+    return
+}
 
         alert('Cadastro realizado com sucesso!')
 

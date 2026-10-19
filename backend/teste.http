@@ -585,3 +585,7 @@ Authorization: Bearer {{token}}
 ### Teste relatório estoque
 GET http://localhost:3000/relatorios/estoque
 Authorization: Bearer {{token}}
+
+### Listar usuários (somente administrador)
+GET http://localhost:3000/usuarios
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJjbGFyaWNlQGVtYWlsLmNvbSIsImlhdCI6MTc4OTEzNzkyNCwiZXhwIjoxNzkxNzI5OTI0fQ.OkyCt1qk_dC0g8PboIBeDIwEXNG8BbTAHQDHyXfkuMs

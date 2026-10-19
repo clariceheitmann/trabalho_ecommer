@@ -47,16 +47,33 @@ const cadastrar = async (req, res) => {
 }
 
 
+
 const listar = async (req, res) => {
-
     try {
-
-        const pedidos = await Pedido.findAll()
+        // Busca somente os pedidos do usuário autenticado
+        const pedidos = await Pedido.findAll({
+            where: {
+                usuario_id: req.usuario.id
+            },
+            include: [
+                {
+                    model: ItemPedido,
+                    as: 'itens',
+                    include: [
+                        {
+                            model: require('../models/Produto'),
+                            as: 'produto',
+                            attributes: ['id', 'nome', 'artista', 'album', 'formato', 'preco']
+                        }
+                    ]
+                }
+            ],
+            order: [['data_pedido', 'DESC']]
+        })
 
         res.status(200).json(pedidos)
 
     } catch (err) {
-
         console.error('Erro ao listar pedidos!', err)
 
         res.status(500).json({
@@ -64,6 +81,7 @@ const listar = async (req, res) => {
         })
     }
 }
+
 
 
 const consultarPorCod = async (req, res) => {
