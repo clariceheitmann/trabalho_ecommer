@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar categoria | Analog Dreams</title>
+    <link rel="stylesheet" href="../../css/principal.css">
+    <script src="../../js/categoria/categoria_consultar_cod.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Consultar categoria por código</h1>
+
+        <form id="formConsulta">
+            <label for="id">Código da categoria:</label>
+            <input type="number" id="id" min="1" required>
+
+            <button type="submit">Consultar</button>
+        </form>
+
+        <p id="mensagem"></p>
+        <div id="resultado"></div>
+    </main>
+</body>
+</html>

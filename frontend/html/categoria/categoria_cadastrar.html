@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar categoria | Analog Dreams</title>
+    <link rel="stylesheet" href="../../css/principal.css">
+    <script src="../../js/categoria/categoria_cadastrar.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Cadastrar categoria</h1>
+
+        <form id="formCategoria">
+            <label for="nome">Nome da categoria:</label>
+            <input type="text" id="nome" maxlength="100" required>
+
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" maxlength="255"></textarea>
+
+            <button type="submit">Cadastrar categoria</button>
+        </form>
+
+        <p id="mensagem"></p>
+    </main>
+</body>
+</html>

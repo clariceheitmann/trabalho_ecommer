@@ -2,22 +2,22 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 
-const conn = require('./db/conn')
-
-const usuarioController = require('./controller/usuario.controller')
-const produtoController = require('./controller/produto.controller')
-const pedidoController = require('./controller/pedido.controller')
-const itemPedidoController = require('./controller/itemPedido.controller')
-const estoqueController = require('./controller/estoque.controller')
-const entregaController = require('./controller/entrega.controller')
 const categoriaController = require('./controller/categoria.controller')
-const relatorioController = require('./controller/relatorio.controller')
+const entregaController = require('./controller/entrega.controller')
+const estoqueController = require('./controller/estoque.controller')
+const itemPedidoController = require('./controller/itemPedido.controller')
 const loginController = require('./controller/login.controller')
+const pedidoController = require('./controller/pedido.controller')
+const produtoController = require('./controller/produto.controller')
+const relatorioController = require('./controller/relatorio.controller')
+const usuarioController = require('./controller/usuario.controller')
 const verificarToken = require('./middleware/auth.middleware')
+
 require('./models/rel')
 
 const hostname = 'localhost'
 const PORT = 3000
+const conn = require('./db/conn')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -37,7 +37,6 @@ app.use(
 // =====================================================
 // ROTAS PÚBLICAS
 // =====================================================
-
 
 // USUÁRIOS
 app.post('/usuario', usuarioController.cadastrar)
@@ -63,27 +62,13 @@ app.post('/login', loginController.login)
 // ROTAS PRIVADAS
 // =====================================================
 
-
 //USUÁRIOS
-// Cadastro
 app.post('/usuario', usuarioController.cadastrar)
-
-// Listagem
 app.get('/usuarios', verificarToken, usuarioController.listar)
-
-// Consulta por código
 app.get('/usuario/:id', verificarToken, usuarioController.consultarPorCod)
-
-// Consulta por nome
 app.get('/usuario/buscar/:nome', verificarToken, usuarioController.consultarPorNome)
-
-// Atualização completa
 app.put('/usuario/:id', verificarToken, usuarioController.atualizar)
-
-// Atualização parcial
 app.patch('/usuario/:id', verificarToken, usuarioController.atualizarParcial)
-
-// Exclusão
 app.delete('/usuario/:id', verificarToken, usuarioController.excluir)
 
 
@@ -108,15 +93,16 @@ app.delete('/pedido/:id', verificarToken, pedidoController.excluir)
 app.post('/itemPedido', verificarToken, itemPedidoController.cadastrar)
 app.get('/itemPedidos', verificarToken, itemPedidoController.listar)
 app.get('/itemPedido/:id', verificarToken, itemPedidoController.consultarPorCod)
+app.put('/itemPedido/:id', verificarToken, itemPedidoController.atualizar)
+app.patch('/itemPedido/:id', verificarToken, itemPedidoController.atualizar)
 app.delete('/itemPedido/:id', verificarToken, itemPedidoController.excluir)
-
 
 // ESTOQUE
 app.post('/estoque', verificarToken, estoqueController.cadastrar)
 app.get('/estoques', verificarToken, estoqueController.listar)
 app.get('/estoque/:id', verificarToken, estoqueController.consultarPorCod)
 app.put('/estoque/:id', verificarToken, estoqueController.atualizar)
-
+app.delete('/estoque/:id', verificarToken, estoqueController.excluir)
 
 // RELATÓRIOS
 app.get('/relatorios/vendas', verificarToken, relatorioController.vendas)
@@ -130,16 +116,12 @@ app.get('/entrega/:id', verificarToken, entregaController.consultarPorCod)
 app.put('/entrega/:id', verificarToken, entregaController.atualizar)
 app.patch('/entrega/:id', verificarToken, entregaController.atualizarParcial)
 
-
-// CATEGORIAS - ADMIN
+//CATEGORIAS
 app.post('/categoria', verificarToken, categoriaController.cadastrar)
 app.put('/categoria/:id', verificarToken, categoriaController.atualizar)
 app.patch('/categoria/:id', verificarToken, categoriaController.atualizarParcial)
 app.delete('/categoria/:id', verificarToken, categoriaController.excluir)
 
-// =====================================================
-// TESTE DO JWT
-// =====================================================
 
 app.get(
     '/teste-protegido',
@@ -155,10 +137,6 @@ app.get(
 )
 
 
-// =====================================================
-// ROTA PRINCIPAL
-// =====================================================
-
 app.get('/', (req, res) => {
 
     res.status(200).json({
@@ -167,10 +145,6 @@ app.get('/', (req, res) => {
 
 })
 
-
-// =====================================================
-// CONEXÃO COM BANCO
-// =====================================================
 
 conn.sync()
     .then(() => {

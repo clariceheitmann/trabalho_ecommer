@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Atualizar Pedido</title>
+    <link rel="stylesheet" href="../../css/principal.css">
+</head>
+<body>
+
+    <nav>
+        <a href="../../index.html">Início</a>
+        <a href="pedido_listar.html">Pedidos</a>
+    </nav>
+
+    <h1>Atualizar Pedido</h1>
+
+    <form id="form_atualizar">
+        <label>ID do pedido:</label>
+        <input type="number" id="id" min="1" required>
+
+        <label>Novo status:</label>
+        <select id="status" required>
+            <option value="AGUARDANDO_PAGAMENTO">Aguardando pagamento</option>
+            <option value="PAGO">Pago</option>
+            <option value="EM_PREPARACAO">Em preparação</option>
+            <option value="ENVIADO">Enviado</option>
+            <option value="ENTREGUE">Entregue</option>
+            <option value="CANCELADO">Cancelado</option>
+        </select>
+
+        <button type="submit">Atualizar</button>
+    </form>
+
+    <footer>
+        <p>Analog Dreams</p>
+        <p>Sua loja de música física</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+    </footer>
+
+    <script src="../../js/pedido/pedido_atualizar.js"></script>
+</body>
+</html>

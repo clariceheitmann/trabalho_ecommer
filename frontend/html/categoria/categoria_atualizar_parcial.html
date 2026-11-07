@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualização parcial de categoria | Analog Dreams</title>
+    <link rel="stylesheet" href="../../css/principal.css">
+    <script src="../../js/categoria/categoria_atualizar_parcial.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Atualização parcial de categoria</h1>
+        <p>Preencha somente os campos que deseja alterar.</p>
+
+        <form id="formAtualizar">
+            <label for="id">Código da categoria:</label>
+            <input type="number" id="id" min="1" required>
+
+            <label for="nome">Novo nome (opcional):</label>
+            <input type="text" id="nome" maxlength="100">
+
+            <label for="descricao">Nova descrição (opcional):</label>
+            <textarea id="descricao" maxlength="255"></textarea>
+
+            <button type="submit">Atualizar campos</button>
+        </form>
+
+        <p id="mensagem"></p>
+    </main>
+</body>
+</html>

@@ -1,3 +1,4 @@
+
 const { DataTypes } = require("sequelize");
 const conn = require("../db/conn");
 
@@ -50,30 +51,31 @@ const Usuario = conn.define("usuarios", {
         allowNull: false
     },
 
-    // rua: {
-    //     type: DataTypes.STRING(100),
-    //     allowNull: false
-    // },
+    rua: {
+        type: DataTypes.STRING(100),
+        allowNull: false
+    },
 
-    // numero: {
-    //     type: DataTypes.STRING(10),
-    //     allowNull: false
-    // },
+    numero: {
+        type: DataTypes.STRING(10),
+        allowNull: false
+    },
 
-    // bairro: {
-    //     type: DataTypes.STRING(100),
-    //     allowNull: false
-    // },
+    bairro: {
+        type: DataTypes.STRING(100),
+        allowNull: false
+    },
 
-    // cidade: {
-    //     type: DataTypes.STRING(100),
-    //     allowNull: false
-    // },
+    cidade: {
+        type: DataTypes.STRING(100),
+        allowNull: false
+    },
 
-    // estado: {
-    //     type: DataTypes.STRING(2),
-    //     allowNull: false
-    // },
+    estado: {
+        type: DataTypes.STRING(2),
+        allowNull: false
+    }
+
 }, {
     tableName: 'usuarios',
     timestamps: false

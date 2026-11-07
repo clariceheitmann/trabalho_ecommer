@@ -228,7 +228,7 @@ module.exports = {
     listar,
     consultarPorCod,
     consultarPorNome,
-    excluir,
     atualizar,
-    atualizarParcial
+    atualizarParcial,
+    excluir
 }

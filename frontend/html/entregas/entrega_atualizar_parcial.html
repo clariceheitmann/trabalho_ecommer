@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atualização Parcial de Entrega</title>
+    <link rel="stylesheet" href="../../css/principal.css">
+</head>
+<body>
+    <h1>Atualizar Entrega Parcialmente</h1>
+
+    <form id="formEntrega">
+        <label for="id">Código da entrega:</label>
+        <input type="number" id="id" min="1" required>
+
+        <label for="endereco">Novo endereço (opcional):</label>
+        <input type="text" id="endereco" maxlength="255">
+
+        <label for="codigo_rastreio">Novo código de rastreio (opcional):</label>
+        <input type="text" id="codigo_rastreio" maxlength="50">
+
+        <label for="status">Novo status (opcional):</label>
+        <select id="status">
+            <option value="">Não alterar</option>
+            <option value="AGUARDANDO_ENVIO">Aguardando envio</option>
+            <option value="ENVIADO">Enviado</option>
+            <option value="EM_TRANSITO">Em trânsito</option>
+            <option value="ENTREGUE">Entregue</option>
+        </select>
+
+        <button type="submit">Atualizar</button>
+    </form>
+
+    <p id="mensagem"></p>
+
+    <script src="../../js/entregas/entrega_atualizar_parcial.js"></script>
+</body>
+</html>

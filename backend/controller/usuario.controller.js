@@ -171,6 +171,7 @@ const consultarPorCod = async (req, res) => {
 
 
 
+
 const consultarPorNome = async (req, res) => {
 
     const nome = req.params.nome
@@ -179,6 +180,9 @@ const consultarPorNome = async (req, res) => {
         const dados = await Usuario.findOne({
             where: {
                 nome: nome
+            },
+            attributes: {
+                exclude: ['senha']
             }
         })
 
@@ -198,6 +202,7 @@ const consultarPorNome = async (req, res) => {
         })
     }
 }
+
 
 
 const excluir = async (req, res) => {

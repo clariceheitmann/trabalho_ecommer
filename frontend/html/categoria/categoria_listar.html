@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar categorias | Analog Dreams</title>
+    <link rel="stylesheet" href="../../css/principal.css">
+    <script src="../../js/categoria/categoria_listar.js" defer></script>
+</head>
+<body>
+    <main class="container">
+        <h1>Categorias cadastradas</h1>
+
+        <button type="button" id="btnListar">Carregar categorias</button>
+        <p id="mensagem"></p>
+
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelaCategorias">
+                    <tr>
+                        <td colspan="3">Clique para carregar as categorias.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

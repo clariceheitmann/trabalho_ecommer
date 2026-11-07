@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Entregas</title>
+    <link rel="stylesheet" href="../../css/principal.css">
+</head>
+<body>
+    <h1>Entregas cadastradas</h1>
+
+    <button id="btnListar">Carregar entregas</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Pedido</th>
+                <th>Endereço</th>
+                <th>Rastreio</th>
+                <th>Status</th>
+                <th>Data de envio</th>
+                <th>Data de entrega</th>
+            </tr>
+        </thead>
+        <tbody id="tabelaEntregas"></tbody>
+    </table>
+
+    <p id="mensagem"></p>
+
+    <script src="../../js/entregas/entrega_listar.js"></script>
+</body>
+</html>

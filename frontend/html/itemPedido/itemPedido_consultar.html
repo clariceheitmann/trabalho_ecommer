@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar Item | Analog Dreams</title>
+    <link rel="stylesheet" href="../../css/principal.css">
+    <script src="../../js/itemPedido/itemPedido_consultar.js" defer></script>
+</head>
+<body>
+
+    <nav>
+        <h2>Analog Dreams</h2>
+        <div>
+            <a href="../../index.html">Início</a>
+        </div>
+    </nav>
+
+    <main>
+        <section>
+            <h1>Consultar Item do Pedido</h1>
+
+            <label for="codigo">Código do item:</label>
+            <input type="number" id="codigo" min="1">
+
+            <button type="button" id="btnBuscar">Buscar</button>
+
+            <p id="mensagem"></p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Pedido</th>
+                        <th>Produto</th>
+                        <th>Quantidade</th>
+                        <th>Preço Unitário</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody id="listaItens"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>Analog Dreams</p>
+        <p>Sua loja de música física</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+    </footer>
+
+</body>
+</html>

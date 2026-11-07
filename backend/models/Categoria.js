@@ -13,7 +13,7 @@ const Categoria = conn.define("categorias", {
         allowNull: false,
         unique: true
     },
-
+    
     descricao: {
         type: DataTypes.STRING(255),
         allowNull: true

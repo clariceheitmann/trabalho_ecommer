@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Estoque | Analog Dreams</title>
+    <link rel="stylesheet" href="../../css/principal.css">
+    <script src="../js/estoque_cadastrar.js" defer></script>
+</head>
+<body>
+
+    <nav>
+        <h2>Analog Dreams</h2>
+        <div>
+            <a href="../../index.html">Início</a>
+            <a href="../../html/estoque.html">Estoque</a>
+        </div>
+    </nav>
+
+    <main>
+        <section>
+            <h1>Cadastrar Estoque</h1>
+            <p>Adicione a quantidade inicial de um produto.</p>
+
+            <form id="formEstoque">
+
+                <label for="produto_id">Produto:</label>
+                <select id="produto_id" required>
+                    <option value="">Selecione um produto</option>
+                </select>
+
+                <br><br>
+
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" min="0" required>
+
+                <br><br>
+
+                <button type="submit">Cadastrar estoque</button>
+
+            </form>
+
+            <p id="mensagem"></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Analog Dreams</p>
+        <p>Sua loja de música física</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+    </footer>
+
+</body>
+</html>

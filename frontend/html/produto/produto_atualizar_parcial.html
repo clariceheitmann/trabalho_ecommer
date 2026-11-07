@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Atualizar Produto Parcialmente</title>
+    <link rel="stylesheet" href="../../css/principal.css">
+</head>
+<body>
+
+    <nav>
+        <a href="../../index.html">Início</a>
+        <a href="produto_listar.html">Produtos</a>
+    </nav>
+
+    <h1>Atualizar Produto Parcialmente</h1>
+
+    <form id="form_atualizar">
+
+        <label>ID do produto:</label>
+        <input type="number" id="id" min="1" required>
+
+        <label>Nome:</label>
+        <input type="text" id="nome">
+
+        <label>Artista:</label>
+        <input type="text" id="artista">
+
+        <label>Álbum:</label>
+        <input type="text" id="album">
+
+        <label>Formato:</label>
+        <select id="formato">
+            <option value="">Não alterar</option>
+            <option value="VINIL">Vinil</option>
+            <option value="CD">CD</option>
+            <option value="CASSETE">Cassete</option>
+        </select>
+
+        <label>Ano:</label>
+        <input type="number" id="ano">
+
+        <label>Preço:</label>
+        <input type="number" id="preco" step="0.01" min="0.01">
+
+        <label>Imagem:</label>
+        <input type="text" id="imagem">
+
+        <label>Descrição:</label>
+        <textarea id="descricao"></textarea>
+
+        <label>Categoria:</label>
+        <select id="categoria_id">
+            <option value="">Não alterar</option>
+        </select>
+
+        <button type="submit">Atualizar parcialmente</button>
+
+    </form>
+
+    <footer>
+        <p>Analog Dreams</p>
+        <p>Sua loja de música física</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+    </footer>
+
+    <script src="../../js/produto/produto_atualizar_parcial.js"></script>
+</body>
+</html>

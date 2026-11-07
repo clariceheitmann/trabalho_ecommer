@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Entrega</title>
+    <link rel="stylesheet" href="../../css/principal.css">
+</head>
+<body>
+    <h1>Cadastrar Entrega</h1>
+
+    <form id="formEntrega">
+        <label for="pedido_id">Código do pedido:</label>
+        <input type="number" id="pedido_id" min="1" required>
+
+        <label for="endereco">Endereço de entrega:</label>
+        <input type="text" id="endereco" maxlength="255" required>
+
+        <label for="codigo_rastreio">Código de rastreio:</label>
+        <input type="text" id="codigo_rastreio" maxlength="50">
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <p id="mensagem"></p>
+
+    <script src="../../js/entregas/entrega_cadastrar.js"></script>
+</body>
+</html>

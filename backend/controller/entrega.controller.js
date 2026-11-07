@@ -100,7 +100,7 @@ const consultarPorCod = async (req, res) => {
 const atualizar = async (req, res) => {
 
     const id = req.params.id
-    const valores = req.body
+    const valores = { ...req.body }
 
     try {
 
@@ -110,6 +110,18 @@ const atualizar = async (req, res) => {
             return res.status(404).json({
                 message: 'Entrega não encontrada!'
             })
+        }
+
+        if (['ENVIADO', 'EM_TRANSITO', 'ENTREGUE'].includes(valores.status)) {
+
+            if (!entrega.data_envio && !valores.data_envio) {
+                valores.data_envio = new Date()
+            }
+
+        }
+
+        if (valores.status === 'ENTREGUE' && !entrega.data_entrega && !valores.data_entrega) {
+            valores.data_entrega = new Date()
         }
 
         await entrega.update(valores)
@@ -125,12 +137,13 @@ const atualizar = async (req, res) => {
         })
     }
 }
+
 
 
 const atualizarParcial = async (req, res) => {
 
     const id = req.params.id
-    const valores = req.body
+    const valores = { ...req.body }
 
     try {
 
@@ -140,6 +153,18 @@ const atualizarParcial = async (req, res) => {
             return res.status(404).json({
                 message: 'Entrega não encontrada!'
             })
+        }
+
+        if (['ENVIADO', 'EM_TRANSITO', 'ENTREGUE'].includes(valores.status)) {
+
+            if (!entrega.data_envio && !valores.data_envio) {
+                valores.data_envio = new Date()
+            }
+
+        }
+
+        if (valores.status === 'ENTREGUE' && !entrega.data_entrega && !valores.data_entrega) {
+            valores.data_entrega = new Date()
         }
 
         await entrega.update(valores)
@@ -155,11 +180,41 @@ const atualizarParcial = async (req, res) => {
         })
     }
 }
+
+
+
+const excluir = async (req, res) => {
+    const id = req.params.id
+
+    try {
+        const entrega = await Entrega.findByPk(id)
+
+        if (!entrega) {
+            return res.status(404).json({
+                message: 'Entrega não encontrada!'
+            })
+        }
+
+        await entrega.destroy()
+
+        return res.status(200).json({
+            message: 'Entrega excluída com sucesso!'
+        })
+    } catch (err) {
+        console.error('Erro ao excluir entrega!', err)
+
+        return res.status(500).json({
+            message: 'Erro ao excluir entrega!'
+        })
+    }
+}
+
 
 module.exports = {
     cadastrar,
     listar,
     consultarPorCod,
     atualizar,
-    atualizarParcial
+    atualizarParcial,
+    excluir
 }

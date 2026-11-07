@@ -139,6 +139,51 @@ const consultarPorCod = async (req, res) => {
 }
 
 
+
+const atualizar = async (req, res) => {
+
+    const id = req.params.id
+    const { quantidade } = req.body
+
+    if (!Number.isInteger(quantidade) || quantidade <= 0) {
+        return res.status(400).json({
+            message: 'Informe uma quantidade válida!'
+        })
+    }
+
+    try {
+
+        const item = await ItemPedido.findByPk(id)
+
+        if (!item) {
+            return res.status(404).json({
+                message: 'Item do pedido não encontrado!'
+            })
+        }
+
+        const subtotal = Number(item.preco_unitario) * quantidade
+
+        await item.update({
+            quantidade,
+            subtotal
+        })
+
+        res.status(200).json({
+            message: 'Item atualizado com sucesso!',
+            item
+        })
+
+    } catch (err) {
+
+        console.error('Erro ao atualizar item!', err)
+
+        res.status(500).json({
+            message: 'Erro ao atualizar item!'
+        })
+    }
+}
+
+
 const excluir = async (req, res) => {
 
     const id = req.params.id
@@ -178,5 +223,6 @@ module.exports = {
     cadastrar,
     listar,
     consultarPorCod,
+    atualizar,
     excluir
 }

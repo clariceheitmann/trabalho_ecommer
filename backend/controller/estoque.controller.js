@@ -127,9 +127,41 @@ const atualizar = async (req, res) => {
 }
 
 
+const excluir = async (req, res) => {
+
+    const id = req.params.id
+
+    try {
+
+        const estoque = await Estoque.findByPk(id)
+
+        if (!estoque) {
+            return res.status(404).json({
+                message: 'Estoque não encontrado!'
+            })
+        }
+
+        await estoque.destroy()
+
+        res.status(200).json({
+            message: 'Estoque excluído com sucesso!'
+        })
+
+    } catch (err) {
+
+        console.error('Erro ao excluir estoque!', err)
+
+        res.status(500).json({
+            message: 'Erro ao excluir estoque!'
+        })
+    }
+}
+
+
 module.exports = {
     cadastrar,
     listar,
     consultarPorCod,
-    atualizar
+    atualizar,
+    excluir
 }

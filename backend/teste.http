@@ -1,591 +1,382 @@
-### =====================================================
-### CONFIGURAÇÃO
-### =====================================================
 
 @baseUrl = http://localhost:3000
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJjbGFyaWNlQGVtYWlsLmNvbSIsImlhdCI6MTc4OTEzNzkyNCwiZXhwIjoxNzkxNzI5OTI0fQ.OkyCt1qk_dC0g8PboIBeDIwEXNG8BbTAHQDHyXfkuMs
-
-
-### =====================================================
+### ==========================================
 ### USUÁRIOS
-### =====================================================
+### ==========================================
 
-### 1 - CADASTRAR USUÁRIO
+### 1. CADASTRAR USUÁRIO (PÚBLICO)
+# @name cadastrarUsuario
 POST {{baseUrl}}/usuario
 Content-Type: application/json
 
 {
     "nome": "Clarice",
     "sobreNome": "Heitmann",
-    "idade": "18",
+    "idade": 18,
     "email": "clarice@email.com",
     "senha": "123456",
     "telefone": "47999999999",
-    "cpf": "52998224725",
-    "cep": "88220000",
-    "rua": "Rua Exemplo",
-    "numero": "100",
-    "bairro": "Centro",
-    "cidade": "Itapema",
-    "estado": "SC"
+    "cpf": "529.982.247-25",
+    "cep": "01001-000",
+    "numero": "100"
 }
 
-
-### 2 - LISTAR USUÁRIOS
+### 2. LISTAR USUÁRIOS (PRIVADO)
 GET {{baseUrl}}/usuarios
+Authorization: Bearer {{loginReq.response.body.token}}
 
-
-### 3 - CONSULTAR USUÁRIO POR ID
+### 3. CONSULTAR USUÁRIO POR ID (PRIVADO)
 GET {{baseUrl}}/usuario/1
+Authorization: Bearer {{loginReq.response.body.token}}
 
+### 4. CONSULTAR USUÁRIO POR NOME (PRIVADO)
+GET {{baseUrl}}/usuario/buscar/Clarice Atualizada
+Authorization: Bearer {{loginReq.response.body.token}}
 
-### 4 - CONSULTAR USUÁRIO POR NOME
-GET {{baseUrl}}/usuario/buscar/Clarice
-
-
-### 5 - ATUALIZAR USUÁRIO COMPLETO
+### 5. ATUALIZAR USUÁRIO (PRIVADO)
 PUT {{baseUrl}}/usuario/1
+Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
 
 {
-    "nome": "Clarice",
+    "nome": "Clarice Atualizada",
     "sobreNome": "Heitmann",
-    "idade": "18",
-    "email": "clarice@email.com",
-    "senha": "123456",
-    "telefone": "47988888888",
-    "cpf": "12345678901",
-    "cep": "88220000",
-    "rua": "Rua Exemplo",
-    "numero": "200",
-    "bairro": "Centro",
-    "cidade": "Itapema",
-    "estado": "SC"
+    "idade": 19,
+    "telefone": "47988888888"
 }
 
-
-### 6 - ATUALIZAR USUÁRIO PARCIALMENTE
-PUT {{baseUrl}}/usuario/1
+### 6. ATUALIZAR PARCIALMENTE USUÁRIO (PRIVADO)
+PATCH {{baseUrl}}/usuario/1
+Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
 
 {
     "telefone": "47977777777"
 }
 
-
-### 7 - EXCLUIR USUÁRIO
-DELETE {{baseUrl}}/usuario/1
-
-
-### 8 - TESTAR USUÁRIO INEXISTENTE
-GET {{baseUrl}}/usuario/9999
+### 7. EXCLUIR USUÁRIO (PRIVADO)
+DELETE {{baseUrl}}/usuario/3
+Authorization: Bearer {{loginReq.response.body.token}}
 
 
 
-### =====================================================
+
+### ==========================================
+### login
+### ==========================================
+
+# @name loginReq
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+    "email": "clarice@email.com",
+    "senha": "123456"
+}
+
+
+
+
+### ==========================================
 ### CATEGORIAS
-### =====================================================
+### ==========================================
 
-### 9 - CADASTRAR CATEGORIA
+### 1. CADASTRAR CATEGORIA (PRIVADO)
+# @name cadastrarCategoria
 POST {{baseUrl}}/categoria
+Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
 
 {
-    "nome": "Rock",
-    "descricao": "Álbuns de Rock"
+    "nome": "Rockaaa",
+    "descricao": "Músicas do gênero rock"
 }
 
-
-### 10 - CADASTRAR SEGUNDA CATEGORIA
-POST {{baseUrl}}/categoria
-Content-Type: application/json
-
-{
-    "nome": "Pop",
-    "descricao": "Álbuns de música Pop"
-}
-
-
-### 11 - LISTAR CATEGORIAS
+### 2. LISTAR CATEGORIAS (PÚBLICO)
 GET {{baseUrl}}/categorias
 
-
-### 12 - CONSULTAR CATEGORIA POR ID
+### 3. CONSULTAR CATEGORIA POR ID (PÚBLICO)
 GET {{baseUrl}}/categoria/1
 
-
-### 13 - CONSULTAR CATEGORIA POR NOME
+### 4. CONSULTAR CATEGORIA POR NOME (PÚBLICO)
 GET {{baseUrl}}/categoria/buscar/Rock
 
-
-### 14 - ATUALIZAR CATEGORIA
+### 5. ATUALIZAR CATEGORIA (PRIVADO)
 PUT {{baseUrl}}/categoria/1
+Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
 
 {
     "nome": "Rock Clássico",
-    "descricao": "Álbuns de Rock Clássico"
+    "descricao": "Álbuns de rock clássico"
 }
 
-
-### 15 - ATUALIZAR CATEGORIA PARCIALMENTE
-PUT {{baseUrl}}/categoria/1
+### 6. ATUALIZAR PARCIALMENTE CATEGORIA (PRIVADO)
+PATCH {{baseUrl}}/categoria/1
+Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
 
 {
-    "descricao": "Rock clássico e grandes sucessos"
+    "descricao": "Categoria de rock e suas vertentes"
 }
 
-
-### 16 - EXCLUIR CATEGORIA
-DELETE {{baseUrl}}/categoria/2
-
-
-### 17 - TESTAR CATEGORIA INEXISTENTE
-GET {{baseUrl}}/categoria/9999
+### 7. EXCLUIR CATEGORIA (PRIVADO)
+DELETE {{baseUrl}}/categoria/7
+Authorization: Bearer {{loginReq.response.body.token}}
 
 
 
-### =====================================================
+
+### ==========================================
 ### PRODUTOS
-### =====================================================
+### ==========================================
 
-### 18 - CADASTRAR PRODUTO - VINIL
+### 1. CADASTRAR PRODUTO (PRIVADO)
+# @name cadastrarProduto
 POST {{baseUrl}}/produto
+Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
-Authorization: Bearer {{token}}
-
-{
-    "nome": "The Dark Side of the Moon",
-    "artista": "Pink Floyd",
-    "album": "The Dark Side of the Moon",
-    "formato": "VINIL",
-    "ano": 1973,
-    "preco": 149.90,
-    "imagem": "dark-side-of-the-moon.jpg",
-    "categoria_id": 1
-}
-
-
-### 19 - CADASTRAR PRODUTO - CD
-POST {{baseUrl}}/produto
-Content-Type: application/json
-Authorization: Bearer {{token}}
 
 {
     "nome": "Abbey Road",
     "artista": "The Beatles",
     "album": "Abbey Road",
-    "formato": "CD",
+    "formato": "VINIL",
     "ano": 1969,
-    "preco": 89.90,
-    "imagem": "abbey-road.jpg",
-    "categoria_id": 1
+    "preco": 150.00,
+    "imagem": "/imagens/abbey-road.jpg",
+    "descricao": "Álbum clássico dos Beatles.",
+    "categoria_id": 2
 }
 
-
-### 20 - CADASTRAR PRODUTO - CASSETE
-POST {{baseUrl}}/produto
-Content-Type: application/json
-Authorization: Bearer {{token}}
-
-{
-    "nome": "Nevermind",
-    "artista": "Nirvana",
-    "album": "Nevermind",
-    "formato": "CASSETE",
-    "ano": 1991,
-    "preco": 59.90,
-    "imagem": "nevermind.jpg",
-    "categoria_id": 1
-}
-
-
-### 21 - LISTAR PRODUTOS
+### 2. LISTAR PRODUTOS (PÚBLICO)
 GET {{baseUrl}}/produtos
 
-
-### 22 - CONSULTAR PRODUTO POR ID
+### 3. CONSULTAR PRODUTO POR ID (PÚBLICO)
 GET {{baseUrl}}/produto/1
 
+### 4. CONSULTAR PRODUTO POR NOME (PÚBLICO)
+GET {{baseUrl}}/produto/buscar/Abbey%20Road
 
-### 23 - CONSULTAR PRODUTO POR NOME
-GET {{baseUrl}}/produto/buscar/The%20Dark%20Side%20of%20the%20Moon
-
-
-### 24 - ATUALIZAR PRODUTO COMPLETO
+### 5. ATUALIZAR PRODUTO (PRIVADO)
 PUT {{baseUrl}}/produto/1
+Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
 
 {
-    "nome": "The Dark Side of the Moon",
-    "artista": "Pink Floyd",
-    "album": "The Dark Side of the Moon",
+    "nome": "Abbey Road Remasterizado",
+    "artista": "The Beatles",
+    "album": "Abbey Road",
     "formato": "VINIL",
-    "ano": 1973,
-    "preco": 159.90,
-    "imagem": "dark-side-of-the-moon.jpg",
-    "categoria_id": 1
+    "ano": 1969,
+    "preco": 180.00,
+    "imagem": "/imagens/abbey-road.jpg",
+    "descricao": "Edição remasterizada.",
+    "categoria_id": 2
 }
 
-
-### 25 - ATUALIZAR PRODUTO PARCIALMENTE
-PUT {{baseUrl}}/produto/1
+### 6. ATUALIZAR PARCIALMENTE PRODUTO (PRIVADO)
+PATCH {{baseUrl}}/produto/1
+Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
 
 {
-    "preco": 169.90
+    "preco": 160.00
 }
 
-
-### 26 - EXCLUIR PRODUTO
-DELETE {{baseUrl}}/produto/3
-
-
-### 27 - TESTAR PRODUTO INEXISTENTE
-GET {{baseUrl}}/produto/9999
+### 7. EXCLUIR PRODUTO (PRIVADO)
+DELETE {{baseUrl}}/produto/1
+Authorization: Bearer {{loginReq.response.body.token}}
 
 
 
-### =====================================================
+
+### ==========================================
 ### ESTOQUE
-### =====================================================
+### ==========================================
 
-### 28 - CADASTRAR ESTOQUE
+### 1. CADASTRAR ESTOQUE (PRIVADO)
+# @name cadastrarEstoque
 POST {{baseUrl}}/estoque
+Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
-Authorization: Bearer {{token}}
 
 {
-    "produto_id": 1,
-    "quantidade": 10
+    "produto_id": 2,
+    "quantidade": 50
 }
 
-
-### 29 - LISTAR ESTOQUES
+### 2. LISTAR ESTOQUES (PRIVADO)
 GET {{baseUrl}}/estoques
-Authorization: Bearer {{token}}
+Authorization: Bearer {{loginReq.response.body.token}}
 
+### 3. CONSULTAR ESTOQUE POR ID (PRIVADO)
+GET {{baseUrl}}/estoque/2
+Authorization: Bearer {{loginReq.response.body.token}}
 
-### 30 - CONSULTAR ESTOQUE POR ID
-GET {{baseUrl}}/estoque/1
-
-
-### 31 - ATUALIZAR ESTOQUE
-PUT {{baseUrl}}/estoque/1
+### 4. ATUALIZAR ESTOQUE (PRIVADO)
+PUT {{baseUrl}}/estoque/2
+Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
 
 {
-    "produto_id": 1,
-    "quantidade": 15
+    "quantidade": 30
 }
 
-
-### 32 - TESTAR PRODUTO INEXISTENTE NO ESTOQUE
-POST {{baseUrl}}/estoque
-Content-Type: application/json
-
-{
-    "produto_id": 9999,
-    "quantidade": 10
-}
+### 5. EXCLUIR ESTOQUE (PRIVADO)
+DELETE {{baseUrl}}/estoque/2
+Authorization: Bearer {{loginReq.response.body.token}}
 
 
 
-### =====================================================
+
+### ==========================================
 ### PEDIDOS
-### =====================================================
+### ==========================================
 
-### 33 - CADASTRAR PEDIDO
+### 1. CADASTRAR PEDIDO (PRIVADO)
+# @name cadastrarPedido
 POST {{baseUrl}}/pedido
+Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
-Authorization: Bearer {{token}}
 
 {
-    "usuario_id": 1,
-    "data_pedido": "2026-09-01",
-    "valor_total": 169.90,
-    "status": "AGUARDANDO_PAGAMENTO"
+    "valor_total": 1500.00
 }
 
-
-### 34 - LISTAR PEDIDOS
+### 2. LISTAR PEDIDOS DO USUÁRIO (PRIVADO)
 GET {{baseUrl}}/pedidos
-Authorization: Bearer {{token}}
+Authorization: Bearer {{loginReq.response.body.token}}
 
-
-### 35 - CONSULTAR PEDIDO POR ID
+### 3. CONSULTAR PEDIDO POR ID (PRIVADO)
 GET {{baseUrl}}/pedido/1
+Authorization: Bearer {{loginReq.response.body.token}}
 
-
-### 36 - ATUALIZAR PEDIDO COMPLETO
+### 4. ATUALIZAR PEDIDO (PRIVADO)
 PUT {{baseUrl}}/pedido/1
+Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
 
 {
-    "usuario_id": 1,
-    "data_pedido": "2026-09-01",
-    "valor_total": 169.90,
-    "status": "PAGO"
+    "status": "EM_PREPARACAO"
 }
 
-
-### 37 - ATUALIZAR PEDIDO PARCIALMENTE
-PUT {{baseUrl}}/pedido/1
+### 5. ATUALIZAR PARCIALMENTE PEDIDO (PRIVADO)
+PATCH {{baseUrl}}/pedido/1
+Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
 
 {
-    "status": "PAGO"
+    "status": "CANCELADO"
 }
 
+### 6. FINALIZAR PEDIDO (PRIVADO)
+POST {{baseUrl}}/pedido/1/finalizar
+Authorization: Bearer {{loginReq.response.body.token}}
 
-### 38 - EXCLUIR PEDIDO
-DELETE {{baseUrl}}/pedido/1
+### 7. EXCLUIR PEDIDO (PRIVADO)
+DELETE {{baseUrl}}/pedido/2
+Authorization: Bearer {{loginReq.response.body.token}}
 
 
 
-### =====================================================
+
+### ==========================================
 ### ITENS DO PEDIDO
-### =====================================================
+### ==========================================
 
-### 39 - CADASTRAR ITEM DO PEDIDO
+### 1. CADASTRAR ITEM DO PEDIDO (PRIVADO)
+# @name cadastrarItemPedido
 POST {{baseUrl}}/itemPedido
+Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
 
 {
     "pedido_id": 1,
-    "produto_id": 1,
-    "quantidade": 1,
-    "preco_unitario": 169.90,
-    "subtotal": 169.90
+    "produto_id": 2,
+    "quantidade": 2
 }
 
-
-### 40 - LISTAR ITENS DOS PEDIDOS
+### 2. LISTAR ITENS DO PEDIDO (PRIVADO)
 GET {{baseUrl}}/itemPedidos
+Authorization: Bearer {{loginReq.response.body.token}}
 
-
-### 41 - CONSULTAR ITEM DO PEDIDO
+### 3. CONSULTAR ITEM POR ID (PRIVADO)
 GET {{baseUrl}}/itemPedido/1
+Authorization: Bearer {{loginReq.response.body.token}}
+
+### 4. ATUALIZAR ITEM DO PEDIDO (PRIVADO)
+PUT {{baseUrl}}/itemPedido/1
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "quantidade": 3
+}
+
+### 5. EXCLUIR ITEM DO PEDIDO (PRIVADO)
+DELETE {{baseUrl}}/itemPedido/2
+Authorization: Bearer {{loginReq.response.body.token}}
 
 
-### 42 - EXCLUIR ITEM DO PEDIDO
-DELETE {{baseUrl}}/itemPedido/1
 
 
-
-### =====================================================
+### ==========================================
 ### ENTREGAS
-### =====================================================
+### ==========================================
 
-### 43 - CADASTRAR ENTREGA
+### 1. CADASTRAR ENTREGA (PRIVADO)
+# @name cadastrarEntrega
 POST {{baseUrl}}/entrega
+Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
 
 {
-    "pedido_id": 1,
-    "endereco": "Rua Exemplo, 200 - Centro - Itapema - SC",
-    "status": "AGUARDANDO"
+    "pedido_id": 3,
+    "endereco": "Rua das Flores, 100, Itapema - SC",
+    "codigo_rastreio": "BR123456789",
+    "status": "AGUARDANDO_ENVIO"
 }
 
-
-### 44 - LISTAR ENTREGAS
+### 2. LISTAR ENTREGAS (PRIVADO)
 GET {{baseUrl}}/entregas
+Authorization: Bearer {{loginReq.response.body.token}}
 
-
-### 45 - CONSULTAR ENTREGA
+### 3. CONSULTAR ENTREGA POR ID (PRIVADO)
 GET {{baseUrl}}/entrega/1
+Authorization: Bearer {{loginReq.response.body.token}}
 
-
-### 46 - ATUALIZAR ENTREGA
+### 4. ATUALIZAR ENTREGA (PRIVADO)
 PUT {{baseUrl}}/entrega/1
+Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
 
 {
-    "pedido_id": 1,
-    "endereco": "Rua Exemplo, 200 - Centro - Itapema - SC",
-    "status": "EM_TRANSITO"
+    "status": "ENVIADO",
+    "codigo_rastreio": "BR987654321"
 }
 
-
-### 47 - ATUALIZAR ENTREGA PARCIALMENTE
+### 5. ATUALIZAR PARCIALMENTE ENTREGA (PRIVADO)
 PUT {{baseUrl}}/entrega/1
+Authorization: Bearer {{loginReq.response.body.token}}
+Content-Type: application/json
+
+{
+    "status": "ENVIADO"
+}
+
+### 6. ATUALIZAR PARCIALMENTE ENTREGA (PRIVADO)
+PUT {{baseUrl}}/entrega/1
+Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
 
 {
     "status": "ENTREGUE"
 }
 
+### 7. EXCLUIR ENTREGA (PRIVADO)
+DELETE {{baseUrl}}/entrega/1
+Authorization: Bearer {{loginReq.response.body.token}}
 
 
-### =====================================================
-### TESTES DE REGISTROS INEXISTENTES
-### =====================================================
-
-### 48 - USUÁRIO INEXISTENTE
-GET {{baseUrl}}/usuario/9999
-
-
-### 49 - PRODUTO INEXISTENTE
-GET {{baseUrl}}/produto/9999
-
-
-### 50 - CATEGORIA INEXISTENTE
-GET {{baseUrl}}/categoria/9999
-
-
-### 51 - PEDIDO INEXISTENTE
-GET {{baseUrl}}/pedido/9999
-
-
-### 52 - ESTOQUE INEXISTENTE
-GET {{baseUrl}}/estoque/9999
-
-
-### 53 - ENTREGA INEXISTENTE
-GET {{baseUrl}}/entrega/9999
-
-
-### 54 - ITEM DE PEDIDO INEXISTENTE
-GET {{baseUrl}}/itemPedido/9999
-
-
-
-### =====================================================
-### LOGIN
-### =====================================================
-
-
-### 55 - LOGIN COM DADOS CORRETOS
-POST {{baseUrl}}/login
-Content-Type: application/json
-
-{
-    "email": "clarice@email.com",
-    "senha": "123456"
-}
-
-### 56 - LOGIN COM SENHA ERRADA
-POST {{baseUrl}}/login
-Content-Type: application/json
-
-{
-    "email": "clarice@email.com",
-    "senha": "senhaerrada"
-}
-
-### 57 - LOGIN COM USUÁRIO INEXISTENTE
-POST {{baseUrl}}/login
-Content-Type: application/json
-
-{
-    "email": "naoexiste@email.com",
-    "senha": "123456"
-}
-
-
-
-### =====================================================
-### TESTES DE AUTENTICAÇÃO JWT
-### =====================================================
-
-### 58 - TESTAR ACESSO SEM TOKEN
-GET {{baseUrl}}/teste-protegido
-
-
-### 59 - TESTAR ACESSO COM TOKEN
-GET {{baseUrl}}/teste-protegido
-Authorization: Bearer {{token}}
-
-
-### 60 - TESTAR TOKEN INVÁLIDO
-GET {{baseUrl}}/teste-protegido
-Authorization: Bearer token_inventado
-
-
-
-### =====================================================
-### TESTES DE ESTOQUE
-### =====================================================
-
-### CADASTRAR ESTOQUE - ABBEY ROAD
-POST {{baseUrl}}/estoque
-Content-Type: application/json
-Authorization: Bearer {{token}}
-
-{
-    "produto_id": 6,
-    "quantidade": 5
-}
-
-### CADASTRAR ESTOQUE - THRILLER
-POST {{baseUrl}}/estoque
-Content-Type: application/json
-Authorization: Bearer {{token}}
-
-{
-    "produto_id": 2,
-    "quantidade": 2
-}
-
-
-### CADASTRAR ESTOQUE - SEM ESTOQUE
-POST {{baseUrl}}/estoque
-Content-Type: application/json
-Authorization: Bearer {{token}}
-
-{
-    "produto_id": 7,
-    "quantidade": 0
-}
-
-
-
-### CRIAR ITEM DO PEDIDO
-POST {{baseUrl}}/itemPedido
-Content-Type: application/json
-Authorization: Bearer {{token}}
-
-{
-    "pedido_id": 2,
-    "produto_id": 6,
-    "quantidade": 2
-}
-
-### CRIAR ENTREGA
-POST {{baseUrl}}/entrega
-Content-Type: application/json
-Authorization: Bearer {{token}}
-
-{
-    "pedido_id": 2,
-    "endereco": "Rua Exemplo, 123 - Centro, Itapema - SC"
-}
-
-### FINALIZAR PEDIDO
-POST {{baseUrl}}/pedido/3/finalizar
-Authorization: Bearer {{token}}
-
-### Criar item para o pedido 3
-POST http://localhost:3000/itemPedido
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-{
-    "pedido_id": 3,
-    "produto_id": 2,
-    "quantidade": 1
-}
-
-### Teste relatório vendas
-GET http://localhost:3000/relatorios/vendas
-Authorization: Bearer {{token}}
-
-### Teste relatório estoque
-GET http://localhost:3000/relatorios/estoque
-Authorization: Bearer {{token}}
-
-### Listar usuários (somente administrador)
-GET http://localhost:3000/usuarios
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiZW1haWwiOiJjbGFyaWNlQGVtYWlsLmNvbSIsImlhdCI6MTc4OTEzNzkyNCwiZXhwIjoxNzkxNzI5OTI0fQ.OkyCt1qk_dC0g8PboIBeDIwEXNG8BbTAHQDHyXfkuMs

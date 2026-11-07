@@ -119,68 +119,35 @@ const consultarPorNome = async (req, res) => {
 }
 
 
-const excluir = async (req, res) => {
-
-    const id = req.params.id
-
-    try {
-
-        const categoria = await Categoria.findByPk(id)
-
-        if (!categoria) {
-            return res.status(404).json({
-                message: 'Categoria não encontrada!'
-            })
-        }
-
-        await Categoria.destroy({
-            where: {
-                id: id
-            }
-        })
-
-        res.status(200).json({
-            message: 'Categoria excluída com sucesso!'
-        })
-
-    } catch (err) {
-
-        console.error('Erro ao excluir categoria!', err)
-
-        res.status(500).json({
-            message: 'Erro ao excluir categoria!'
-        })
-    }
-}
 
 
 const atualizar = async (req, res) => {
-
+    
     const id = req.params.id
     const valores = req.body
-
+    
     try {
-
+        
         const categoria = await Categoria.findByPk(id)
-
+        
         if (!categoria) {
             return res.status(404).json({
                 message: 'Categoria não encontrada!'
             })
         }
-
+        
         await Categoria.update(valores, {
             where: {
                 id: id
             }
         })
-
+        
         const atualizada = await Categoria.findByPk(id)
-
+        
         res.status(200).json(atualizada)
-
+        
     } catch (err) {
-
+        
         console.error('Erro ao atualizar categoria!', err)
 
         res.status(500).json({
@@ -220,12 +187,46 @@ const atualizarParcial = async (req, res) => {
 }
 
 
+const excluir = async (req, res) => {
+
+    const id = req.params.id
+
+    try {
+
+        const categoria = await Categoria.findByPk(id)
+
+        if (!categoria) {
+            return res.status(404).json({
+                message: 'Categoria não encontrada!'
+            })
+        }
+
+        await Categoria.destroy({
+            where: {
+                id: id
+            }
+        })
+
+        res.status(200).json({
+            message: 'Categoria excluída com sucesso!'
+        })
+
+    } catch (err) {
+
+        console.error('Erro ao excluir categoria!', err)
+
+        res.status(500).json({
+            message: 'Erro ao excluir categoria!'
+        })
+    }
+}
+
 module.exports = {
     cadastrar,
     listar,
     consultarPorCod,
     consultarPorNome,
-    excluir,
     atualizar,
-    atualizarParcial
+    atualizarParcial,
+    excluir
 }

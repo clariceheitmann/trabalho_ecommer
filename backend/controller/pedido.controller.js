@@ -90,7 +90,12 @@ const consultarPorCod = async (req, res) => {
 
     try {
 
-        const pedido = await Pedido.findByPk(id)
+        const pedido = await Pedido.findOne({
+            where: {
+                id: id,
+                usuario_id: req.usuario.id
+            }
+        })
 
         if (!pedido) {
             return res.status(404).json({
@@ -111,49 +116,21 @@ const consultarPorCod = async (req, res) => {
 }
 
 
-const excluir = async (req, res) => {
-
-    const id = req.params.id
-
-    try {
-
-        const pedido = await Pedido.findByPk(id)
-
-        if (!pedido) {
-            return res.status(404).json({
-                message: 'Pedido não encontrado!'
-            })
-        }
-
-        await Pedido.destroy({
-            where: {
-                id: id
-            }
-        })
-
-        res.status(200).json({
-            message: 'Pedido excluído com sucesso!'
-        })
-
-    } catch (err) {
-
-        console.error('Erro ao excluir pedido!', err)
-
-        res.status(500).json({
-            message: 'Erro ao excluir pedido!'
-        })
-    }
-}
-
-
 const atualizar = async (req, res) => {
 
     const id = req.params.id
-    const valores = req.body
+    const { status } = req.body
+
+const valores = { status }
 
     try {
 
-        const pedido = await Pedido.findByPk(id)
+        const pedido = await Pedido.findOne({
+            where: {
+                id: id,
+                usuario_id: req.usuario.id
+            }
+        })
 
         if (!pedido) {
             return res.status(404).json({
@@ -179,11 +156,18 @@ const atualizar = async (req, res) => {
 const atualizarParcial = async (req, res) => {
 
     const id = req.params.id
-    const valores = req.body
+    const { status } = req.body
+
+const valores = { status }
 
     try {
 
-        const pedido = await Pedido.findByPk(id)
+        const pedido = await Pedido.findOne({
+            where: {
+                id: id,
+                usuario_id: req.usuario.id
+            }
+        })
 
         if (!pedido) {
             return res.status(404).json({
@@ -205,13 +189,55 @@ const atualizarParcial = async (req, res) => {
     }
 }
 
+
+const excluir = async (req, res) => {
+
+    const id = req.params.id
+
+    try {
+
+        const pedido = await Pedido.findOne({
+            where: {
+                id: id,
+                usuario_id: req.usuario.id
+            }
+        })
+
+        if (!pedido) {
+            return res.status(404).json({
+                message: 'Pedido não encontrado!'
+            })
+        }
+
+        await pedido.destroy()
+
+        res.status(200).json({
+            message: 'Pedido excluído com sucesso!'
+        })
+
+    } catch (err) {
+
+        console.error('Erro ao excluir pedido!', err)
+
+        res.status(500).json({
+            message: 'Erro ao excluir pedido!'
+        })
+    }
+}
+
+
 const finalizar = async (req, res) => {
 
     const id = req.params.id
 
     try {
 
-        const pedido = await Pedido.findByPk(id)
+        const pedido = await Pedido.findOne({
+            where: {
+                id: id,
+                usuario_id: req.usuario.id
+            }
+        })
 
         if (!pedido) {
             return res.status(404).json({
@@ -323,8 +349,8 @@ module.exports = {
     cadastrar,
     listar,
     consultarPorCod,
-    excluir,
     atualizar,
     atualizarParcial,
+    excluir,
     finalizar
 }
