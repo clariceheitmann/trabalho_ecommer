@@ -380,9 +380,11 @@ const capasManuais = {
     "Alice In Chains|Unplugged": "../imagens/capas/alice_unplugged.jpg",
 // The Beatles
     "The Beatles|A Hard Day's Night": "../imagens/capas/a_hard_days_night.jpg",
-    "The Beatles|The Beatles": "../imagens/capas/white_album.jpg",
+    "The Beatles|The Beatles (White Album)": "../imagens/capas/white_album.jpg",
     "The Beatles|Revolver": "../imagens/capas/revolver.jpg",
     "The Beatles|Sgt. Pepper's Lonely Hearts Club Band": "../imagens/capas/sgt_peppers.jpg",
+    "The Beatles|Abbey Road": "../imagens/capas/abbey_road.jpg",
+    "The Beatles|Let It Be": "../imagens/capas/let_it_be.jpg",
 // Pink Floyd
     "Pink Floyd|Animals": "../imagens/capas/animals.jpg",
     "Pink Floyd|The Dark Side of the Moon": "../imagens/capas/dark_side_of_the_moon.png",
@@ -400,11 +402,12 @@ const capasManuais = {
 // Lana Del Rey
     "Lana Del Rey|Honeymoon": "../imagens/capas/honeymoon.jpg",
     "Lana Del Rey|Blue Banisters": "../imagens/capas/blue_banisters.jpg",
-    "Lana Del Rey|Norman Fucking Rockwell": "../imagens/capas/nfr.jpg",
+    "Lana Del Rey|Norman Fucking Rockwell!": "../imagens/capas/nfr.jpg",
     "Lana Del Rey|Paradise": "../imagens/capas/paradise.jpg",
     "Lana Del Rey|Born to Die": "../imagens/capas/born_to_die.jpg",
-    "Lana Del Rey|Did you know that there's a tunnel under Ocean Blvd": "../imagens/capas/did_you_know.jpg",
-    "Lana Del Rey|Chemtrails Over The Country Club": "../imagens/capas/cotcc.jpg",
+    "Lana Del Rey|Chemtrails over the Country Club":
+    "../imagens/capas/cotcc.png", "Lana Del Rey|Did you know that there’s a tunnel under Ocean Blvd":
+    "../imagens/capas/did_you_know.jpg",
 // Linkin Park
     "Linkin Park|Meteora": "../imagens/capas/meteora.jpg",
     "Linkin Park|Minutes to Midnight": "../imagens/capas/minutes_to_midnight.jpg",
@@ -414,7 +417,7 @@ const capasManuais = {
 // Masayoshi Takanaka
     "Masayoshi Takanaka|All of Me": "../imagens/capas/all_of_me.jpg",
 // My Bloody Valentine
-    "My Bloody Valentine|m b v": "../imagens/capas/mvb.jpg",
+   "My Bloody Valentine|mbv": "../imagens/capas/mvb.jpg",
 // Nirvana
     "Nirvana|Nevermind": "../imagens/capas/nevermind.jpg",
     "Nirvana|In Utero": "../imagens/capas/in_utero.jpg",
@@ -445,8 +448,12 @@ const capasManuais = {
     "The Smiths|Hatful Of Hollow": "../imagens/capas/hatful_of_hollow.jpg",
 // MPB
     "Jorge Ben Jor|Ben": "../imagens/capas/ben.jpg",
+    "Jorge Ben Jor|Samba Esquema Novo": "../imagens/capas/samba_esquema_novo.jpg",
+    "Jorge Ben Jor|A Tábua de Esmeralda": "../imagens/capas/a_tabua_de_esmeralda.jpg",
+    "Jorge Ben Jor|África Brasil": "../imagens/capas/africa_brasil.jpg",
     "O Rappa|Lado B Lado A": "../imagens/capas/ladoB_ladoA.jpg",
-    "Vinícius de Moraes|Vinícius e Odette Lara": "../imagens/capas/vinicius_e_odette_lara.jpg",
+    "Vinicius de Moraes|Vinicius & Odette Lara": "../imagens/capas/vinicius_e_odette_lara.jpg",
+    "Vinicius de Moraes|Vinicius & Toquinho": "../imagens/capas/toquinho_vinicius.jpg",
     "Cazuza|Só Se For a Dois": "../imagens/capas/so_se_for_a_dois.jpg",
     "Cazuza|O Tempo Não Para": "../imagens/capas/o_tempo_nao_para.jpg",
     "Ana Frango Elétrico|Mormaço Queima": "../imagens/capas/mormaco_queima.jpg",
@@ -490,7 +497,7 @@ const capasManuais = {
     "Slipknot|Slipknot": "../imagens/capas/slipknot.jpg",
 // Korn
     "Korn|Korn": "../imagens/capas/korn.jpg",
-    "Korn|Follow the Leader": "../imagens/capas/follow_the_leader.jpg",
+    "Korn|Follow the Leader": "../imagens/capas/follow_the_leader.png",
 // Rage Against the Machine
     "Rage Against the Machine|Rage Against the Machine": "../imagens/capas/rage_against_the_machine.jpg",
 // Pantera
@@ -507,6 +514,7 @@ const capasManuais = {
     "Snoop Dogg|Doggystyle": "../imagens/capas/doggystyle.jpg",
 
     "2Pac|Greatest Hits": "../imagens/capas/greatest_hits.jpg",
+    "2Pac|The Don Killuminati: The 7 Day Theory": "../imagens/capas/the_don_killuminati.jpg",
 
     "Alice In Chains|Facelift": "../imagens/capas/facelift.jpg",
 
@@ -516,6 +524,9 @@ const capasManuais = {
     "50 Cent|The Massacre": "../imagens/capas/the_massacre.jpg",
     "DR. DRE|The Chronic": "../imagens/capas/the_chronic.jpg",
 
+    "The Doors|The Doors": "../imagens/capas/the_doors.jpg",
+
+    "Legião Urbana|Que País É Este": "../imagens/capas/que_pais_e_este.jpg",
 
 };
 

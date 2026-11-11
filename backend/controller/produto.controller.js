@@ -1,5 +1,6 @@
 const Produto = require('../models/Produto')
 const { Estoque, Categoria } = require('../models/rel')
+const { Op } = require('sequelize')
 
 const cadastrar = async (req, res) => {
 
@@ -39,6 +40,12 @@ const listar = async (req, res) => {
     try {
 
         const produtos = await Produto.findAll({
+            where: {
+                [Op.or]: [
+                    { artista: { [Op.ne]: 'Skank' } },
+                    { album: { [Op.ne]: 'Samba Poconé' } }
+                ]
+            },
             include: [
                 {
                     model: Estoque,

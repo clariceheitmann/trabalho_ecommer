@@ -1324,16 +1324,6 @@ const produtos = [
         estoque: 8
     },
 
-    {
-        artista: 'Skank',
-        album: 'Samba Poconé',
-        ano: 1996,
-        categoria: 'MPB',
-        formato: 'CD',
-        preco: 69.90,
-        estoque: 8
-    },
-
 
     // =========================
     // SLOWDIVE
