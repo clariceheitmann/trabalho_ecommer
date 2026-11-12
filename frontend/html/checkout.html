@@ -1,62 +1,73 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout | Analog Dreams</title>
-    <link rel="stylesheet" href="../css/principal.css">
-    <script src="../js/checkout.js"defer></script>
+
+    <title>Finalizar compra | Analog Dreams</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/checkout-historico.css">
+
+    <script src="../js/checkout.js" defer></script>
 </head>
 
 <body>
 
-    <nav>
-        <h2>Analog Dreams</h2>
+    <header class="topo">
+        <a href="../index.html" class="logo">
+            <span class="logo-disco">♫</span>
+            <span>Analog Dreams</span>
+        </a>
 
-        <div>
+        <nav class="menu">
             <a href="../index.html">Início</a>
-            <a href="produtos.html">Produtos</a>
-            <a href="carrinho.html">Carrinho</a>
-            <a href="login.html">Entrar</a>
-        </div>
-    </nav>
+            <a href="produto/produtos.html">Produtos</a>
+            <a href="carrinho.html" class="ativo">Carrinho</a>
+            <a href="perfil.html">Meu perfil</a>
+            <a href="historico.html">Pedidos</a>
+        </nav>
 
-    <main>
+        <a href="admin.html" class="admin-link">Área administrativa</a>
+    </header>
 
-        <section>
+    <main class="pagina-pedido">
 
-            <h1>Finalizar compra</h1>
+        <h1>Finalizar compra</h1>
+        <p>Seu próximo disco favorito está quase chegando!</p>
 
-            <div id="resumoCheckout"></div>
+        <div id="resumoCheckout"></div>
 
-            <form id="formCheckout">
+        <form id="formCheckout">
 
-                <h2>Endereço de entrega</h2>
+            <h2>Endereço de entrega ♫</h2>
 
-                <br>
+            <label for="endereco">Endereço completo:</label>
+            <input type="text" id="endereco" required
+                   placeholder="Rua, número, bairro e cidade">
 
-                <div>
-                    <label for="endereco">Endereço:</label>
-                    <input type="text" id="endereco" required>
-                </div>
+            <button type="submit">Confirmar pedido ♫</button>
 
-                <br>
-
-                <button type="submit">Confirmar pedido</button>
-
-            </form>
-
-        </section>
+        </form>
 
     </main>
 
     <footer>
-        <p>Analog Dreams</p>
-        <p>Sua loja de música física</p>
+        <h2>♫ Analog Dreams</h2>
+        <p>Sua loja de música física.</p>
         <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com música e nostalgia ✿</span>
+        <br>
+
+        <a href="https://github.com/clariceheitmann"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="github-link">
+            ✿ Meu GitHub
+        </a>
     </footer>
 
 </body>
-
 </html>

@@ -1,39 +1,83 @@
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atualização Parcial de Entrega</title>
-    <link rel="stylesheet" href="../../css/principal.css">
+    <title>Atualização Parcial | Analog Dreams</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/entrega-admin.css">
+    <script src="../../js/entregas/entrega_atualizar_parcial.js" defer></script>
 </head>
 <body>
-    <h1>Atualizar Entrega Parcialmente</h1>
 
-    <form id="formEntrega">
-        <label for="id">Código da entrega:</label>
-        <input type="number" id="id" min="1" required>
+    <header class="topo">
+        <a href="../../index.html" class="logo">
+            <span class="logo-disco">♫</span>
+            <span>Analog Dreams</span>
+        </a>
 
-        <label for="endereco">Novo endereço (opcional):</label>
-        <input type="text" id="endereco" maxlength="255">
+        <nav class="menu">
+            <a href="../../index.html">Início</a>
+            <a href="../produto/produtos.html">Produtos</a>
+            <a href="../carrinho.html">Carrinho</a>
+            <a href="../perfil.html">Minha conta</a>
+            <a href="../historico.html">Pedidos</a>
+        </nav>
 
-        <label for="codigo_rastreio">Novo código de rastreio (opcional):</label>
-        <input type="text" id="codigo_rastreio" maxlength="50">
+        <a href="../admin.html" class="admin-link">Administração</a>
+    </header>
 
-        <label for="status">Novo status (opcional):</label>
-        <select id="status">
-            <option value="">Não alterar</option>
-            <option value="AGUARDANDO_ENVIO">Aguardando envio</option>
-            <option value="ENVIADO">Enviado</option>
-            <option value="EM_TRANSITO">Em trânsito</option>
-            <option value="ENTREGUE">Entregue</option>
-        </select>
+    <nav class="sub-menu-entregas">
+        <a href="entrega_listar.html">Listar</a>
+        <a href="entrega_cadastrar.html">Cadastrar</a>
+        <a href="entrega_consultar_cod.html">Consultar</a>
+        <a href="entrega_atualizar.html">Atualizar</a>
+        <a href="entrega_atualizar_parcial.html" class="ativo">Atualização parcial</a>
+        <a href="entrega_excluir.html">Excluir</a>
+    </nav>
 
-        <button type="submit">Atualizar</button>
-    </form>
+    <main class="pagina-admin-entrega">
+        <h1>Atualização Parcial</h1>
+        <p class="descricao-pagina">
+            Modifique somente os campos que deseja atualizar.
+        </p>
 
-    <p id="mensagem"></p>
+        <form id="formEntrega">
 
-    <script src="../../js/entregas/entrega_atualizar_parcial.js"></script>
+            <label for="id">Código da entrega:</label>
+            <input type="number" id="id" min="1" required>
+
+            <label for="endereco">Novo endereço (opcional):</label>
+            <input type="text" id="endereco" maxlength="255">
+
+            <label for="codigo_rastreio">Novo código de rastreio (opcional):</label>
+            <input type="text" id="codigo_rastreio" maxlength="50">
+
+            <label for="status">Novo status (opcional):</label>
+            <select id="status">
+                <option value="">Não alterar</option>
+                <option value="AGUARDANDO_ENVIO">Aguardando envio</option>
+                <option value="ENVIADO">Enviado</option>
+                <option value="EM_TRANSITO">Em trânsito</option>
+                <option value="ENTREGUE">Entregue</option>
+            </select>
+
+            <button type="submit">Atualizar parcialmente</button>
+
+        </form>
+
+        <p id="mensagem"></p>
+    </main>
+
+    <footer>
+        <h2>♫ Analog Dreams</h2>
+        <p>Sua loja de música física.</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com música e nostalgia ✿</span><br>
+        <a href="https://github.com/clariceheitmann" target="_blank"
+           rel="noopener noreferrer" class="github-link">✿ Meu GitHub</a>
+    </footer>
+
 </body>
 </html>

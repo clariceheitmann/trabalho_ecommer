@@ -1,23 +1,68 @@
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultar Entrega</title>
-    <link rel="stylesheet" href="../../css/principal.css">
+    <title>Consultar Entrega | Analog Dreams</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/entrega-admin.css">
+    <script src="../../js/entregas/entrega_consultar_cod.js" defer></script>
 </head>
 <body>
-    <h1>Consultar Entrega</h1>
 
-    <label for="id">Código da entrega:</label>
-    <input type="number" id="id" min="1" required>
+    <header class="topo">
+        <a href="../../index.html" class="logo">
+            <span class="logo-disco">♫</span>
+            <span>Analog Dreams</span>
+        </a>
 
-    <button id="btnConsultar">Consultar</button>
+        <nav class="menu">
+            <a href="../../index.html">Início</a>
+            <a href="../produto/produtos.html">Produtos</a>
+            <a href="../carrinho.html">Carrinho</a>
+            <a href="../perfil.html">Minha conta</a>
+            <a href="../historico.html">Pedidos</a>
+        </nav>
 
-    <div id="resultado"></div>
-    <p id="mensagem"></p>
+        <a href="../admin.html" class="admin-link">Administração</a>
+    </header>
 
-    <script src="../../js/entregas/entrega_consultar_cod.js"></script>
+    <nav class="sub-menu-entregas">
+        <a href="entrega_listar.html">Listar</a>
+        <a href="entrega_cadastrar.html">Cadastrar</a>
+        <a href="entrega_consultar_cod.html" class="ativo">Consultar</a>
+        <a href="entrega_atualizar.html">Atualizar</a>
+        <a href="entrega_atualizar_parcial.html">Atualização parcial</a>
+        <a href="entrega_excluir.html">Excluir</a>
+    </nav>
+
+    <main class="pagina-admin-entrega">
+        <h1>Consultar Entrega</h1>
+        <p class="descricao-pagina">
+            Pesquise uma entrega pelo código de identificação.
+        </p>
+
+        <section class="painel">
+            <label for="id">Código da entrega:</label>
+            <input type="number" id="id" min="1" required>
+
+            <button type="button" id="btnConsultar">Consultar</button>
+
+            <p id="mensagem"></p>
+        </section>
+
+        <div id="resultado"></div>
+    </main>
+
+    <footer>
+        <h2>♫ Analog Dreams</h2>
+        <p>Sua loja de música física.</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com música e nostalgia ✿</span><br>
+        <a href="https://github.com/clariceheitmann" target="_blank"
+           rel="noopener noreferrer" class="github-link">✿ Meu GitHub</a>
+    </footer>
+
 </body>
 </html>

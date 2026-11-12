@@ -3,36 +3,65 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Excluir Produto</title>
-    <link rel="stylesheet" href="../../css/principal.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excluir Produto | Analog Dreams</title>
+
+    <link rel="stylesheet" href="../../css/global.css">
+<link rel="stylesheet" href="../../css/produto/produto-admin.css">
+
+    <script src="../../js/produto/produto_excluir.js" defer></script>
 </head>
 <body>
 
-    <nav>
+    <header class="topo">
+    <a href="../../index.html" class="logo">
+        <span class="logo-disco">♫</span>
+        <span>Analog Dreams</span>
+    </a>
+
+    <nav class="menu">
         <a href="../../index.html">Início</a>
-        <a href="produto_listar.html">Produtos</a>
+        <a href="../admin.html" class="ativo">Administração</a>
+        <a href="../login.html">Sair</a>
+    </nav>
+</header>
+
+    <nav class="sub-menu-produtos">
+        <a href="produtos.html">Catálogo</a>
+        <a href="produto_listar.html">Listar</a>
+        <a href="produto_cadastrar.html">Cadastrar</a>
+        <a href="produto_consultar.html">Consultar</a>
+        <a href="produto_atualizar.html">Atualizar</a>
+        <a href="produto_atualizar_parcial.html">Atualização parcial</a>
+        <a href="produto_excluir.html" class="ativo">Excluir</a>
     </nav>
 
-    <h1>Excluir Produto</h1>
+    <main class="pagina-admin-produto">
+        <h1>Excluir produto</h1>
+        <p class="descricao-pagina">Retire um item da coleção da loja.</p>
 
-    <form id="form_excluir">
+        <form id="form_excluir">
+            <label>Selecione o produto:</label>
 
-        <label>Selecione o produto:</label>
+            <select id="id" required>
+                <option value="">Carregando produtos...</option>
+            </select>
 
-        <select id="id" required>
-            <option value="">Carregando produtos...</option>
-        </select>
-
-        <button type="submit">Excluir</button>
-
-    </form>
+            <button type="submit">Excluir produto</button>
+        </form>
+    </main>
 
     <footer>
-        <p>Analog Dreams</p>
-        <p>Sua loja de música física</p>
+        <h2>♫ Analog Dreams</h2>
+        <p>Sua loja de música física.</p>
         <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com música e nostalgia ✿</span>
+        <br>
+        <a href="https://github.com/clariceheitmann"
+           target="_blank" rel="noopener noreferrer" class="github-link">
+            ✿ Meu GitHub
+        </a>
     </footer>
 
-    <script src="../../js/produto/produto_excluir.js"></script>
 </body>
 </html>

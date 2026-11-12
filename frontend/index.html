@@ -1,60 +1,223 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vinyl Dreams</title>
+    <title>Analog Dreams | Sua loja de música</title>
     <link rel="stylesheet" href="./css/principal.css">
 </head>
 
 <body>
 
-    <nav>
-        <h2>Vinyl Dreams</h2>
+    <header class="topo">
+        <a href="index.html" class="logo">
+            <span class="logo-disco">♫</span>
+            <span>Analog Dreams</span>
+        </a>
 
-        <div>
-            <a href="index.html">Início</a>
+        <nav class="menu">
+            <a href="index.html" class="ativo">Início</a>
             <a href="./html/produto/produtos.html">Produtos</a>
             <a href="./html/carrinho.html">Carrinho</a>
-            <a href="./html/login.html">Entrar</a>
-            <a href="./html/perfil.html">Perfil</a>
+            <a href="./html/login.html">Minha conta</a>
             <a href="./html/historico.html">Pedidos</a>
-            <a href="./html/admin.html">Painel administrativo</a>
-            <a href="./html/cadastro.html">Cadastro</a>
-            <a href="./html/checkout.html">Checkout</a>
-            <a href="./html/historico.html">Meus pedidos</a>
-            <a href="./html/usuarios.html">Usuários</a>
-            <a href="./html/usuarios/usuario_cadastrar.html">Cadastrar</a>
-            <a href="./html/usuarios/usuario_listar.html">listar</a>
-            <a href="./html/usuarios/usuario_excluir.html">excluir</a>
-            <a href="./html/usuarios/usuario_consultar_cod.html">consultar_cod</a>
-            <a href="./html/usuarios/usuario_consultar_nome.html">consultar_nome.html</a>
-            <a href="./html/usuarios/usuario_atualizar.html">atualizar</a>
-            <a href="./html/usuarios/usuario_atualizar_parcial.html">atualizar_parcial</a>
-        </div>
-    </nav>
+        </nav>
+
+        <a href="./html/admin.html" class="admin-link">
+            Área administrativa
+        </a>
+    </header>
 
     <main>
 
-        <section>
+        <section class="banner">
+            <div class="banner-texto">
+                <span class="subtitulo">♫ A música nunca sai de moda ♫</span>
 
-            <h1>Bem-vindo à Vinyl Dreams!</h1>
+                <h1>
+                    Entre no ritmo
+                    <span>dos bons tempos!</span>
+                </h1>
 
-            <p>Encontre seus álbuns favoritos em vinil, CD e fita cassete.</p>
+                <p>
+                    Descubra clássicos, explore novos sons e encontre
+                    seus álbuns favoritos em vinil, CD e fita cassete.
+                </p>
 
-            <a href="./html/produtos.html">Ver produtos</a>
+                <a href="./html/produto/produtos.html" class="botao">
+                    Explorar coleção →
+                </a>
+            </div>
 
+            <div class="banner-arte">
+                <div class="estrela estrela1">✦</div>
+                <div class="estrela estrela2">✧</div>
+
+                <div class="disco">
+                    <div class="disco-centro">
+                        <span>Love</span>
+                    </div>
+                </div>
+
+                <div class="flor">✿</div>
+            </div>
+        </section>
+
+        <section class="frase">
+            <span>✿</span>
+            <p>Good music. Good vibes. Good times.</p>
+            <span>✿</span>
+        </section>
+
+        <section class="categorias">
+            <h2>Escolha seu formato favorito</h2>
+            <p class="descricao">Cada formato tem seu próprio charme.</p>
+
+            <div class="categoria-cards">
+
+                <a href="./html/produto/produtos.html" class="categoria vinil">
+                    <span>◉</span>
+                    <h3>Vinil</h3>
+                    <p>O charme dos discos clássicos.</p>
+                </a>
+
+                <a href="./html/produto/produtos.html" class="categoria cd">
+                    <span>✺</span>
+                    <h3>CDs</h3>
+                    <p>Seus álbuns favoritos em um só lugar.</p>
+                </a>
+
+                <a href="./html/produto/produtos.html" class="categoria fita">
+                    <span>▣</span>
+                    <h3>Fitas cassete</h3>
+                    <p>Uma viagem direto para o passado.</p>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- MAIS VENDIDOS -->
+        <section class="vitrine">
+
+            <div class="vitrine-titulo">
+                <span>OS FAVORITOS DA GALERA</span>
+                <h2>Mais vendidos ✦</h2>
+                <p>Álbuns que merecem um lugar na sua coleção.</p>
+            </div>
+
+            <div class="produtos-cards">
+
+                <a href="./html/produto/produtos.html" class="produto-card">
+                    <div class="capa">
+                        <img src="./imagens/capas/paradise.jpg"
+                             alt="Capa do álbum Paradise">
+                    </div>
+                    <h3>Paradise</h3>
+                    <p>Lana Del Rey</p>
+                    <span class="produto-link">Ver produto →</span>
+                </a>
+
+                <a href="./html/produto/produtos.html" class="produto-card">
+                    <div class="capa">
+                        <img src="./imagens/capas/sgt_peppers.jpg"
+                             alt="Capa do álbum Sgt. Pepper's">
+                    </div>
+                    <h3>Sgt. Pepper's</h3>
+                    <p>The Beatles</p>
+                    <span class="produto-link">Ver produto →</span>
+                </a>
+
+                <a href="./html/produto/produtos.html" class="produto-card">
+                    <div class="capa">
+                        <img src="./imagens/capas/abba.jpg"
+                             alt="Capa do álbum ABBA">
+                    </div>
+                    <h3>ABBA</h3>
+                    <p>ABBA</p>
+                    <span class="produto-link">Ver produto →</span>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- PROMOÇÕES -->
+        <section class="promocoes">
+
+            <div class="vitrine-titulo">
+                <span>OFERTAS ESPECIAIS</span>
+                <h2>The Vinyl Sale! ♡</h2>
+                <p>Seus próximos favoritos com desconto.</p>
+            </div>
+
+            <div class="produtos-cards">
+
+                <a href="./html/produto/produtos.html" class="produto-card">
+                    <span class="selo-desconto">-15%</span>
+                    <div class="capa">
+                        <img src="./imagens/capas/rita_lee.jpg"
+                             alt="Capa do álbum Rita Lee">
+                    </div>
+                    <h3>Rita Lee</h3>
+                    <p>Rita Lee</p>
+                    <span class="produto-link">Ver produto →</span>
+                </a>
+
+                <a href="./html/produto/produtos.html" class="produto-card">
+                    <span class="selo-desconto">-15%</span>
+                    <div class="capa">
+                        <img src="./imagens/capas/rumours.jpg"
+                             alt="Capa do álbum Fleetwood Mac">
+                    </div>
+                    <h3>Fleetwood Mac</h3>
+                    <p>Fleetwood Mac</p>
+                    <span class="produto-link">Ver produto →</span>
+                </a>
+
+                <a href="./html/produto/produtos.html" class="produto-card">
+                    <span class="selo-desconto">-15%</span>
+                    <div class="capa">
+                        <img src="./imagens/capas/the_doors.jpg"
+                             alt="Capa do álbum The Doors">
+                    </div>
+                    <h3>The Doors</h3>
+                    <p>The Doors</p>
+                    <span class="produto-link">Ver produto →</span>
+                </a>
+
+            </div>
+
+        </section>
+
+        <section class="destaque">
+            <div>
+                <span>UMA VIAGEM MUSICAL</span>
+                <h2>Encontre a trilha sonora da sua vida.</h2>
+            </div>
+
+            <a href="./html/produto/produtos.html"
+               class="botao botao-claro">
+                Ver coleção
+            </a>
         </section>
 
     </main>
 
     <footer>
-        <p>Vinyl Dreams</p>
-        <p>Sua loja de música física</p>
+        <h2>♫ Analog Dreams</h2>
+        <p>Sua loja de música física.</p>
         <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com música e nostalgia ✿</span><br>
+
+        <a href="https://github.com/clariceheitmann"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="github-link">
+            ✿ Meu GitHub
+        </a>
+
     </footer>
 
 </body>
-
 </html>

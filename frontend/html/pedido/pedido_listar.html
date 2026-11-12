@@ -1,30 +1,57 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Listar Pedidos</title>
-    <link rel="stylesheet" href="../../css/principal.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Pedidos | Analog Dreams</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/pedido-admin.css">
 </head>
 <body>
 
-    <nav>
-        <a href="../../index.html">Início</a>
+    <header class="topo">
+        <a href="../../index.html" class="logo">
+            <span class="logo-disco">♫</span>
+            <span>Analog Dreams</span>
+        </a>
+
+        <nav class="menu">
+            <a href="../../index.html">Início</a>
+            <a href="../produto/produtos.html">Produtos</a>
+            <a href="../carrinho.html">Carrinho</a>
+            <a href="../perfil.html">Minha conta</a>
+            <a href="../historico.html">Pedidos</a>
+        </nav>
+
+        <a href="../admin.html" class="admin-link">Administração</a>
+    </header>
+
+    <nav class="sub-menu-pedidos">
+        <a href="pedido_listar.html" class="ativo">Listar</a>
         <a href="pedido_cadastrar.html">Cadastrar</a>
         <a href="pedido_consultar.html">Consultar</a>
         <a href="pedido_atualizar.html">Atualizar</a>
+        <a href="pedido_atualizar_parcial.html">Atualização parcial</a>
         <a href="pedido_excluir.html">Excluir</a>
         <a href="pedido_finalizar.html">Finalizar</a>
     </nav>
 
-    <h1>Meus Pedidos</h1>
+    <main class="pagina-admin-pedido">
+        <h1>Meus Pedidos</h1>
+        <p class="descricao-pagina">
+            Confira seus pedidos, produtos e respectivos status.
+        </p>
 
-    <div id="lista_pedidos"></div>
+        <div id="lista_pedidos"></div>
+    </main>
 
     <footer>
-        <p>Analog Dreams</p>
-        <p>Sua loja de música física</p>
+        <h2>♫ Analog Dreams</h2>
+        <p>Sua loja de música física.</p>
         <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com música e nostalgia ✿</span><br>
+        <a href="https://github.com/clariceheitmann" target="_blank"
+           rel="noopener noreferrer" class="github-link">✿ Meu GitHub</a>
     </footer>
 
     <script src="../../js/pedido/pedido_listar.js"></script>

@@ -36,7 +36,7 @@ async function carregarPedidos() {
             listaPedidos.innerHTML = `
                 <p>Você ainda não realizou nenhum pedido.</p>
                 <br>
-                <a href="produtos.html">Ver produtos</a>
+                <a href="produto/produtos.html">Ver produtos</a>
             `
             return
         }

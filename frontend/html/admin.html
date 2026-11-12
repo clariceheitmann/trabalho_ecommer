@@ -6,21 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Administrativo | Analog Dreams</title>
     <link rel="stylesheet" href="../css/principal.css">
+<link rel="stylesheet" href="../css/global.css">
+<link rel="stylesheet" href="../css/produto/produto-admin.css">
     <script src="../js/admin.js"defer></script>
 </head>
 
 <body>
 
-    <nav>
-        <h2>Analog Dreams</h2>
+    <header class="topo">
+    <a href="../index.html" class="logo">
+        <span class="logo-disco">♫</span>
+        <span>Analog Dreams</span>
+    </a>
 
-        <div>
-            <a href="../index.html">Início</a>
-            <a href="produtos.html">Produtos</a>
-            <a href="admin.html">Administração</a>
-            <a href="login.html">Sair</a>
-        </div>
+    <nav class="menu">
+        <a href="../index.html">Início</a>
+        <a href="admin.html" class="ativo">Administração</a>
+        <a href="login.html">Sair</a>
     </nav>
+</header>
+
+<nav class="sub-menu-produtos">
+    <a href="">Produtos</a>
+    <a href="produto/produtos.html">Catálogo</a>
+    <a href="produto/produto_listar.html">Listar</a>
+    <a href="produto/produto_cadastrar.html">Cadastrar</a>
+    <a href="produto/produto_consultar.html">Consultar</a>
+    <a href="produto/produto_atualizar.html">Atualizar</a>
+    <a href="produto/produto_atualizar_parcial.html">Atualização parcial</a>
+    <a href="produto/produto_excluir.html">Excluir</a>
+</nav>
 
     <main>
         <section>

@@ -4,23 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultar categoria por nome | Analog Dreams</title>
-    <link rel="stylesheet" href="../../css/principal.css">
+    <title>Consultar Categoria por Nome | Analog Dreams</title>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/categoria-admin.css">
     <script src="../../js/categoria/categoria_consultar_nome.js" defer></script>
 </head>
 <body>
-    <main class="container">
-        <h1>Consultar categoria por nome</h1>
+
+    <header class="topo">
+        <a href="../../index.html" class="logo">
+            <span class="logo-disco">♫</span>
+            <span>Analog Dreams</span>
+        </a>
+
+        <nav class="menu">
+            <a href="../../index.html">Início</a>
+            <a href="../produto/produtos.html">Produtos</a>
+            <a href="../carrinho.html">Carrinho</a>
+            <a href="../perfil.html">Minha conta</a>
+            <a href="../historico.html">Pedidos</a>
+        </nav>
+
+        <a href="../admin.html" class="admin-link">Administração</a>
+    </header>
+
+    <nav class="sub-menu-categorias">
+        <a href="categoria_listar.html">Listar</a>
+        <a href="categoria_cadastrar.html">Cadastrar</a>
+        <a href="categoria_consultar_cod.html">Consultar por código</a>
+        <a href="categoria_consultar_nome.html" class="ativo">Consultar por nome</a>
+        <a href="categoria_atualizar.html">Atualizar</a>
+        <a href="categoria_atualizar_parcial.html">Atualização parcial</a>
+        <a href="categoria_excluir.html">Excluir</a>
+    </nav>
+
+    <main class="pagina-admin-categoria">
+        <h1>Consultar Categoria</h1>
+        <p class="descricao-pagina">
+            Pesquise uma categoria pelo seu nome.
+        </p>
 
         <form id="formConsulta">
+
             <label for="nome">Nome da categoria:</label>
             <input type="text" id="nome" required>
 
             <button type="submit">Consultar</button>
+
         </form>
 
         <p id="mensagem"></p>
         <div id="resultado"></div>
     </main>
+
+    <footer>
+        <h2>♫ Analog Dreams</h2>
+        <p>Sua loja de música física.</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com música e nostalgia ✿</span><br>
+        <a href="https://github.com/clariceheitmann" target="_blank"
+           rel="noopener noreferrer" class="github-link">✿ Meu GitHub</a>
+    </footer>
+
 </body>
 </html>

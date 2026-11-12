@@ -38,7 +38,7 @@ formulario.addEventListener('submit', async (event) => {
 
         alert('Login realizado com sucesso!')
 
-        window.location.href = 'produtos.html'
+        window.location.href = 'produto/produtos.html'
 
     } catch (erro) {
 

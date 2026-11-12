@@ -1,0 +1,172 @@
+
+/* ===== PÁGINAS DE GERENCIAMENTO DE PRODUTOS ===== */
+
+body {
+    font-family: Georgia, serif;
+    background: #F7EAD0;
+    color: #633C25;
+    min-height: 100vh;
+}
+
+/* ===== SUBMENU ===== */
+
+.sub-menu-produtos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 18px 5%;
+    background: #397F79;
+}
+
+.sub-menu-produtos a {
+    color: #F7EAD0;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 9px 15px;
+    border: 1px solid transparent;
+    border-radius: 25px;
+    transition: .3s;
+}
+
+.sub-menu-produtos a:hover,
+.sub-menu-produtos a.ativo {
+    background: #F4B323;
+    color: #633C25;
+    transform: translateY(-2px);
+}
+
+/* ===== CONTEÚDO ===== */
+
+.pagina-admin-produto {
+    width: min(90%, 750px);
+    margin: 55px auto 75px;
+    min-height: 350px;
+}
+
+.pagina-admin-produto h1 {
+    text-align: center;
+    font-size: clamp(28px, 5vw, 40px);
+    color: #633C25;
+    margin-bottom: 12px;
+}
+
+.pagina-admin-produto .descricao-pagina {
+    text-align: center;
+    color: #80634C;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.pagina-admin-produto h1::after {
+    content: " ✿";
+    color: #D9362B;
+}
+
+/* ===== FORMULÁRIOS ===== */
+
+.pagina-admin-produto form {
+    background: #FFF9ED;
+    border: 2px solid #633C25;
+    border-radius: 20px 5px 20px 5px;
+    padding: 35px;
+    box-shadow: 8px 8px 0 #E7B13E;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pagina-admin-produto label {
+    font-weight: bold;
+    color: #633C25;
+    margin-top: 8px;
+}
+
+.pagina-admin-produto input,
+.pagina-admin-produto select,
+.pagina-admin-produto textarea {
+    width: 100%;
+    padding: 13px 15px;
+    border: 2px solid #D9C6A7;
+    border-radius: 10px;
+    background: #F7EAD0;
+    color: #633C25;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    outline: none;
+    transition: .3s;
+}
+
+.pagina-admin-produto textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.pagina-admin-produto input:focus,
+.pagina-admin-produto select:focus,
+.pagina-admin-produto textarea:focus {
+    border-color: #397F79;
+    box-shadow: 0 0 0 3px rgba(57, 127, 121, .15);
+}
+
+.pagina-admin-produto button {
+    border: none;
+    border-radius: 25px;
+    background: #D9362B;
+    color: white;
+    padding: 14px 22px;
+    margin-top: 18px;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.pagina-admin-produto button:hover {
+    background: #397F79;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 0 #633C25;
+}
+
+/* ===== RESULTADOS E LISTAGEM ===== */
+
+#resultado,
+#lista_produtos {
+    margin-top: 30px;
+    background: #FFF9ED;
+    padding: 25px;
+    border: 2px solid #633C25;
+    border-radius: 15px 5px 15px 5px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+#resultado:empty,
+#lista_produtos:empty {
+    display: none;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+@media (max-width: 600px) {
+    .sub-menu-produtos {
+        gap: 6px;
+        padding: 15px 10px;
+    }
+
+    .sub-menu-produtos a {
+        font-size: 12px;
+        padding: 8px 11px;
+    }
+
+    .pagina-admin-produto {
+        width: 92%;
+        margin: 35px auto 55px;
+    }
+
+    .pagina-admin-produto form {
+        padding: 22px;
+    }
+}

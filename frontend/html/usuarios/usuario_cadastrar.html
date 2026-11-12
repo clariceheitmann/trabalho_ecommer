@@ -5,12 +5,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar usuário | Analog Dreams</title>
-    <link rel="stylesheet" href="../../css/principal.css">
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/usuario-admin.css">
     <script src="../../js/usuarios/usuario_cadastrar.js" defer></script>
 </head>
 <body>
-    <main class="container">
+
+    <header class="topo">
+        <a href="../../index.html" class="logo">
+            <span class="logo-disco">♫</span>
+            <span>Analog Dreams</span>
+        </a>
+        <nav class="menu">
+            <a href="../../index.html">Início</a>
+            <a href="../produto/produtos.html">Produtos</a>
+            <a href="../carrinho.html">Carrinho</a>
+            <a href="../perfil.html">Minha conta</a>
+            <a href="../historico.html">Pedidos</a>
+            <a href="../admin.html" class="ativo">Administração</a>
+        </nav>
+    </header>
+
+    <nav class="sub-menu-usuarios">
+        <a href="usuario_cadastrar.html" class="ativo">Cadastrar</a>
+        <a href="usuario_listar.html">Listar</a>
+        <a href="usuario_consultar_cod.html">Consultar código</a>
+        <a href="usuario_consultar_nome.html">Consultar nome</a>
+        <a href="usuario_atualizar.html">Atualizar</a>
+        <a href="usuario_atualizar_parcial.html">Atualização parcial</a>
+        <a href="usuario_excluir.html">Excluir</a>
+    </nav>
+
+    <main class="pagina-admin-usuario">
         <h1>Cadastrar usuário</h1>
+        <p>Adicione um novo integrante à nossa comunidade musical.</p>
 
         <form id="formCadastro">
             <label for="nome">Nome:</label>
@@ -40,11 +68,21 @@
             <label for="numero">Número do endereço:</label>
             <input type="text" id="numero" required>
 
-            <button type="submit">Cadastrar</button>
+            <button type="submit">Cadastrar usuário</button>
         </form>
 
         <p id="mensagem"></p>
-        <a href="../login.html">Já tenho uma conta</a>
+        <p><a href="../login.html">Já tenho uma conta</a></p>
     </main>
+
+    <footer>
+        <h2>♫ Analog Dreams</h2>
+        <p>Sua loja de música física.</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com música e nostalgia ✿</span><br>
+        <a href="https://github.com/clariceheitmann" target="_blank"
+           rel="noopener noreferrer" class="github-link">✿ Meu GitHub</a>
+    </footer>
+
 </body>
 </html>

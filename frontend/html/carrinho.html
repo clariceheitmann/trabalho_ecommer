@@ -4,30 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Carrinho | Analog Dreams</title>
+
     <link rel="stylesheet" href="../css/carrinho.css">
-    <script src="../js/carrinho.js"defer></script>
+    <link rel="stylesheet" href="../css/global.css">
+
+    <script src="../js/carrinho.js" defer></script>
 </head>
 
 <body>
 
-    <header>
-        <h1>Analog Dreams</h1>
+    <header class="topo">
+        <a href="../index.html" class="logo">
+            <span class="logo-disco">♫</span>
+            <span>Analog Dreams</span>
+        </a>
 
-        <nav>
+        <nav class="menu">
             <a href="../index.html">Início</a>
-            <a href="produtos.html">Produtos</a>
-            <a href="carrinho.html">Carrinho</a>
-            <a href="login.html">Login</a>
+            <a href="produto/produtos.html">Produtos</a>
+            <a href="carrinho.html" class="ativo">Carrinho</a>
+            <a href="login.html">Minha conta</a>
+            <a href="historico.html">Pedidos</a>
         </nav>
+
+        <a href="admin.html" class="admin-link">Área administrativa</a>
     </header>
 
-    <main>
-        <h2>Seu Carrinho</h2>
+    <main class="pagina-carrinho">
+
+        <section class="cabecalho-carrinho">
+            <span>♫ SUA COLEÇÃO ESTÁ QUASE COMPLETA ♫</span>
+            <h1>Seu carrinho</h1>
+            <p>Seus próximos discos favoritos estão aqui!</p>
+        </section>
 
         <div id="carrinho"></div>
+
     </main>
 
-</body>
+    <footer>
+        <h2>♫ Analog Dreams</h2>
+        <p>Sua loja de música física.</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com música e nostalgia ✿</span>
+        <br>
 
+        <a href="https://github.com/clariceheitmann"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="github-link">
+            ✿ Meu GitHub
+        </a>
+    </footer>
+
+</body>
 </html>

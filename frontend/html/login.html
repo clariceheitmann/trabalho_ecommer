@@ -1,60 +1,76 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Loja de Música</title>
-    <link rel="stylesheet" href="../css/principal.css">
-    <script src="../js/login.js"defer></script>
+    <title>Login | Analog Dreams</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/contas.css">
+
+    <script src="../js/login.js" defer></script>
 </head>
 
 <body>
 
-    <header>
+    <header class="topo">
+        <a href="../index.html" class="logo">
+            <span class="logo-disco">♫</span>
+            <span>Analog Dreams</span>
+        </a>
 
-        <h1>Analog Dreams</h1>
-
-        <nav>
+        <nav class="menu">
             <a href="../index.html">Início</a>
-            <a href="produtos.html">Produtos</a>
+            <a href="produto/produtos.html">Produtos</a>
             <a href="carrinho.html">Carrinho</a>
-            <a href="login.html">Login</a>
-
-            <p>
-                Ainda não possui uma conta?
-                <a href="cadastro.html">Cadastre-se</a>
-            </p>
+            <a href="login.html" class="ativo">Minha conta</a>
+            <a href="historico.html">Pedidos</a>
         </nav>
 
+        <a href="admin.html" class="admin-link">Área administrativa</a>
     </header>
 
-    <main>
+    <main class="pagina-login">
 
-        <h1>Entrar</h1>
+        <h1>Bem-vindo de volta!</h1>
+        <p>Entre na sua conta e continue sua coleção musical.</p>
 
         <form id="formLogin">
 
-            <div>
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" required>
-            </div>
+            <h2>Entrar na Analog Dreams ♫</h2>
 
-            <br>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" required>
 
-            <div>
-                <label for="senha">Senha:</label>
-                <input type="password" id="senha" required>
-            </div>
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" required>
 
-            <br>
+            <button type="submit">Entrar ♫</button>
 
-            <button type="submit">Entrar</button>
+            <p class="cadastro-link">
+                Ainda não possui uma conta?
+                <a href="cadastro.html">Cadastre-se</a>
+            </p>
 
         </form>
 
     </main>
 
-</body>
+    <footer>
+        <h2>♫ Analog Dreams</h2>
+        <p>Sua loja de música física.</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com música e nostalgia ✿</span>
+        <br>
+        <a href="https://github.com/clariceheitmann"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="github-link">
+            ✿ Meu GitHub
+        </a>
+    </footer>
 
+</body>
 </html>

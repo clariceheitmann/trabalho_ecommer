@@ -1,46 +1,66 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atualizar Item | Analog Dreams</title>
-    <link rel="stylesheet" href="../../css/principal.css">
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/itemPedido-admin.css">
     <script src="../../js/itemPedido/itemPedido_atualizar.js" defer></script>
 </head>
 <body>
 
-    <nav>
-        <h2>Analog Dreams</h2>
-        <div>
+    <header class="topo">
+        <a href="../../index.html" class="logo">
+            <span class="logo-disco">♫</span>
+            <span>Analog Dreams</span>
+        </a>
+
+        <nav class="menu">
             <a href="../../index.html">Início</a>
-        </div>
+            <a href="../produto/produtos.html">Produtos</a>
+            <a href="../carrinho.html">Carrinho</a>
+            <a href="../perfil.html">Minha conta</a>
+            <a href="../historico.html">Pedidos</a>
+        </nav>
+
+        <a href="../admin.html" class="admin-link">Administração</a>
+    </header>
+
+    <nav class="sub-menu-itens">
+        <a href="itemPedido_listar.html">Listar</a>
+        <a href="itemPedido_cadastrar.html">Cadastrar</a>
+        <a href="itemPedido_consultar.html">Consultar</a>
+        <a href="itemPedido_atualizar.html" class="ativo">Atualizar</a>
+        <a href="itemPedido_excluir.html">Excluir</a>
     </nav>
 
-    <main>
-        <section>
-            <h1>Atualizar Item do Pedido</h1>
+    <main class="pagina-admin-item">
+        <h1>Atualizar Item</h1>
+        <p class="descricao-pagina">
+            Informe o código do item e a nova quantidade.
+        </p>
 
-            <form id="formItem">
+        <form id="formItem">
+            <label for="codigo">Código do item:</label>
+            <input type="number" id="codigo" min="1" required>
 
-                <label for="codigo">Código do item:</label>
-                <input type="number" id="codigo" min="1" required>
+            <label for="quantidade">Nova quantidade:</label>
+            <input type="number" id="quantidade" min="1" required>
 
-                <label for="quantidade">Nova quantidade:</label>
-                <input type="number" id="quantidade" min="1" required>
+            <button type="submit">Atualizar item</button>
+        </form>
 
-                <button type="submit">Atualizar</button>
-
-            </form>
-
-            <p id="mensagem"></p>
-        </section>
+        <p id="mensagem"></p>
     </main>
 
     <footer>
-        <p>Analog Dreams</p>
-        <p>Sua loja de música física</p>
+        <h2>♫ Analog Dreams</h2>
+        <p>Sua loja de música física.</p>
         <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com música e nostalgia ✿</span><br>
+        <a href="https://github.com/clariceheitmann" target="_blank"
+           rel="noopener noreferrer" class="github-link">✿ Meu GitHub</a>
     </footer>
 
 </body>

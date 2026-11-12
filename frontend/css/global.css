@@ -1,0 +1,123 @@
+
+/* ===== CONFIGURAÇÕES GERAIS ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ===== NAVBAR ===== */
+
+.topo {
+    background: #F7EAD0;
+    padding: 20px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-bottom: 3px solid #397F79;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    color: #633C25;
+}
+
+.logo-disco {
+    background: #D9362B;
+    color: #F7EAD0;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.menu {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.menu a {
+    font-weight: bold;
+    transition: .3s;
+}
+
+.menu a:hover,
+.menu .ativo {
+    color: #D9362B;
+}
+
+.admin-link {
+    background: #397F79;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 25px;
+    transition: .3s;
+}
+
+.admin-link:hover {
+    background: #D9362B;
+    transform: translateY(-3px);
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+    background: #633C25;
+    color: #F7EAD0;
+    text-align: center;
+    padding: 35px 20px;
+    line-height: 2;
+}
+
+footer h2 {
+    color: #F4B323;
+}
+
+footer span {
+    color: #E7B13E;
+    font-size: 13px;
+}
+
+.github-link {
+    display: inline-block;
+    margin: 12px 0;
+    padding: 8px 18px;
+    border: 2px solid #F4B323;
+    border-radius: 25px;
+    color: #F7EAD0;
+    transition: .3s;
+}
+
+.github-link:hover {
+    background: #F4B323;
+    color: #633C25;
+    transform: translateY(-3px);
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+@media (max-width: 800px) {
+    .topo {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .menu {
+        justify-content: center;
+        gap: 15px;
+    }
+}

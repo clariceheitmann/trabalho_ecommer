@@ -1,0 +1,161 @@
+
+body {
+    font-family: Georgia, serif;
+    background: #F7EAD0;
+    color: #633C25;
+    min-height: 100vh;
+}
+
+.sub-menu-usuarios {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 18px 5%;
+    background: #397F79;
+}
+
+.sub-menu-usuarios a {
+    color: #F7EAD0;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 9px 14px;
+    border-radius: 25px;
+    transition: .3s;
+}
+
+.sub-menu-usuarios a:hover,
+.sub-menu-usuarios a.ativo {
+    background: #F4B323;
+    color: #633C25;
+    transform: translateY(-2px);
+}
+
+.pagina-admin-usuario {
+    width: min(90%, 750px);
+    margin: 50px auto 75px;
+    min-height: 350px;
+}
+
+.pagina-admin-usuario h1 {
+    text-align: center;
+    font-size: clamp(27px, 5vw, 38px);
+    margin-bottom: 15px;
+}
+
+.pagina-admin-usuario h1::after {
+    content: " ✿";
+    color: #D9362B;
+}
+
+.pagina-admin-usuario h2 {
+    margin: 25px 0 15px;
+}
+
+.pagina-admin-usuario > p {
+    text-align: center;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.pagina-admin-usuario form,
+.pagina-admin-usuario section {
+    background: #FFF9ED;
+    border: 2px solid #633C25;
+    border-radius: 20px 5px 20px 5px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 7px 7px 0 #E7B13E;
+}
+
+.pagina-admin-usuario label {
+    display: block;
+    font-weight: bold;
+    margin: 12px 0 7px;
+}
+
+.pagina-admin-usuario input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #D9C6A7;
+    border-radius: 9px;
+    background: #F7EAD0;
+    color: #633C25;
+    font: 15px Georgia, serif;
+    outline: none;
+}
+
+.pagina-admin-usuario input:focus {
+    border-color: #397F79;
+    box-shadow: 0 0 0 3px rgba(57, 127, 121, .15);
+}
+
+.pagina-admin-usuario button {
+    border: none;
+    border-radius: 25px;
+    background: #D9362B;
+    color: white;
+    padding: 12px 20px;
+    margin-top: 18px;
+    font: bold 15px Georgia, serif;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.pagina-admin-usuario button:hover {
+    background: #397F79;
+    transform: translateY(-3px);
+}
+
+.pagina-admin-usuario table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #FFF9ED;
+}
+
+.pagina-admin-usuario th,
+.pagina-admin-usuario td {
+    padding: 12px;
+    border: 1px solid #D9C6A7;
+    text-align: left;
+}
+
+.pagina-admin-usuario th {
+    background: #397F79;
+    color: white;
+}
+
+.pagina-admin-usuario #mensagem,
+.pagina-admin-usuario #resultado {
+    margin-top: 20px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.pagina-admin-usuario a {
+    color: #397F79;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .sub-menu-usuarios {
+        gap: 6px;
+        padding: 15px 8px;
+    }
+
+    .sub-menu-usuarios a {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+    .pagina-admin-usuario {
+        width: 92%;
+        margin: 35px auto 55px;
+    }
+
+    .pagina-admin-usuario form,
+    .pagina-admin-usuario section {
+        padding: 20px;
+    }
+}

@@ -1,54 +1,71 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atualizar Estoque | Analog Dreams</title>
-    <link rel="stylesheet" href="../../css/principal.css">
-    <script src="../js/estoque_atualizar.js" defer></script>
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/estoque-admin.css">
+    <script src="../../js/estoque/estoque_atualizar.js" defer></script>
 </head>
 <body>
 
-    <nav>
-        <h2>Analog Dreams</h2>
-        <div>
+    <header class="topo">
+        <a href="../../index.html" class="logo">
+            <span class="logo-disco">♫</span>
+            <span>Analog Dreams</span>
+        </a>
+
+        <nav class="menu">
             <a href="../../index.html">Início</a>
-            <a href="../../html/estoque.html">Estoque</a>
-        </div>
+            <a href="../produto/produtos.html">Produtos</a>
+            <a href="../carrinho.html">Carrinho</a>
+            <a href="../perfil.html">Minha conta</a>
+            <a href="../historico.html">Pedidos</a>
+        </nav>
+
+        <a href="../admin.html" class="admin-link">Administração</a>
+    </header>
+
+    <nav class="sub-menu-estoque">
+        <a href="estoque_listar.html">Listar</a>
+        <a href="estoque_cadastrar.html">Cadastrar</a>
+        <a href="estoque_consultar.html">Consultar</a>
+        <a href="estoque_atualizar.html" class="ativo">Atualizar</a>
+        <a href="estoque_excluir.html">Excluir</a>
     </nav>
 
-    <main>
-        <section>
+    <main class="pagina-admin-estoque">
+        <h1>Atualizar Estoque</h1>
+        <p class="descricao-pagina">
+            Selecione um estoque e informe a nova quantidade disponível.
+        </p>
 
-            <h1>Atualizar Estoque</h1>
+        <form id="formEstoque">
 
-            <form id="formEstoque">
+            <label for="estoque_id">Estoque:</label>
+            <select id="estoque_id" required>
+                <option value="">Selecione um estoque</option>
+            </select>
 
-                <label for="estoque_id">Estoque:</label>
-                <select id="estoque_id" required>
-                    <option value="">Selecione um estoque</option>
-                </select>
+            <label for="quantidade">Nova quantidade:</label>
+            <input type="number" id="quantidade" min="0" required>
 
-                <br><br>
+            <button type="submit">Atualizar estoque</button>
 
-                <label for="quantidade">Nova quantidade:</label>
-                <input type="number" id="quantidade" min="0" required>
+        </form>
 
-                <br><br>
-
-                <button type="submit">Atualizar estoque</button>
-
-            </form>
-
-            <p id="mensagem"></p>
-
-        </section>
+        <p id="mensagem"></p>
     </main>
 
     <footer>
-        <p>Analog Dreams</p>
-        <p>Sua loja de música física</p>
+        <h2>♫ Analog Dreams</h2>
+        <p>Sua loja de música física.</p>
         <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com música e nostalgia ✿</span><br>
+        <a href="https://github.com/clariceheitmann" target="_blank"
+           rel="noopener noreferrer" class="github-link">✿ Meu GitHub</a>
     </footer>
 
 </body>

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -5,70 +6,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Produtos | Analog Dreams</title>
+    <title>Catálogo musical | Analog Dreams</title>
 
     <link rel="stylesheet" href="../../css/produtos.css">
+<link rel="stylesheet" href="../../css/global.css">
+<link rel="stylesheet" href="../../css/produto/produto-admin.css">
 
     <script src="../../js/produto/produtos.js" defer></script>
 </head>
 
 <body>
 
-    <header>
+    <header class="topo">
 
-        <h1>Analog Dreams</h1>
+        <a href="../../index.html" class="logo">
+            <span class="logo-disco">♫</span>
+            <span>Analog Dreams</span>
+        </a>
 
-        <nav>
-            <a href="../index.html">Início</a>
-            <a href="produtos.html">Produtos</a>
-            <a href="carrinho.html">Carrinho</a>
-            <a href="login.html">Login</a>
+        <nav class="menu">
+            <a href="../../index.html">Início</a>
+            <a href="./produtos.html" class="ativo">Produtos</a>
+            <a href="../carrinho.html">Carrinho</a>
+            <a href="../login.html">Minha conta</a>
+            <a href="../historico.html">Pedidos</a>
         </nav>
+
+        <a href="../admin.html" class="admin-link">
+            Área administrativa
+        </a>
 
     </header>
 
-
     <main>
 
+        <section class="cabecalho-catalogo">
+            <span class="etiqueta">♫ EXPLORE NOSSA COLEÇÃO ♫</span>
 
-        <h2>Nossos produtos</h2>
+            <h1>Um mundo de música.</h1>
 
-        <div class="barra-busca">
-            <input type="text" id="campoBusca" placeholder="Buscar por álbum ou artista...">
-            <button type="button" id="btnBuscar">Buscar</button>
-            <button type="button" id="btnLimparBusca">Limpar</button>
-        </div>
+            <p>
+                Dos clássicos que marcaram gerações aos sons que
+                merecem fazer parte da sua coleção.
+            </p>
 
+            <span class="decoracao">✿</span>
+        </section>
 
-        <div class="filtros-produtos">
-            <label for="filtroFormato">Formato:</label>
-            <select id="filtroFormato">
-                <option value="">Todos os formatos</option>
-                <option value="VINIL">Vinil</option>
-                <option value="CD">CD</option>
-                <option value="FITA CASSETE">Fita cassete</option>
-            </select>
+        <section class="ferramentas">
 
-            <label for="filtroGenero">Gênero musical:</label>
-            <select id="filtroGenero">
-                <option value="">Todos os gêneros</option>
-            </select>
-        </div>
+            <div class="barra-busca">
+                <input
+                    type="text"
+                    id="campoBusca"
+                    placeholder="Busque por álbum ou artista..."
+                >
 
+                <button type="button" id="btnBuscar">
+                    Buscar
+                </button>
+
+                <button type="button" id="btnLimparBusca">
+                    Limpar
+                </button>
+            </div>
+
+            <div class="filtros-produtos">
+
+                <label for="filtroFormato">Formato:</label>
+
+                <select id="filtroFormato">
+                    <option value="">Todos os formatos</option>
+                    <option value="VINIL">Vinil</option>
+                    <option value="CD">CD</option>
+                    <option value="FITA CASSETE">Fita cassete</option>
+                </select>
+
+                <label for="filtroGenero">Gênero:</label>
+
+                <select id="filtroGenero">
+                    <option value="">Todos os gêneros</option>
+                </select>
+
+            </div>
+
+        </section>
+
+        <section class="atalhos-generos">
+            <h2>Explore por gênero</h2>
+            <div id="listaGeneros"></div>
+        </section>
 
         <section id="listaProdutos" class="produtos-container"></section>
 
-
     </main>
-
-
-    <!-- MODAL DO PRODUTO -->
 
     <div id="modalProduto" class="modal-produto">
 
         <div class="conteudo-modal">
 
-            <button class="fechar-modal" onclick="fecharModal()">
+            <button
+                class="fechar-modal"
+                onclick="fecharModal()"
+                aria-label="Fechar detalhes"
+            >
                 ×
             </button>
 
@@ -78,6 +119,22 @@
 
     </div>
 
-</body>
+    <footer>
+        <h2>♫ Analog Dreams</h2>
+        <p>Sua loja de música física.</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com música e nostalgia ✿</span>
+        <br>
 
+        <a
+            href="https://github.com/clariceheitmann"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="github-link"
+        >
+            ✿ Meu GitHub
+        </a>
+    </footer>
+
+</body>
 </html>

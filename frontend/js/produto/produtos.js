@@ -56,140 +56,179 @@ async function carregarProdutos() {
 // MOSTRAR PRODUTOS
 // ======================================================
 
+
 function mostrarProdutos() {
 
     listaProdutos.innerHTML = ''
 
+    const listaGeneros = document.getElementById('listaGeneros')
 
+    const grupos = new Map()
+
+    // Separa os produtos por gênero
     produtosEncontrados.forEach(produto => {
 
+        const genero = produto.categoria
+            ? produto.categoria.nome
+            : 'Outros'
 
-        const card =
-            document.createElement('div')
+        if (!grupos.has(genero)) {
+            grupos.set(genero, [])
+        }
 
+        grupos.get(genero).push(produto)
 
-        card.classList.add(
-            'card-produto'
-        )
+    })
 
+    // Cria os atalhos dos gêneros
+    listaGeneros.innerHTML = ''
 
-        // ==============================================
-        // CAPA
-        // ==============================================
+    let numero = 0
 
-        let imagemHTML
+    grupos.forEach((produtos, genero) => {
 
+        numero++
 
-        if (produto.imagem) {
+        const id = genero
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
 
-            // Converte caminhos relativos em endereços acessíveis pelo servidor
-            let caminhoImagem = produto.imagem
+        const atalho = document.createElement('a')
 
-            if (
-                caminhoImagem.startsWith('../imagens/') ||
-                caminhoImagem.startsWith('./imagens/')
-            ) {
-                caminhoImagem = caminhoImagem.replace(
-                    /^(\.\.\/|\.\/)/,
-                    ''
-                )
+        atalho.href = `#genero-${id}`
+        atalho.textContent = genero
 
-                caminhoImagem = `${baseUrl}/${caminhoImagem}`
+        listaGeneros.appendChild(atalho)
+
+    })
+
+    // Mostra uma mensagem se não houver produtos
+    if (grupos.size === 0) {
+
+        listaProdutos.innerHTML = `
+            <p class="sem-produtos">
+                Nenhum produto encontrado. Tente outra busca!
+            </p>
+        `
+
+        return
+    }
+
+    // Cria uma seção para cada gênero
+    grupos.forEach((produtos, genero) => {
+
+        const id = genero
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+
+        const secao = document.createElement('section')
+        secao.classList.add('secao-genero')
+        secao.id = `genero-${id}`
+
+        const titulo = document.createElement('div')
+        titulo.classList.add('titulo-genero')
+
+        titulo.innerHTML = `
+            <div>
+                <span>✿ NOSSA SELEÇÃO</span>
+                <h2>${genero}</h2>
+            </div>
+
+            <p>${produtos.length} álbum(ns)</p>
+        `
+
+        const grade = document.createElement('div')
+        grade.classList.add('grade-genero')
+
+        produtos.forEach(produto => {
+
+            const card = document.createElement('div')
+            card.classList.add('card-produto')
+
+            let imagemHTML
+
+            if (produto.imagem) {
+
+                let caminhoImagem = produto.imagem
+
+                if (
+                    caminhoImagem.startsWith('../imagens/') ||
+                    caminhoImagem.startsWith('./imagens/')
+                ) {
+
+                    caminhoImagem = caminhoImagem.replace(
+                        /^(\.\.\/|\.\/)/,
+                        ''
+                    )
+
+                    caminhoImagem = `${baseUrl}/${caminhoImagem}`
+
+                }
+
+                imagemHTML = `
+                    <img
+                        src="${caminhoImagem}"
+                        alt="Capa de ${produto.album}"
+                        loading="lazy"
+                        onerror="mostrarCapaIndisponivel(this)"
+                    >
+                `
+
+            } else {
+
+                imagemHTML = `
+                    <div class="capa-indisponivel">
+                        🎵
+                        <span>Capa indisponível</span>
+                    </div>
+                `
+
             }
 
-            imagemHTML = `
-        <img
-            src="${caminhoImagem}"
-            alt="Capa de ${produto.album}"
-            loading="lazy"
-            onerror="mostrarCapaIndisponivel(this)"
-        >
-    `
+            card.innerHTML = `
+                <div class="imagem-produto">
+                    ${imagemHTML}
+                </div>
 
-        } else {
+                <div class="info-produto">
 
-            imagemHTML = `
-                <div class="capa-indisponivel">
-                    🎵
-                    <span>
-                        Capa indisponível
+                    <span class="etiqueta-formato">
+                        ${produto.formato || 'Formato não informado'}
                     </span>
+
+                    <h3>${produto.album}</h3>
+
+                    <p class="artista">${produto.artista}</p>
+
+                    <p class="ano">Lançamento: ${produto.ano || 'Não informado'}</p>
+
+                    <p class="preco">
+                        R$ ${Number(produto.preco).toFixed(2)}
+                    </p>
+
+                    <span class="ver-detalhes">
+                        Ver detalhes →
+                    </span>
+
                 </div>
             `
 
-        }
+            card.addEventListener('click', () => {
+                abrirDetalhes(produto)
+            })
 
+            grade.appendChild(card)
 
-        // ==============================================
-        // CATEGORIA
-        // ==============================================
+        })
 
-        const categoria =
-            produto.categoria
-                ? produto.categoria.nome
-                : 'Categoria não informada'
+        secao.appendChild(titulo)
+        secao.appendChild(grade)
 
-
-        // ==============================================
-        // CARD
-        // ==============================================
-
-        card.innerHTML = `
-
-            <div class="imagem-produto">
-
-                ${imagemHTML}
-
-            </div>
-
-
-            <div class="info-produto">
-
-                <h3>
-                    ${produto.album}
-                </h3>
-
-
-                <p class="artista">
-                    ${produto.artista}
-                </p>
-
-
-                <p>
-                    Gênero: ${categoria}
-                </p>
-
-
-                <p>
-                    Formato: ${produto.formato}
-                </p>
-
-
-                <p>
-                    Ano: ${produto.ano}
-                </p>
-
-
-                <p class="preco">
-                    R$ ${Number(produto.preco).toFixed(2)}
-                </p>
-
-            </div>
-
-        `
-
-
-        // ==============================================
-        // CLICAR NO CARD
-        // ==============================================
-
-        card.addEventListener(
-            'click',
-            () => abrirDetalhes(produto)
-        )
-
-
-        listaProdutos.appendChild(card)
+        listaProdutos.appendChild(secao)
 
     })
 

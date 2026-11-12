@@ -1,0 +1,212 @@
+
+/* CATEGORIAS */
+
+body {
+    font-family: Georgia, serif;
+    background: #F7EAD0;
+    color: #633C25;
+    min-height: 100vh;
+}
+
+/* MENU DO MÓDULO */
+
+.sub-menu-categorias {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 18px 5%;
+    background: #397F79;
+}
+
+.sub-menu-categorias a {
+    color: #F7EAD0;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 9px 15px;
+    border-radius: 25px;
+    transition: .3s;
+}
+
+.sub-menu-categorias a:hover,
+.sub-menu-categorias a.ativo {
+    background: #F4B323;
+    color: #633C25;
+    transform: translateY(-2px);
+}
+
+/* CONTEÚDO */
+
+.pagina-admin-categoria {
+    width: min(90%, 850px);
+    min-height: 350px;
+    margin: 55px auto 75px;
+}
+
+.pagina-admin-categoria h1 {
+    text-align: center;
+    font-size: clamp(28px, 5vw, 40px);
+    color: #633C25;
+    margin-bottom: 12px;
+}
+
+.pagina-admin-categoria h1::after {
+    content: " ✿";
+    color: #D9362B;
+}
+
+.descricao-pagina {
+    text-align: center;
+    color: #80634C;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* FORMULÁRIOS E PAINÉIS */
+
+.pagina-admin-categoria form,
+.pagina-admin-categoria .painel {
+    background: #FFF9ED;
+    border: 2px solid #633C25;
+    border-radius: 20px 5px 20px 5px;
+    padding: 30px;
+    box-shadow: 8px 8px 0 #E7B13E;
+}
+
+.pagina-admin-categoria form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pagina-admin-categoria label {
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.pagina-admin-categoria input,
+.pagina-admin-categoria textarea {
+    width: 100%;
+    padding: 13px 15px;
+    border: 2px solid #D9C6A7;
+    border-radius: 10px;
+    background: #F7EAD0;
+    color: #633C25;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    outline: none;
+    transition: .3s;
+}
+
+.pagina-admin-categoria textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.pagina-admin-categoria input:focus,
+.pagina-admin-categoria textarea:focus {
+    border-color: #397F79;
+    box-shadow: 0 0 0 3px rgba(57, 127, 121, .15);
+}
+
+/* BOTÕES */
+
+.pagina-admin-categoria button {
+    border: none;
+    border-radius: 25px;
+    background: #D9362B;
+    color: white;
+    padding: 14px 22px;
+    margin-top: 18px;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.pagina-admin-categoria button:hover {
+    background: #397F79;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 0 #633C25;
+}
+
+/* MENSAGENS E RESULTADOS */
+
+.pagina-admin-categoria #mensagem,
+.pagina-admin-categoria #resultado {
+    margin-top: 22px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.pagina-admin-categoria #resultado {
+    background: #FFF9ED;
+    border: 2px solid #D9C6A7;
+    border-radius: 12px;
+    padding: 22px;
+}
+
+.pagina-admin-categoria #resultado p {
+    padding: 8px 0;
+    border-bottom: 1px solid #D9C6A7;
+}
+
+/* TABELAS */
+
+.tabela-scroll {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 25px;
+    background: #FFF9ED;
+    border-radius: 12px;
+    box-shadow: 5px 5px 0 #E7B13E;
+}
+
+.pagina-admin-categoria table {
+    width: 100%;
+    min-width: 550px;
+    border-collapse: collapse;
+    background: #FFF9ED;
+}
+
+.pagina-admin-categoria th,
+.pagina-admin-categoria td {
+    padding: 13px;
+    border: 1px solid #D9C6A7;
+    text-align: left;
+}
+
+.pagina-admin-categoria th {
+    background: #397F79;
+    color: #FFF9ED;
+}
+
+.pagina-admin-categoria tr:nth-child(even) {
+    background: #F7EAD0;
+}
+
+/* CELULAR */
+
+@media (max-width: 600px) {
+    .sub-menu-categorias {
+        gap: 6px;
+        padding: 15px 10px;
+    }
+
+    .sub-menu-categorias a {
+        font-size: 12px;
+        padding: 8px 11px;
+    }
+
+    .pagina-admin-categoria {
+        width: 92%;
+        margin: 35px auto 55px;
+    }
+
+    .pagina-admin-categoria form,
+    .pagina-admin-categoria .painel {
+        padding: 22px;
+    }
+}

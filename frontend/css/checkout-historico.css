@@ -1,0 +1,166 @@
+
+/* ===== CONFIGURAÇÕES GERAIS ===== */
+
+body {
+    font-family: Georgia, serif;
+    background: #F7EAD0;
+    color: #633C25;
+    min-height: 100vh;
+}
+
+.pagina-pedido {
+    width: min(90%, 850px);
+    margin: 50px auto 75px;
+    min-height: 350px;
+}
+
+.pagina-pedido > h1 {
+    text-align: center;
+    font-size: clamp(28px, 5vw, 40px);
+    margin-bottom: 12px;
+}
+
+.pagina-pedido > p {
+    text-align: center;
+    color: #80634C;
+    margin-bottom: 30px;
+}
+
+.pagina-pedido > h1::after {
+    content: " ✿";
+    color: #D9362B;
+}
+
+/* ===== CHECKOUT ===== */
+
+#resumoCheckout,
+#formCheckout {
+    background: #FFF9ED;
+    border: 2px solid #E7B13E;
+    border-radius: 18px 5px 18px 5px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 5px 5px 0 rgba(99, 60, 37, .10);
+}
+
+#resumoCheckout h2,
+#formCheckout h2 {
+    color: #397F79;
+    margin-bottom: 18px;
+}
+
+#resumoCheckout p {
+    padding: 10px 0;
+    border-bottom: 1px solid #E7D6B8;
+    line-height: 1.6;
+}
+
+#formCheckout {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#formCheckout label {
+    font-weight: bold;
+}
+
+#formCheckout input {
+    width: 100%;
+    padding: 13px;
+    border: 2px solid #D9C6A7;
+    border-radius: 9px;
+    background: #F7EAD0;
+    color: #633C25;
+    font-family: Georgia, serif;
+    font-size: 15px;
+}
+
+#formCheckout input:focus {
+    outline: none;
+    border-color: #397F79;
+    box-shadow: 0 0 0 3px rgba(57, 127, 121, .15);
+}
+
+/* ===== PEDIDOS ===== */
+
+.pedido {
+    background: #FFF9ED;
+    border: 2px solid #E7B13E;
+    border-radius: 18px 5px 18px 5px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 5px 5px 0 rgba(99, 60, 37, .10);
+}
+
+.pedido h2 {
+    color: #D9362B;
+    margin-bottom: 18px;
+}
+
+.pedido h3 {
+    color: #397F79;
+    margin: 22px 0 12px;
+}
+
+.pedido > p {
+    line-height: 1.9;
+}
+
+.item-pedido {
+    background: #F7EAD0;
+    border-left: 4px solid #397F79;
+    border-radius: 5px 12px 12px 5px;
+    padding: 15px;
+    margin: 12px 0;
+    line-height: 1.8;
+}
+
+.item-pedido strong {
+    color: #633C25;
+}
+
+/* ===== BOTÕES E LINKS ===== */
+
+.pagina-pedido button {
+    border: none;
+    border-radius: 25px;
+    background: #D9362B;
+    color: white;
+    padding: 13px 22px;
+    margin-top: 12px;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.pagina-pedido button:hover {
+    background: #397F79;
+    transform: translateY(-2px);
+}
+
+.pagina-pedido a:not(.logo):not(.admin-link):not(.github-link) {
+    color: #D9362B;
+    font-weight: bold;
+}
+
+.pagina-pedido a:hover {
+    text-decoration: underline;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+@media (max-width: 600px) {
+    .pagina-pedido {
+        width: 92%;
+        margin: 35px auto 55px;
+    }
+
+    #resumoCheckout,
+    #formCheckout,
+    .pedido {
+        padding: 20px;
+    }
+}

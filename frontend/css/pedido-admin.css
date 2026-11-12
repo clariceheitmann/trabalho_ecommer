@@ -1,0 +1,173 @@
+/* PEDIDOS */
+
+body {
+    font-family: Georgia, serif;
+    background: #F7EAD0;
+    color: #633C25;
+    min-height: 100vh;
+}
+
+/* MENU DO MÓDULO */
+
+.sub-menu-pedidos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 18px 5%;
+    background: #397F79;
+}
+
+.sub-menu-pedidos a {
+    color: #F7EAD0;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 9px 15px;
+    border-radius: 25px;
+    transition: .3s;
+}
+
+.sub-menu-pedidos a:hover,
+.sub-menu-pedidos a.ativo {
+    background: #F4B323;
+    color: #633C25;
+    transform: translateY(-2px);
+}
+
+/* CONTEÚDO */
+
+.pagina-admin-pedido {
+    width: min(90%, 750px);
+    min-height: 350px;
+    margin: 55px auto 75px;
+}
+
+.pagina-admin-pedido h1 {
+    text-align: center;
+    font-size: clamp(28px, 5vw, 40px);
+    color: #633C25;
+    margin-bottom: 12px;
+}
+
+.pagina-admin-pedido h1::after {
+    content: " ✿";
+    color: #D9362B;
+}
+
+.descricao-pagina {
+    text-align: center;
+    color: #80634C;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* FORMULÁRIOS E CARTÕES */
+
+.pagina-admin-pedido form,
+.pagina-admin-pedido .card {
+    background: #FFF9ED;
+    border: 2px solid #633C25;
+    border-radius: 20px 5px 20px 5px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 8px 8px 0 #E7B13E;
+}
+
+.pagina-admin-pedido form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.pagina-admin-pedido label {
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.pagina-admin-pedido input,
+.pagina-admin-pedido select {
+    width: 100%;
+    padding: 13px 15px;
+    border: 2px solid #D9C6A7;
+    border-radius: 10px;
+    background: #F7EAD0;
+    color: #633C25;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    outline: none;
+    transition: .3s;
+}
+
+.pagina-admin-pedido input:focus,
+.pagina-admin-pedido select:focus {
+    border-color: #397F79;
+    box-shadow: 0 0 0 3px rgba(57, 127, 121, .15);
+}
+
+/* BOTÕES */
+
+.pagina-admin-pedido button {
+    border: none;
+    border-radius: 25px;
+    background: #D9362B;
+    color: white;
+    padding: 14px 22px;
+    margin-top: 18px;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.pagina-admin-pedido button:hover {
+    background: #397F79;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 0 #633C25;
+}
+
+/* RESULTADOS E LISTAGEM */
+
+#resultado,
+#lista_pedidos {
+    margin-top: 25px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.pagina-admin-pedido .card h3 {
+    color: #397F79;
+    margin-bottom: 12px;
+}
+
+.pagina-admin-pedido .card h4 {
+    color: #D9362B;
+    margin-top: 15px;
+}
+
+.pagina-admin-pedido .card p {
+    margin: 7px 0;
+}
+
+@media (max-width: 600px) {
+    .sub-menu-pedidos {
+        gap: 6px;
+        padding: 15px 10px;
+    }
+
+    .sub-menu-pedidos a {
+        font-size: 12px;
+        padding: 8px 11px;
+    }
+
+    .pagina-admin-pedido {
+        width: 92%;
+        margin: 35px auto 55px;
+    }
+
+    .pagina-admin-pedido form,
+    .pagina-admin-pedido .card {
+        padding: 22px;
+    }
+}

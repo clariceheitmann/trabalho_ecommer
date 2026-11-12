@@ -5,23 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Excluir usuário | Analog Dreams</title>
-    <link rel="stylesheet" href="../../css/principal.css">
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/usuario-admin.css">
     <script src="../../js/usuarios/usuario_excluir.js" defer></script>
 </head>
 <body>
-    <main class="container">
-        <h1>Excluir usuário</h1>
 
-        <p>Informe o código do usuário que deseja excluir.</p>
+    <header class="topo">
+        <a href="../../index.html" class="logo">
+            <span class="logo-disco">♫</span>
+            <span>Analog Dreams</span>
+        </a>
+        <nav class="menu">
+            <a href="../../index.html">Início</a>
+            <a href="../produto/produtos.html">Produtos</a>
+            <a href="../carrinho.html">Carrinho</a>
+            <a href="../perfil.html">Minha conta</a>
+            <a href="../historico.html">Pedidos</a>
+            <a href="../admin.html" class="ativo">Administração</a>
+        </nav>
+    </header>
+
+    <nav class="sub-menu-usuarios">
+        <a href="usuario_cadastrar.html">Cadastrar</a>
+        <a href="usuario_listar.html">Listar</a>
+        <a href="usuario_consultar_cod.html">Consultar código</a>
+        <a href="usuario_consultar_nome.html">Consultar nome</a>
+        <a href="usuario_atualizar.html">Atualizar</a>
+        <a href="usuario_atualizar_parcial.html">Atualização parcial</a>
+        <a href="usuario_excluir.html" class="ativo">Excluir</a>
+    </nav>
+
+    <main class="pagina-admin-usuario">
+        <h1>Excluir usuário</h1>
+        <p>Informe o código do usuário que deseja remover do sistema.</p>
 
         <form id="formExcluir">
             <label for="id">Código do usuário:</label>
             <input type="number" id="id" min="1" required>
-
             <button type="submit">Excluir usuário</button>
         </form>
 
         <p id="mensagem"></p>
     </main>
+
+    <footer>
+        <h2>♫ Analog Dreams</h2>
+        <p>Sua loja de música física.</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com música e nostalgia ✿</span><br>
+        <a href="https://github.com/clariceheitmann" target="_blank"
+           rel="noopener noreferrer" class="github-link">✿ Meu GitHub</a>
+    </footer>
+
 </body>
 </html>

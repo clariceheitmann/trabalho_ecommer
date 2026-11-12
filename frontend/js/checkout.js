@@ -11,7 +11,7 @@ if (carrinho.length === 0) {
 
         <br>
 
-        <a href="produtos.html">
+        <a href="produto/produtos.html">
             Voltar para produtos
         </a>
     `
@@ -274,7 +274,7 @@ formulario.addEventListener('submit', async (event) => {
         alert('Compra realizada com sucesso! 🎵')
 
 
-        window.location.href = 'produtos.html'
+        window.location.href = 'produto/produtos.html'
 
 
     } catch (erro) {

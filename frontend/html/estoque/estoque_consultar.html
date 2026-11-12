@@ -5,30 +5,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultar Estoque | Analog Dreams</title>
-    <link rel="stylesheet" href="../../css/principal.css">
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/estoque-admin.css">
     <script src="../../js/estoque/estoque_consultar.js" defer></script>
 </head>
 <body>
 
-    <nav>
-        <h2>Analog Dreams</h2>
-        <div>
+    <header class="topo">
+        <a href="../../index.html" class="logo">
+            <span class="logo-disco">♫</span>
+            <span>Analog Dreams</span>
+        </a>
+
+        <nav class="menu">
             <a href="../../index.html">Início</a>
-            <a href="estoque.html">Estoque</a>
-        </div>
+            <a href="../produto/produtos.html">Produtos</a>
+            <a href="../carrinho.html">Carrinho</a>
+            <a href="../perfil.html">Minha conta</a>
+            <a href="../historico.html">Pedidos</a>
+        </nav>
+
+        <a href="../admin.html" class="admin-link">Administração</a>
+    </header>
+
+    <nav class="sub-menu-estoque">
+        <a href="estoque_listar.html">Listar</a>
+        <a href="estoque_cadastrar.html">Cadastrar</a>
+        <a href="estoque_consultar.html" class="ativo">Consultar</a>
+        <a href="estoque_atualizar.html">Atualizar</a>
+        <a href="estoque_excluir.html">Excluir</a>
     </nav>
 
-    <main>
-        <section>
-            <h1>Consultar Estoque</h1>
+    <main class="pagina-admin-estoque">
+        <h1>Consultar Estoque</h1>
+        <p class="descricao-pagina">
+            Pesquise um estoque pelo seu código de identificação.
+        </p>
 
+        <section class="painel">
             <label for="codigo">Código do estoque:</label>
             <input type="number" id="codigo" min="1">
 
             <button type="button" id="btnBuscar">Buscar</button>
 
             <p id="mensagem"></p>
+        </section>
 
+        <div class="tabela-scroll">
             <table>
                 <thead>
                     <tr>
@@ -37,16 +60,18 @@
                         <th>Quantidade</th>
                     </tr>
                 </thead>
-
                 <tbody id="listaEstoque"></tbody>
             </table>
-        </section>
+        </div>
     </main>
 
     <footer>
-        <p>Analog Dreams</p>
-        <p>Sua loja de música física</p>
+        <h2>♫ Analog Dreams</h2>
+        <p>Sua loja de música física.</p>
         <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com música e nostalgia ✿</span><br>
+        <a href="https://github.com/clariceheitmann" target="_blank"
+           rel="noopener noreferrer" class="github-link">✿ Meu GitHub</a>
     </footer>
 
 </body>
