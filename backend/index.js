@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -15,8 +16,7 @@ const verificarToken = require('./middleware/auth.middleware')
 
 require('./models/rel')
 
-const hostname = 'localhost'
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 const conn = require('./db/conn')
 
 app.use(express.urlencoded({ extended: true }))
@@ -149,11 +149,9 @@ app.get('/', (req, res) => {
 conn.sync()
     .then(() => {
 
-        app.listen(PORT, hostname, () => {
+        app.listen(PORT, '0.0.0.0', () => {
 
-            console.log(
-                `Aplicação rodando em: http://${hostname}:${PORT}`
-            )
+            console.log(`Aplicação rodando na porta ${PORT}`)
 
         })
 
