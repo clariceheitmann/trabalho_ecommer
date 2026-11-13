@@ -1,0 +1,116 @@
+
+body {
+    font-family: Georgia, serif;
+    background: #F7EAD0;
+    color: #633C25;
+}
+
+/* CONTEÚDO PRINCIPAL */
+
+.painel-admin {
+    width: 90%;
+    max-width: 1150px;
+    margin: 55px auto;
+}
+
+/* INTRODUÇÃO */
+
+.introducao-admin {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.detalhe-retro {
+    color: #D9362B;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.introducao-admin h1 {
+    font-size: clamp(30px, 5vw, 46px);
+    margin: 15px 0;
+}
+
+.introducao-admin p {
+    color: #80634C;
+    line-height: 1.7;
+}
+
+/* CARTÕES DOS MÓDULOS */
+
+.modulos-admin {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card-modulo {
+    background: #FFF9ED;
+    border: 2px solid #633C25;
+    border-radius: 20px 5px 20px 5px;
+    padding: 28px;
+    box-shadow: 6px 6px 0 #E7B13E;
+    transition: .3s;
+}
+
+.card-modulo:hover {
+    transform: translateY(-6px);
+    box-shadow: 9px 10px 0 #397F79;
+}
+
+.icone-modulo {
+    font-size: 35px;
+    color: #D9362B;
+}
+
+.card-modulo h2 {
+    margin: 15px 0 10px;
+    color: #633C25;
+}
+
+.card-modulo p {
+    color: #80634C;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 45px;
+}
+
+.acessar-modulo {
+    display: inline-block;
+    margin-top: 20px;
+    color: #397F79;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* FRASE FINAL */
+
+.frase-final {
+    text-align: center;
+    margin: 55px 0 15px;
+    color: #80634C;
+    font-style: italic;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 850px) {
+    .modulos-admin {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .modulos-admin {
+        grid-template-columns: 1fr;
+    }
+
+    .painel-admin {
+        margin: 35px auto;
+    }
+
+    .card-modulo {
+        padding: 23px;
+    }
+}

@@ -1,0 +1,88 @@
+
+body {
+    font-family: Georgia, serif;
+    background: #F7EAD0;
+    color: #633C25;
+}
+
+.pagina-relatorios {
+    width: 90%;
+    max-width: 1100px;
+    margin: 50px auto 75px;
+}
+
+.cabecalho-relatorios {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.cabecalho-relatorios span {
+    color: #D9362B;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.cabecalho-relatorios h1 {
+    font-size: 42px;
+    margin: 15px 0;
+}
+
+.cabecalho-relatorios p {
+    color: #80634C;
+}
+
+.area-relatorio {
+    background: #FFF9ED;
+    border: 2px solid #633C25;
+    border-radius: 20px 5px 20px 5px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 7px 7px 0 #E7B13E;
+}
+
+.area-relatorio h2 {
+    margin-bottom: 10px;
+}
+
+.area-relatorio > p {
+    color: #80634C;
+    margin-bottom: 25px;
+}
+
+.grafico {
+    position: relative;
+    width: 100%;
+    height: 350px;
+}
+
+.grafico canvas {
+    min-height: 100%;
+}
+
+#resumoVendas,
+#resumoEstoque {
+    margin-top: 25px;
+    line-height: 1.8;
+}
+
+@media(max-width: 600px) {
+
+    .pagina-relatorios {
+        width: 92%;
+        margin: 35px auto;
+    }
+
+    .area-relatorio {
+        padding: 18px;
+    }
+
+    .grafico {
+        height: 280px;
+    }
+
+    .cabecalho-relatorios h1 {
+        font-size: 32px;
+    }
+
+}

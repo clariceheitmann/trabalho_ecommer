@@ -1,19 +1,23 @@
+
 const Pedido = require('../models/Pedido')
 const ItemPedido = require('../models/ItemPedido')
 const Produto = require('../models/Produto')
 const Estoque = require('../models/Estoque')
 
-
+// ======================================================
 // RELATÓRIO DE VENDAS
+// ======================================================
 
 const vendas = async (req, res) => {
 
     try {
 
         const pedidos = await Pedido.findAll({
+
             where: {
                 status: 'PAGO'
             },
+
             include: [
                 {
                     model: ItemPedido,
@@ -25,9 +29,11 @@ const vendas = async (req, res) => {
                         }
                     ]
                 }
-            ]
-        })
+            ],
 
+            order: [['data_pedido', 'ASC']]
+
+        })
 
         const resultado = pedidos.map(pedido => ({
 
@@ -39,7 +45,9 @@ const vendas = async (req, res) => {
 
             itens: pedido.itens.map(item => ({
 
-                produto: item.produto.nome,
+                produto: item.produto
+                    ? item.produto.album
+                    : 'Produto não encontrado',
 
                 quantidade: item.quantidade,
 
@@ -49,9 +57,7 @@ const vendas = async (req, res) => {
 
         }))
 
-
         res.status(200).json(resultado)
-
 
     } catch (err) {
 
@@ -66,7 +72,9 @@ const vendas = async (req, res) => {
 }
 
 
+// ======================================================
 // RELATÓRIO DE ESTOQUE
+// ======================================================
 
 const estoque = async (req, res) => {
 
@@ -79,16 +87,17 @@ const estoque = async (req, res) => {
                     model: Estoque,
                     as: 'estoque'
                 }
-            ]
+            ],
+
+            order: [['nome', 'ASC']]
 
         })
-
 
         const resultado = produtos.map(produto => ({
 
             id: produto.id,
 
-            nome: produto.nome,
+            nome: produto.album,
 
             artista: produto.artista,
 
@@ -100,9 +109,7 @@ const estoque = async (req, res) => {
 
         }))
 
-
         res.status(200).json(resultado)
-
 
     } catch (err) {
 

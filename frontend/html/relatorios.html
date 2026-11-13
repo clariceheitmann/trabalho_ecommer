@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Relatórios | Analog Dreams</title>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/relatorios.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/relatorios.js" defer></script>
+</head>
+
+<body>
+
+    <header class="topo">
+
+        <a href="../index.html" class="logo">
+            <span class="logo-disco">♫</span>
+            <span>Analog Dreams</span>
+        </a>
+
+        <nav class="menu">
+            <a href="../index.html">Início</a>
+            <a href="produto/produtos.html">Produtos</a>
+            <a href="carrinho.html">Carrinho</a>
+            <a href="historico.html">Pedidos</a>
+        </nav>
+
+        <a href="admin.html" class="admin-link">
+            Administração
+        </a>
+
+    </header>
+
+    <main class="pagina-relatorios">
+
+        <section class="cabecalho-relatorios">
+
+            <span>♫ ANALYTICS DA LOJA ♫</span>
+
+            <h1>Relatórios</h1>
+
+            <p>
+                Acompanhe as vendas e o estoque da Analog Dreams.
+            </p>
+
+        </section>
+
+
+        <!-- RELATÓRIO DE VENDAS -->
+
+        <section class="area-relatorio">
+
+            <h2>✿ Relatório de vendas</h2>
+
+            <p>
+                Valores dos pedidos que foram pagos.
+            </p>
+
+            <div class="grafico">
+                <canvas id="graficoVendas"></canvas>
+            </div>
+
+            <div id="resumoVendas"></div>
+
+        </section>
+
+
+        <!-- RELATÓRIO DE ESTOQUE -->
+
+        <section class="area-relatorio">
+
+            <h2>♫ Relatório de estoque</h2>
+
+            <p>
+                Quantidade disponível de cada álbum.
+            </p>
+
+            <div class="grafico">
+                <canvas id="graficoEstoque"></canvas>
+            </div>
+
+            <div id="resumoEstoque"></div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <h2>♫ Analog Dreams</h2>
+        <p>Sua loja de música física.</p>
+        <p>Desenvolvido por Clarice Heitmann</p>
+        <span>Feito com música e nostalgia ✿</span>
+        <br>
+
+        <a href="https://github.com/clariceheitmann"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="github-link">
+            ✿ Meu GitHub
+        </a>
+    </footer>
+
+</body>
+</html>

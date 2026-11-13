@@ -420,113 +420,93 @@ document.addEventListener('keydown', function(evento) {
 // CARRINHO
 // ======================================================
 
+
 function adicionarAoCarrinho(id) {
 
-    const produto =
-        produtosEncontrados.find(
-            produto => produto.id === id
-        )
-
+    const produto = produtosEncontrados.find(
+        produto => produto.id === id
+    )
 
     if (!produto) {
-
-        alert(
-            'Produto não encontrado!'
-        )
-
+        alert('Produto não encontrado!')
         return
     }
 
-
-    const estoqueTotal =
-        produto.estoque
-            ? produto.estoque.quantidade
-            : 0
-
+    const estoqueTotal = produto.estoque
+        ? produto.estoque.quantidade
+        : 0
 
     if (estoqueTotal <= 0) {
-
-        alert(
-            'Este produto está sem estoque!'
-        )
-
+        alert('Este produto está sem estoque!')
         return
     }
 
+    let carrinho = JSON.parse(
+        localStorage.getItem('carrinho')
+    ) || []
 
-    let carrinho =
-        JSON.parse(
-            localStorage.getItem('carrinho')
-        ) || []
+    const produtoExistente = carrinho.find(
+        item => item.id === produto.id
+    )
 
-
-    const produtoExistente =
-        carrinho.find(
-            item => item.id === produto.id
-        )
-
-
-    const quantidadeNoCarrinho =
-        produtoExistente
-            ? produtoExistente.quantidade
-            : 0
-
+    const quantidadeNoCarrinho = produtoExistente
+        ? produtoExistente.quantidade
+        : 0
 
     const estoqueDisponivel =
-        estoqueTotal -
-        quantidadeNoCarrinho
-
+        estoqueTotal - quantidadeNoCarrinho
 
     if (estoqueDisponivel <= 0) {
-
-        alert(
-            'Você já adicionou todo o estoque disponível ao carrinho!'
-        )
-
+        alert('Você já adicionou todo o estoque disponível ao carrinho!')
         return
     }
 
+    // Prepara o caminho da imagem
+    let caminhoImagem = produto.imagem
+
+    if (
+        caminhoImagem &&
+        (
+            caminhoImagem.startsWith('../imagens/') ||
+            caminhoImagem.startsWith('./imagens/')
+        )
+    ) {
+        caminhoImagem = caminhoImagem.replace(
+            /^(\.\.\/|\.\/)/,
+            ''
+        )
+
+        caminhoImagem = `${baseUrl}/${caminhoImagem}`
+    }
 
     if (produtoExistente) {
 
         produtoExistente.quantidade++
+        produtoExistente.imagem = caminhoImagem
 
     } else {
 
         carrinho.push({
-
             id: produto.id,
-
             nome: produto.nome,
-
             artista: produto.artista,
-
             album: produto.album,
-
             formato: produto.formato,
-
-            preco: Number(
-                produto.preco
-            ),
-
+            preco: Number(produto.preco),
+            imagem: caminhoImagem,
             quantidade: 1
-
         })
 
     }
-
 
     localStorage.setItem(
         'carrinho',
         JSON.stringify(carrinho)
     )
 
-
-    alert(
-        `${produto.nome} foi adicionado ao carrinho!`
-    )
-
+    alert(`${produto.nome} foi adicionado ao carrinho!`)
 }
+
 
 
 function preencherGeneros() {
