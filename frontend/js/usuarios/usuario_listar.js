@@ -8,6 +8,54 @@ const mensagem = document.getElementById('mensagem')
 
 btnListar.addEventListener('click', listarUsuarios)
 
+function criarTabelaUsuario(usuario) {
+    const tabela = document.createElement('table')
+    tabela.className = 'tabela-usuario'
+
+    const campos = [
+        ['Código', usuario.id],
+        ['Nome', usuario.nome],
+        ['Sobrenome', usuario.sobreNome],
+        ['Idade', usuario.idade],
+        ['E-mail', usuario.email],
+        ['Telefone', usuario.telefone],
+        ['CPF', usuario.cpf],
+        ['CEP', usuario.cep],
+        ['Rua', usuario.rua],
+        ['Número', usuario.numero],
+        ['Bairro', usuario.bairro],
+        ['Cidade', usuario.cidade],
+        ['Estado', usuario.estado]
+    ]
+
+    tabela.innerHTML = `
+        <thead>
+            <tr>
+                <th>Campo</th>
+                <th>Informação</th>
+            </tr>
+        </thead>
+    `
+
+    const tbody = document.createElement('tbody')
+
+    campos.forEach(([nome, valor]) => {
+        const linha = document.createElement('tr')
+        const campo = document.createElement('td')
+        const informacao = document.createElement('td')
+
+        campo.textContent = nome
+        informacao.textContent = valor ?? '-'
+
+        linha.append(campo, informacao)
+        tbody.appendChild(linha)
+    })
+
+    tabela.appendChild(tbody)
+
+    return tabela
+}
+
 async function listarUsuarios() {
     if (!token) {
         mensagem.textContent = 'Faça login para continuar.'
@@ -29,31 +77,12 @@ async function listarUsuarios() {
         tabela.replaceChildren()
 
         if (dados.length === 0) {
-            tabela.innerHTML =
-                '<tr><td colspan="6">Nenhum usuário cadastrado.</td></tr>'
-            mensagem.textContent = ''
+            mensagem.textContent = 'Nenhum usuário cadastrado.'
             return
         }
 
         dados.forEach(usuario => {
-            const linha = document.createElement('tr')
-
-            const valores = [
-                usuario.id,
-                usuario.nome,
-                usuario.sobreNome,
-                usuario.email,
-                usuario.telefone,
-                usuario.cpf
-            ]
-
-            valores.forEach(valor => {
-                const celula = document.createElement('td')
-                celula.textContent = valor ?? ''
-                linha.appendChild(celula)
-            })
-
-            tabela.appendChild(linha)
+            tabela.appendChild(criarTabelaUsuario(usuario))
         })
 
         mensagem.textContent = `${dados.length} usuário(s) encontrado(s).`

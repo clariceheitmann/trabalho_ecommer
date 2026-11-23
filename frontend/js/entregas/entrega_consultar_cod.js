@@ -1,4 +1,7 @@
 
+const baseUrl = 'http://localhost:3000'
+const token = localStorage.getItem('token')
+
 const btnConsultar = document.getElementById('btnConsultar')
 const resultado = document.getElementById('resultado')
 const mensagem = document.getElementById('mensagem')
@@ -8,7 +11,7 @@ btnConsultar.addEventListener('click', consultarEntrega)
 async function consultarEntrega() {
     const id = document.getElementById('id').value
 
-    resultado.innerHTML = ''
+    resultado.replaceChildren()
     mensagem.textContent = ''
 
     if (!id || Number(id) < 1) {
@@ -17,7 +20,12 @@ async function consultarEntrega() {
     }
 
     try {
-        const resposta = await fetch(`http://localhost:3000/entrega/${id}`)
+        const resposta = await fetch(`${baseUrl}/entrega/${id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+
         const entrega = await resposta.json()
 
         if (!resposta.ok) {
@@ -25,21 +33,27 @@ async function consultarEntrega() {
             return
         }
 
-        const campos = {
-            'Código': entrega.id,
-            'Pedido': entrega.pedido_id,
-            'Endereço': entrega.endereco,
-            'Código de rastreio': entrega.codigo_rastreio || '-',
-            'Status': entrega.status,
-            'Data de envio': formatarData(entrega.data_envio),
-            'Data de entrega': formatarData(entrega.data_entrega)
-        }
+        const linha = document.createElement('tr')
 
-        Object.entries(campos).forEach(([nome, valor]) => {
-            const paragrafo = document.createElement('p')
-            paragrafo.textContent = `${nome}: ${valor}`
-            resultado.appendChild(paragrafo)
+        const valores = [
+            entrega.id,
+            entrega.pedido_id,
+            entrega.endereco,
+            entrega.codigo_rastreio || '-',
+            entrega.status,
+            formatarData(entrega.data_envio),
+            formatarData(entrega.data_entrega)
+        ]
+
+        valores.forEach(valor => {
+            const celula = document.createElement('td')
+            celula.textContent = valor ?? '-'
+            linha.appendChild(celula)
         })
+
+        resultado.appendChild(linha)
+        mensagem.textContent = 'Entrega encontrada!'
+
     } catch (erro) {
         console.error(erro)
         mensagem.textContent = 'Não foi possível conectar ao servidor.'

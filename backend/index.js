@@ -1,4 +1,3 @@
-require('dotenv').config()
 const express = require('express')
 const app = express()
 const cors = require('cors')
@@ -16,7 +15,7 @@ const verificarToken = require('./middleware/auth.middleware')
 
 require('./models/rel')
 
-const PORT = process.env.PORT || 3000
+const PORT = 3000
 const conn = require('./db/conn')
 
 app.use(express.urlencoded({ extended: true }))
@@ -115,6 +114,7 @@ app.get('/entregas', verificarToken, entregaController.listar)
 app.get('/entrega/:id', verificarToken, entregaController.consultarPorCod)
 app.put('/entrega/:id', verificarToken, entregaController.atualizar)
 app.patch('/entrega/:id', verificarToken, entregaController.atualizarParcial)
+app.delete('/entrega/:id', verificarToken, entregaController.excluir)
 
 //CATEGORIAS
 app.post('/categoria', verificarToken, categoriaController.cadastrar)
@@ -148,19 +148,13 @@ app.get('/', (req, res) => {
 
 conn.sync()
     .then(() => {
-
-        app.listen(PORT, '0.0.0.0', () => {
-
+        app.listen(PORT, () => {
             console.log(`Aplicação rodando na porta ${PORT}`)
-
         })
-
     })
     .catch((err) => {
-
         console.error(
             'Erro ao se conectar com o banco de dados!',
             err
         )
-
     })

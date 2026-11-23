@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt')
 const cadastrar = async (req, res) => {
 
     const valores = req.body
+    
     console.log('CPF recebido:', valores.cpf)
 
     try {
@@ -24,14 +25,14 @@ const cadastrar = async (req, res) => {
             })
         }
 
+        const cpfLimpo = valores.cpf.replace(/\D/g, '')
 
-        if (!validarCPF(valores.cpf)) {
 
-            return res.status(400).json({
-                message: 'CPF inválido!'
-            })
-
-        }
+        if (!validarCPF(cpfLimpo)) {
+    return res.status(400).json({
+        message: 'CPF inválido!'
+    })
+}
 
 
         const emailExiste = await Usuario.findOne({
@@ -50,10 +51,10 @@ const cadastrar = async (req, res) => {
 
 
         const cpfExiste = await Usuario.findOne({
-            where: {
-                cpf: valores.cpf.replace(/\D/g, '')
-            }
-        })
+    where: {
+        cpf: cpfLimpo
+    }
+})
 
         if (cpfExiste) {
 
@@ -87,7 +88,7 @@ const cadastrar = async (req, res) => {
 
             telefone: valores.telefone,
 
-            cpf: valores.cpf.replace(/\D/g, ''),
+            cpf: cpfLimpo,
 
             cep: valores.cep.replace(/\D/g, ''),
 

@@ -1,3 +1,5 @@
+const baseUrl = 'http://localhost:3000'
+const token = localStorage.getItem('token')
 
 const form = document.getElementById('formEntrega')
 const mensagem = document.getElementById('mensagem')

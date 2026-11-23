@@ -3,7 +3,7 @@ const Usuario = require('../models/Usuario')
 const ItemPedido = require('../models/ItemPedido')
 const Estoque = require('../models/Estoque')
 
-const cadastrar = async (req, res) => {
+const cadastrar = async (req, res) => {    
 
     const { valor_total } = req.body
 
@@ -17,6 +17,9 @@ const cadastrar = async (req, res) => {
 
         // O ID do usuário vem do token JWT
         const usuario_id = req.usuario.id
+
+        console.log('Dados do token:', req.usuario)
+        console.log('ID do usuário:', usuario_id)
 
         const usuario = await Usuario.findByPk(usuario_id)
 

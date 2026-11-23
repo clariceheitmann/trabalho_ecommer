@@ -39,7 +39,7 @@ body {
 /* CONTEÚDO */
 
 .pagina-admin-entrega {
-    width: min(90%, 850px);
+    width: min(95%, 1100px);
     min-height: 350px;
     margin: 55px auto 75px;
 }
@@ -129,31 +129,15 @@ body {
 
 /* MENSAGENS E RESULTADOS */
 
-.pagina-admin-entrega #mensagem,
-.pagina-admin-entrega #resultado {
+.pagina-admin-entrega #mensagem {
     margin-top: 22px;
     line-height: 1.8;
-    overflow-wrap: anywhere;
-}
-
-.pagina-admin-entrega #resultado {
-    background: #FFF9ED;
-    border: 2px solid #D9C6A7;
-    border-radius: 12px;
-    padding: 22px;
-    margin-top: 25px;
-}
-
-.pagina-admin-entrega #resultado p {
-    padding: 8px 0;
-    border-bottom: 1px solid #D9C6A7;
 }
 
 /* TABELAS */
 
 .tabela-scroll {
     width: 100%;
-    overflow-x: auto;
     margin-top: 25px;
     background: #FFF9ED;
     border-radius: 12px;
@@ -162,16 +146,19 @@ body {
 
 .pagina-admin-entrega table {
     width: 100%;
-    min-width: 900px;
+    table-layout: fixed;
     border-collapse: collapse;
     background: #FFF9ED;
+    border-radius: 12px;
+    overflow: hidden;
 }
 
 .pagina-admin-entrega th,
 .pagina-admin-entrega td {
-    padding: 13px;
+    padding: 13px 9px;
     border: 1px solid #D9C6A7;
     text-align: left;
+    overflow-wrap: anywhere;
 }
 
 .pagina-admin-entrega th {

@@ -22,6 +22,19 @@ Content-Type: application/json
     "numero": "100"
 }
 
+### ==========================================
+### login
+### ==========================================
+
+# @name loginReq
+POST {{baseUrl}}/login
+Content-Type: application/json
+
+{
+    "email": "clarice@email.com",
+    "senha": "123456"
+}
+
 ### 2. LISTAR USUÁRIOS (PRIVADO)
 GET {{baseUrl}}/usuarios
 Authorization: Bearer {{loginReq.response.body.token}}
@@ -31,7 +44,7 @@ GET {{baseUrl}}/usuario/1
 Authorization: Bearer {{loginReq.response.body.token}}
 
 ### 4. CONSULTAR USUÁRIO POR NOME (PRIVADO)
-GET {{baseUrl}}/usuario/buscar/Clarice Atualizada
+GET {{baseUrl}}/usuario/buscar/Clarice
 Authorization: Bearer {{loginReq.response.body.token}}
 
 ### 5. ATUALIZAR USUÁRIO (PRIVADO)
@@ -40,7 +53,7 @@ Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
 
 {
-    "nome": "Clarice Atualizada",
+    "nome": "Clarice",
     "sobreNome": "Heitmann",
     "idade": 19,
     "telefone": "47988888888"
@@ -63,22 +76,6 @@ Authorization: Bearer {{loginReq.response.body.token}}
 
 
 ### ==========================================
-### login
-### ==========================================
-
-# @name loginReq
-POST {{baseUrl}}/login
-Content-Type: application/json
-
-{
-    "email": "clarice@email.com",
-    "senha": "123456"
-}
-
-
-
-
-### ==========================================
 ### CATEGORIAS
 ### ==========================================
 
@@ -89,7 +86,7 @@ Authorization: Bearer {{loginReq.response.body.token}}
 Content-Type: application/json
 
 {
-    "nome": "Rockaaa",
+    "nome": "Rock",
     "descricao": "Músicas do gênero rock"
 }
 

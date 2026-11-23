@@ -17,7 +17,11 @@ async function carregarProdutos() {
 
     try {
 
-        const resposta = await fetch(`${baseUrl}/produtos`)
+        const resposta = await fetch(`${baseUrl}/produtos`, {
+    headers: {
+        'Authorization': `Bearer ${token}`
+    }
+})
         const produtos = await resposta.json()
 
         if (!resposta.ok) {

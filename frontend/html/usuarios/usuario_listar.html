@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,26 +9,27 @@
     <link rel="stylesheet" href="../../css/usuario-admin.css">
     <script src="../../js/usuarios/usuario_listar.js" defer></script>
 </head>
+
 <body>
 
     <header class="topo">
-    <a href="../../index.html" class="logo">
-        <span class="logo-disco">♫</span>
-        <span>Analog Dreams</span>
-    </a>
+        <a href="../../index.html" class="logo">
+            <span class="logo-disco">♫</span>
+            <span>Analog Dreams</span>
+        </a>
 
-    <nav class="menu">
-        <a href="../../index.html">Início</a>
-        <a href="../produto/produtos.html">Produtos</a>
-        <a href="../carrinho.html">Carrinho</a>
-        <a href="../historico.html">Pedidos</a>
-        <a href="../perfil.html">Minha conta</a>
-    </nav>
+        <nav class="menu">
+            <a href="../../index.html">Início</a>
+            <a href="../produto/produtos.html">Produtos</a>
+            <a href="../carrinho.html">Carrinho</a>
+            <a href="../historico.html">Pedidos</a>
+            <a href="../perfil.html">Minha conta</a>
+        </nav>
 
-    <a href="../admin.html" class="admin-link">
-        Administração
-    </a>
-</header>
+        <a href="../admin.html" class="admin-link">
+            Administração
+        </a>
+    </header>
 
     <nav class="sub-menu-usuarios">
         <a href="usuario_cadastrar.html">Cadastrar</a>
@@ -45,29 +46,11 @@
         <p>Confira os usuários registrados na Analog Dreams.</p>
 
         <section>
-            <button type="button" id="btnListar">Carregar usuários</button>
-            <p id="mensagem"></p>
+    <button type="button" id="btnListar">Carregar usuários</button>
+    <p id="mensagem"></p>
 
-            <div style="overflow-x: auto;">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Código</th>
-                            <th>Nome</th>
-                            <th>Sobrenome</th>
-                            <th>E-mail</th>
-                            <th>Telefone</th>
-                            <th>CPF</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tabelaUsuarios">
-                        <tr>
-                            <td colspan="6">Clique em "Carregar usuários".</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
+    <div id="tabelaUsuarios" class="lista-tabelas-usuarios"></div>
+</section>
     </main>
 
     <footer>
@@ -75,9 +58,10 @@
         <p>Sua loja de música física.</p>
         <p>Desenvolvido por Clarice Heitmann</p>
         <span>Feito com música e nostalgia ✿</span><br>
-        <a href="https://github.com/clariceheitmann" target="_blank"
-           rel="noopener noreferrer" class="github-link">✿ Meu GitHub</a>
+        <a href="https://github.com/clariceheitmann" target="_blank" rel="noopener noreferrer" class="github-link">✿ Meu
+            GitHub</a>
     </footer>
 
 </body>
+
 </html>

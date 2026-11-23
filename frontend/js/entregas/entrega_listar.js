@@ -1,4 +1,7 @@
 
+const baseUrl = 'http://localhost:3000'
+const token = localStorage.getItem('token')
+
 const btnListar = document.getElementById('btnListar')
 const tabela = document.getElementById('tabelaEntregas')
 const mensagem = document.getElementById('mensagem')
@@ -6,11 +9,16 @@ const mensagem = document.getElementById('mensagem')
 btnListar.addEventListener('click', listarEntregas)
 
 async function listarEntregas() {
-    tabela.innerHTML = ''
+    tabela.replaceChildren()
     mensagem.textContent = ''
 
     try {
-        const resposta = await fetch('http://localhost:3000/entregas')
+        const resposta = await fetch(`${baseUrl}/entregas`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+
         const entregas = await resposta.json()
 
         if (!resposta.ok) {
@@ -38,12 +46,15 @@ async function listarEntregas() {
 
             valores.forEach(valor => {
                 const celula = document.createElement('td')
-                celula.textContent = valor
+                celula.textContent = valor ?? '-'
                 linha.appendChild(celula)
             })
 
             tabela.appendChild(linha)
         })
+
+        mensagem.textContent = `${entregas.length} entrega(s) encontrada(s).`
+
     } catch (erro) {
         console.error(erro)
         mensagem.textContent = 'Não foi possível conectar ao servidor.'
