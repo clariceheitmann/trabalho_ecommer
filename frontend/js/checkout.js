@@ -123,18 +123,6 @@ formulario.addEventListener('submit', async (event) => {
 
     const endereco = `${rua}, ${numero} - ${bairro}, ${cidade} - ${estado}, CEP: ${cep}`
 
-
-    // Calcular o valor total
-
-    let total = 0
-
-    carrinho.forEach(produto => {
-
-        total += Number(produto.preco) * produto.quantidade
-
-    })
-
-
     try {
 
         // ==============================================
@@ -151,7 +139,10 @@ formulario.addEventListener('submit', async (event) => {
             },
 
             body: JSON.stringify({
-                valor_total: total
+                itens: carrinho.map(produto => ({
+                    produto_id: produto.id,
+                    quantidade: produto.quantidade
+                }))
             })
 
         })
@@ -167,46 +158,6 @@ formulario.addEventListener('submit', async (event) => {
         }
 
         const pedidoId = dadosPedido.pedido.id
-
-
-        // ==============================================
-        // CADASTRAR ITENS DO PEDIDO
-        // ==============================================
-
-        for (const produto of carrinho) {
-
-            const respostaItem = await fetch(`${baseUrl}/itemPedido`, {
-
-                method: 'POST',
-
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-
-                body: JSON.stringify({
-
-                    pedido_id: pedidoId,
-
-                    produto_id: produto.id,
-
-                    quantidade: produto.quantidade
-
-                })
-
-            })
-
-            const dadosItem = await lerResposta(respostaItem)
-
-            if (!respostaItem.ok) {
-
-                alert(dadosItem.message || 'Erro ao cadastrar item do pedido.')
-
-                return
-
-            }
-
-        }
 
 
         // ==============================================

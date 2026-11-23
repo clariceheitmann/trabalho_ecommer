@@ -2,37 +2,106 @@ const Pedido = require('../models/Pedido')
 const Usuario = require('../models/Usuario')
 const ItemPedido = require('../models/ItemPedido')
 const Estoque = require('../models/Estoque')
+const Produto = require('../models/Produto')
+const conn = require('../db/conn')
 
-const cadastrar = async (req, res) => {    
+const cadastrar = async (req, res) => {
 
-    const { valor_total } = req.body
+    const { itens } = req.body
 
-    if (valor_total === undefined) {
+    if (!Array.isArray(itens) || itens.length === 0) {
         return res.status(400).json({
-            message: 'Valor total é obrigatório!'
+            message: 'Informe os produtos do pedido!'
         })
     }
 
+    const transacao = await conn.transaction()
+
     try {
 
-        // O ID do usuário vem do token JWT
         const usuario_id = req.usuario.id
 
-        console.log('Dados do token:', req.usuario)
-        console.log('ID do usuário:', usuario_id)
-
-        const usuario = await Usuario.findByPk(usuario_id)
+        const usuario = await Usuario.findByPk(usuario_id, {
+            transaction: transacao
+        })
 
         if (!usuario) {
+            await transacao.rollback()
+
             return res.status(404).json({
-                message: 'Usuario não encontrado!'
+                message: 'Usuário não encontrado!'
             })
         }
+
+        let totalCentavos = 0
+        const itensPedido = []
+
+        for (const item of itens) {
+
+            const produto_id = Number(item.produto_id)
+            const quantidade = Number(item.quantidade)
+
+            if (
+                !Number.isInteger(produto_id) ||
+                !Number.isInteger(quantidade) ||
+                produto_id <= 0 ||
+                quantidade <= 0
+            ) {
+                await transacao.rollback()
+
+                return res.status(400).json({
+                    message: 'Produto ou quantidade inválida!'
+                })
+            }
+
+            const produto = await Produto.findByPk(produto_id, {
+                transaction: transacao
+            })
+
+            if (!produto) {
+                await transacao.rollback()
+
+                return res.status(404).json({
+                    message: `Produto ${produto_id} não encontrado!`
+                })
+            }
+
+            const precoCentavos = Math.round(
+                Number(produto.preco) * 100
+            )
+
+            const subtotalCentavos = precoCentavos * quantidade
+
+            totalCentavos += subtotalCentavos
+
+            itensPedido.push({
+                produto_id,
+                quantidade,
+                preco_unitario: precoCentavos / 100,
+                subtotal: subtotalCentavos / 100
+            })
+
+        }
+
+        const valor_total = totalCentavos / 100
 
         const pedido = await Pedido.create({
             usuario_id,
             valor_total
+        }, {
+            transaction: transacao
         })
+
+        const itensComPedido = itensPedido.map(item => ({
+            ...item,
+            pedido_id: pedido.id
+        }))
+
+        await ItemPedido.bulkCreate(itensComPedido, {
+            transaction: transacao
+        })
+
+        await transacao.commit()
 
         res.status(201).json({
             message: 'Pedido cadastrado com sucesso!',
@@ -41,6 +110,8 @@ const cadastrar = async (req, res) => {
 
     } catch (err) {
 
+        await transacao.rollback()
+
         console.error('Erro ao cadastrar pedido!', err)
 
         res.status(500).json({
@@ -48,7 +119,6 @@ const cadastrar = async (req, res) => {
         })
     }
 }
-
 
 
 const listar = async (req, res) => {

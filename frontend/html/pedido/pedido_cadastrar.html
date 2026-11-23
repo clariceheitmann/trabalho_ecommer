@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="../../css/global.css">
     <link rel="stylesheet" href="../../css/pedido-admin.css">
 </head>
+
 <body>
 
     <header class="topo">
@@ -42,13 +44,26 @@
             Registre um novo pedido na sua loja.
         </p>
 
+
         <form id="form_pedido">
-            <label>Valor total:</label>
-            <input type="number" id="valor_total"
-                   step="0.01" min="0.01" required>
+
+            <label for="produto_id">Produto:</label>
+            <select id="produto_id" required>
+                <option value="">Selecione um produto</option>
+            </select>
+
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" min="1" value="1" required>
+
+            <button type="button" id="adicionar">Adicionar produto</button>
+
+            <h2>Produtos do pedido</h2>
+            <div id="lista_itens"></div>
 
             <button type="submit">Cadastrar pedido</button>
+
         </form>
+
     </main>
 
     <footer>
@@ -56,10 +71,11 @@
         <p>Sua loja de música física.</p>
         <p>Desenvolvido por Clarice Heitmann</p>
         <span>Feito com música e nostalgia ✿</span><br>
-        <a href="https://github.com/clariceheitmann" target="_blank"
-           rel="noopener noreferrer" class="github-link">✿ Meu GitHub</a>
+        <a href="https://github.com/clariceheitmann" target="_blank" rel="noopener noreferrer" class="github-link">✿ Meu
+            GitHub</a>
     </footer>
 
     <script src="../../js/pedido/pedido_cadastrar.js"></script>
 </body>
+
 </html>
