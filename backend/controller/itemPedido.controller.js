@@ -1,6 +1,20 @@
 const ItemPedido = require('../models/ItemPedido')
 const Pedido = require('../models/Pedido')
 const Produto = require('../models/Produto')
+const { Op } = require('sequelize')
+
+const buscarPedidoPermitido = async (req, pedido_id) => {
+
+    const where = {
+        id: pedido_id
+    }
+
+    if (req.usuario.tipo !== 'admin') {
+        where.usuario_id = req.usuario.id
+    }
+
+    return await Pedido.findOne({ where })
+}
 
 const cadastrar = async (req, res) => {
 
@@ -28,7 +42,7 @@ const cadastrar = async (req, res) => {
 
     try {
 
-        const pedido = await Pedido.findByPk(pedido_id)
+       const pedido = await buscarPedidoPermitido(req, pedido_id)
 
         if (!pedido) {
 
@@ -97,7 +111,31 @@ const listar = async (req, res) => {
 
     try {
 
-        const itens = await ItemPedido.findAll()
+        // Administrador pode listar todos os itens
+        if (req.usuario.tipo === 'admin') {
+
+            const itens = await ItemPedido.findAll()
+
+            return res.status(200).json(itens)
+        }
+
+        // Cliente busca somente seus pedidos
+        const pedidos = await Pedido.findAll({
+            where: {
+                usuario_id: req.usuario.id
+            },
+            attributes: ['id']
+        })
+
+        const idsPedidos = pedidos.map(pedido => pedido.id)
+
+        const itens = await ItemPedido.findAll({
+            where: {
+    pedido_id: {
+        [Op.in]: idsPedidos
+    }
+}
+        })
 
         res.status(200).json(itens)
 
@@ -120,11 +158,19 @@ const consultarPorCod = async (req, res) => {
 
         const item = await ItemPedido.findByPk(id)
 
-        if (!item) {
-            return res.status(404).json({
-                message: 'Item do pedido não encontrado!'
-            })
-        }
+if (!item) {
+    return res.status(404).json({
+        message: 'Item do pedido não encontrado!'
+    })
+}
+
+const pedido = await buscarPedidoPermitido(req, item.pedido_id)
+
+if (!pedido) {
+    return res.status(404).json({
+        message: 'Item do pedido não encontrado!'
+    })
+}
 
         res.status(200).json(item)
 
@@ -137,6 +183,7 @@ const consultarPorCod = async (req, res) => {
         })
     }
 }
+
 
 
 
@@ -158,6 +205,23 @@ const atualizar = async (req, res) => {
         if (!item) {
             return res.status(404).json({
                 message: 'Item do pedido não encontrado!'
+            })
+        }
+
+        const pedido = await buscarPedidoPermitido(req, item.pedido_id)
+
+        if (!pedido) {
+            return res.status(404).json({
+                message: 'Item do pedido não encontrado!'
+            })
+        }
+
+        if (
+            req.usuario.tipo !== 'admin' &&
+            pedido.status !== 'AGUARDANDO_PAGAMENTO'
+        ) {
+            return res.status(403).json({
+                message: 'Não é possível alterar itens deste pedido!'
             })
         }
 
@@ -184,6 +248,8 @@ const atualizar = async (req, res) => {
 }
 
 
+
+
 const excluir = async (req, res) => {
 
     const id = req.params.id
@@ -195,6 +261,23 @@ const excluir = async (req, res) => {
         if (!item) {
             return res.status(404).json({
                 message: 'Item do pedido não encontrado!'
+            })
+        }
+
+        const pedido = await buscarPedidoPermitido(req, item.pedido_id)
+
+        if (!pedido) {
+            return res.status(404).json({
+                message: 'Item do pedido não encontrado!'
+            })
+        }
+
+        if (
+            req.usuario.tipo !== 'admin' &&
+            pedido.status !== 'AGUARDANDO_PAGAMENTO'
+        ) {
+            return res.status(403).json({
+                message: 'Não é possível excluir itens deste pedido!'
             })
         }
 
@@ -217,6 +300,7 @@ const excluir = async (req, res) => {
         })
     }
 }
+
 
 
 module.exports = {

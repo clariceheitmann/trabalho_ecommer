@@ -12,6 +12,7 @@ const produtoController = require('./controller/produto.controller')
 const relatorioController = require('./controller/relatorio.controller')
 const usuarioController = require('./controller/usuario.controller')
 const verificarToken = require('./middleware/auth.middleware')
+const verificarAdmin = require('./middleware/admin.middleware')
 
 require('./models/rel')
 
@@ -55,27 +56,31 @@ app.get('/categoria/buscar/:nome', categoriaController.consultarPorNome)
 
 // LOGIN
 app.post('/login', loginController.login)
+app.post('/login/admin', loginController.loginAdmin)
 
 
 // =====================================================
 // ROTAS PRIVADAS
 // =====================================================
 
-//USUÁRIOS
-app.post('/usuario', usuarioController.cadastrar)
-app.get('/usuarios', verificarToken, usuarioController.listar)
+// USUÁRIOS
+// Somente administradores podem listar e pesquisar todos os usuários
+app.get('/usuarios', verificarToken, verificarAdmin, usuarioController.listar)
+app.get('/usuario/buscar/:nome', verificarToken, verificarAdmin, usuarioController.consultarPorNome)
+app.post('/admin/usuario', verificarToken, verificarAdmin, usuarioController.cadastrarAdmin)
+
+// Usuários autenticados podem acessar estas rotas,
+// mas o controller verificará se são donos da conta ou administradores
 app.get('/usuario/:id', verificarToken, usuarioController.consultarPorCod)
-app.get('/usuario/buscar/:nome', verificarToken, usuarioController.consultarPorNome)
 app.put('/usuario/:id', verificarToken, usuarioController.atualizar)
 app.patch('/usuario/:id', verificarToken, usuarioController.atualizarParcial)
 app.delete('/usuario/:id', verificarToken, usuarioController.excluir)
 
-
 // PRODUTOS
-app.post('/produto', verificarToken, produtoController.cadastrar)
-app.put('/produto/:id', verificarToken, produtoController.atualizar)
-app.patch('/produto/:id', verificarToken, produtoController.atualizarParcial)
-app.delete('/produto/:id', verificarToken, produtoController.excluir)
+app.post('/produto', verificarToken, verificarAdmin, produtoController.cadastrar)
+app.put('/produto/:id', verificarToken, verificarAdmin, produtoController.atualizar)
+app.patch('/produto/:id', verificarToken, verificarAdmin, produtoController.atualizarParcial)
+app.delete('/produto/:id', verificarToken, verificarAdmin, produtoController.excluir)
 
 
 // PEDIDOS
@@ -97,30 +102,30 @@ app.patch('/itemPedido/:id', verificarToken, itemPedidoController.atualizar)
 app.delete('/itemPedido/:id', verificarToken, itemPedidoController.excluir)
 
 // ESTOQUE
-app.post('/estoque', verificarToken, estoqueController.cadastrar)
-app.get('/estoques', verificarToken, estoqueController.listar)
-app.get('/estoque/:id', verificarToken, estoqueController.consultarPorCod)
-app.put('/estoque/:id', verificarToken, estoqueController.atualizar)
-app.delete('/estoque/:id', verificarToken, estoqueController.excluir)
+app.post('/estoque', verificarToken, verificarAdmin, estoqueController.cadastrar)
+app.get('/estoques', verificarToken, verificarAdmin, estoqueController.listar)
+app.get('/estoque/:id', verificarToken, verificarAdmin, estoqueController.consultarPorCod)
+app.put('/estoque/:id', verificarToken, verificarAdmin, estoqueController.atualizar)
+app.delete('/estoque/:id', verificarToken, verificarAdmin, estoqueController.excluir)
 
 // RELATÓRIOS
-app.get('/relatorios/vendas', verificarToken, relatorioController.vendas)
-app.get('/relatorios/estoque', verificarToken, relatorioController.estoque)
+app.get('/relatorios/vendas', verificarToken, verificarAdmin, relatorioController.vendas)
+app.get('/relatorios/estoque', verificarToken, verificarAdmin, relatorioController.estoque)
 
 
 // ENTREGAS
-app.post('/entrega', verificarToken, entregaController.cadastrar)
-app.get('/entregas', verificarToken, entregaController.listar)
-app.get('/entrega/:id', verificarToken, entregaController.consultarPorCod)
-app.put('/entrega/:id', verificarToken, entregaController.atualizar)
-app.patch('/entrega/:id', verificarToken, entregaController.atualizarParcial)
-app.delete('/entrega/:id', verificarToken, entregaController.excluir)
+app.post('/entrega', verificarToken, verificarAdmin, entregaController.cadastrar)
+app.get('/entregas', verificarToken, verificarAdmin, entregaController.listar)
+app.get('/entrega/:id', verificarToken, verificarAdmin, entregaController.consultarPorCod)
+app.put('/entrega/:id', verificarToken, verificarAdmin, entregaController.atualizar)
+app.patch('/entrega/:id', verificarToken, verificarAdmin, entregaController.atualizarParcial)
+app.delete('/entrega/:id', verificarToken, verificarAdmin, entregaController.excluir)
 
 //CATEGORIAS
-app.post('/categoria', verificarToken, categoriaController.cadastrar)
-app.put('/categoria/:id', verificarToken, categoriaController.atualizar)
-app.patch('/categoria/:id', verificarToken, categoriaController.atualizarParcial)
-app.delete('/categoria/:id', verificarToken, categoriaController.excluir)
+app.post('/categoria', verificarToken, verificarAdmin, categoriaController.cadastrar)
+app.put('/categoria/:id', verificarToken, verificarAdmin, categoriaController.atualizar)
+app.patch('/categoria/:id', verificarToken, verificarAdmin, categoriaController.atualizarParcial)
+app.delete('/categoria/:id', verificarToken, verificarAdmin, categoriaController.excluir)
 
 
 app.get(

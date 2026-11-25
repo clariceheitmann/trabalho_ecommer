@@ -1,6 +1,51 @@
 const Usuario = require('../models/Usuario')
 const bcrypt = require('bcrypt')
 
+const verificarPermissao = (req, id) => {
+    return req.usuario.tipo === 'admin' ||
+        Number(req.usuario.id) === Number(id)
+}
+
+const prepararValoresAtualizacao = async (req) => {
+
+    const camposPermitidos = [
+        'nome',
+        'sobreNome',
+        'idade',
+        'email',
+        'telefone',
+        'cpf',
+        'cep',
+        'rua',
+        'numero',
+        'bairro',
+        'cidade',
+        'estado'
+    ]
+
+    const valores = {}
+
+    camposPermitidos.forEach(campo => {
+        if (req.body[campo] !== undefined) {
+            valores[campo] = req.body[campo]
+        }
+    })
+
+    // A senha sempre será criptografada antes de ser salva
+    if (req.body.senha) {
+        valores.senha = await bcrypt.hash(req.body.senha, 10)
+    }
+
+    // Somente administradores podem alterar o tipo da conta
+    if (req.usuario.tipo === 'admin' && req.body.tipo !== undefined) {
+        if (['admin', 'usuario'].includes(req.body.tipo)) {
+            valores.tipo = req.body.tipo
+        }
+    }
+
+    return valores
+}
+
 const cadastrar = async (req, res) => {
 
     const valores = req.body
@@ -123,6 +168,99 @@ const cadastrar = async (req, res) => {
 }
 
 
+const cadastrarAdmin = async (req, res) => {
+
+    const valores = req.body
+
+    try {
+
+        if (
+            !valores.nome ||
+            !valores.sobreNome ||
+            !valores.idade ||
+            !valores.email ||
+            !valores.senha ||
+            !valores.telefone ||
+            !valores.cpf ||
+            !valores.cep ||
+            !valores.numero
+        ) {
+            return res.status(400).json({
+                message: 'Todos os campos obrigatórios devem ser preenchidos!'
+            })
+        }
+
+        const cpfLimpo = valores.cpf.replace(/\D/g, '')
+
+        if (!validarCPF(cpfLimpo)) {
+            return res.status(400).json({
+                message: 'CPF inválido!'
+            })
+        }
+
+        const emailExiste = await Usuario.findOne({
+            where: { email: valores.email }
+        })
+
+        if (emailExiste) {
+            return res.status(400).json({
+                message: 'Este e-mail já está cadastrado!'
+            })
+        }
+
+        const cpfExiste = await Usuario.findOne({
+            where: { cpf: cpfLimpo }
+        })
+
+        if (cpfExiste) {
+            return res.status(400).json({
+                message: 'Este CPF já está cadastrado!'
+            })
+        }
+
+        const endereco = await buscarCEP(valores.cep)
+
+        const senhaCriptografada = await bcrypt.hash(
+            valores.senha,
+            10
+        )
+
+        await Usuario.create({
+
+            nome: valores.nome,
+            sobreNome: valores.sobreNome,
+            idade: valores.idade,
+            email: valores.email,
+            senha: senhaCriptografada,
+            tipo: 'admin',
+            telefone: valores.telefone,
+            cpf: cpfLimpo,
+            cep: valores.cep.replace(/\D/g, ''),
+            rua: endereco.logradouro,
+            numero: valores.numero,
+            bairro: endereco.bairro,
+            cidade: endereco.localidade,
+            estado: endereco.uf
+
+        })
+
+        return res.status(201).json({
+            message: 'Administrador cadastrado com sucesso!'
+        })
+
+    } catch (err) {
+
+        console.error('Erro ao cadastrar administrador!', err)
+
+        return res.status(500).json({
+            message: 'Erro ao cadastrar administrador!'
+        })
+
+    }
+}
+
+
+
 const listar = async (req, res) => {
 
     try {
@@ -145,6 +283,12 @@ const listar = async (req, res) => {
 
 const consultarPorCod = async (req, res) => {
     const id = Number(req.params.id)
+
+    if (!verificarPermissao(req, id)) {
+    return res.status(403).json({
+        message: 'Você não tem permissão para acessar este usuário!'
+    })
+}
 
     try {
         // Busca o usuário pelo código, sem retornar a senha
@@ -173,9 +317,16 @@ const consultarPorCod = async (req, res) => {
 
 
 
+
 const consultarPorNome = async (req, res) => {
 
     const nome = req.params.nome
+
+    if (req.usuario.tipo !== 'admin') {
+        return res.status(403).json({
+            message: 'Acesso permitido somente para administradores!'
+        })
+    }
 
     try {
         const dados = await Usuario.findOne({
@@ -206,9 +357,16 @@ const consultarPorNome = async (req, res) => {
 
 
 
+
 const excluir = async (req, res) => {
 
     const id = req.params.id
+
+    if (!verificarPermissao(req, id)) {
+    return res.status(403).json({
+        message: 'Você não tem permissão para acessar este usuário!'
+    })
+}
 
     try {
         const dados = await Usuario.findByPk(id)
@@ -242,7 +400,12 @@ const excluir = async (req, res) => {
 
 const atualizar = async (req, res) => {
     const id = Number(req.params.id)
-    const valores = { ...req.body }
+
+    if (!verificarPermissao(req, id)) {
+    return res.status(403).json({
+        message: 'Você não tem permissão para acessar este usuário!'
+    })
+}
 
     try {
         // Procura o usuário que será atualizado
@@ -253,6 +416,8 @@ const atualizar = async (req, res) => {
                 message: 'Usuário não encontrado!'
             })
         }
+
+        const valores = await prepararValoresAtualizacao(req)
 
         await dados.update(valores)
 
@@ -277,7 +442,12 @@ const atualizar = async (req, res) => {
 
 const atualizarParcial = async (req, res) => {
     const id = Number(req.params.id)
-    const valores = { ...req.body }
+
+    if (!verificarPermissao(req, id)) {
+    return res.status(403).json({
+        message: 'Você não tem permissão para acessar este usuário!'
+    })
+}
 
     try {
         const dados = await Usuario.findByPk(id)
@@ -287,6 +457,8 @@ const atualizarParcial = async (req, res) => {
                 message: 'Usuário não encontrado!'
             })
         }
+
+        const valores = await prepararValoresAtualizacao(req)
 
         await dados.update(valores)
 
@@ -378,6 +550,7 @@ const buscarCEP = async (cep) => {
 
 module.exports = {
     cadastrar,
+    cadastrarAdmin,
     listar,
     consultarPorCod,
     consultarPorNome,

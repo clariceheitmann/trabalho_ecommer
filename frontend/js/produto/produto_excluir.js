@@ -1,25 +1,36 @@
-
 const baseUrl = 'http://localhost:3000'
 const token = localStorage.getItem('token')
 
 if (!token) {
     alert('Faça login para continuar!')
-    window.location.href = '../../html/login.html'
+    window.location.replace('../../html/login.html')
 }
 
 const select = document.getElementById('id')
 
 async function carregarProdutos() {
     try {
-        const resposta = await fetch(`${baseUrl}/produtos`)
+        const resposta = await fetch(`${baseUrl}/produtos`, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+
         const produtos = await resposta.json()
 
-        select.innerHTML = '<option value="">Selecione</option>'
-
-        if (!resposta.ok) {
-            alert(produtos.message)
+        if (resposta.status === 401) {
+            localStorage.removeItem('token')
+            alert('Sua sessão expirou. Faça login novamente!')
+            window.location.replace('../../html/login.html')
             return
         }
+
+        if (!resposta.ok) {
+            alert(produtos.message || 'Erro ao carregar produtos!')
+            return
+        }
+
+        select.innerHTML = '<option value="">Selecione</option>'
 
         produtos.forEach(produto => {
             select.innerHTML += `
@@ -40,6 +51,11 @@ document.getElementById('form_excluir').addEventListener('submit', async (e) => 
 
     const id = select.value
 
+    if (!id) {
+        alert('Selecione um produto!')
+        return
+    }
+
     if (!confirm('Deseja realmente excluir este produto?')) {
         return
     }
@@ -54,6 +70,13 @@ document.getElementById('form_excluir').addEventListener('submit', async (e) => 
 
         const dados = await resposta.json()
 
+        if (resposta.status === 401) {
+            localStorage.removeItem('token')
+            alert('Sua sessão expirou. Faça login novamente!')
+            window.location.replace('../../html/login.html')
+            return
+        }
+
         alert(dados.message)
 
         if (resposta.ok) {
@@ -66,4 +89,6 @@ document.getElementById('form_excluir').addEventListener('submit', async (e) => 
     }
 })
 
-carregarProdutos()
+if (token) {
+    carregarProdutos()
+}

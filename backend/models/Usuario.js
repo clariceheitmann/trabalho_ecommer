@@ -35,6 +35,12 @@ const Usuario = conn.define("usuarios", {
         allowNull: false
     },
 
+    tipo: {
+        type: DataTypes.ENUM('usuario', 'admin'),
+        allowNull: false,
+        defaultValue: 'usuario'
+    },
+
     telefone: {
         type: DataTypes.STRING(20),
         allowNull: false

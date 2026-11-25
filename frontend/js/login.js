@@ -1,3 +1,4 @@
+
 const baseUrl = 'http://localhost:3000'
 const formulario = document.getElementById('formLogin')
 
@@ -34,7 +35,13 @@ formulario.addEventListener('submit', async (event) => {
             return
         }
 
+        // Salva o token e os dados do usuário
         localStorage.setItem('token', dados.token)
+
+        localStorage.setItem(
+            'usuario',
+            JSON.stringify(dados.usuario)
+        )
 
         alert('Login realizado com sucesso!')
 

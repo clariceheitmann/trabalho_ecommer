@@ -125,9 +125,11 @@ const listar = async (req, res) => {
     try {
         // Busca somente os pedidos do usuário autenticado
         const pedidos = await Pedido.findAll({
-            where: {
-                usuario_id: req.usuario.id
-            },
+    ...(req.usuario.tipo !== 'admin' && {
+        where: {
+            usuario_id: req.usuario.id
+        }
+    }),
             include: [
                 {
                     model: ItemPedido,
@@ -164,11 +166,13 @@ const consultarPorCod = async (req, res) => {
     try {
 
         const pedido = await Pedido.findOne({
-            where: {
-                id: id,
-                usuario_id: req.usuario.id
-            }
+    where: {
+        id: id,
+        ...(req.usuario.tipo !== 'admin' && {
+            usuario_id: req.usuario.id
         })
+    }
+})
 
         if (!pedido) {
             return res.status(404).json({
@@ -194,14 +198,14 @@ const atualizar = async (req, res) => {
     const id = req.params.id
     const { status } = req.body
 
-const valores = { status }
-
     try {
 
         const pedido = await Pedido.findOne({
             where: {
                 id: id,
-                usuario_id: req.usuario.id
+                ...(req.usuario.tipo !== 'admin' && {
+                    usuario_id: req.usuario.id
+                })
             }
         })
 
@@ -210,6 +214,25 @@ const valores = { status }
                 message: 'Pedido não encontrado!'
             })
         }
+
+        // Cliente só pode cancelar pedidos não pagos
+        if (req.usuario.tipo !== 'admin') {
+
+            if (status !== 'CANCELADO') {
+                return res.status(403).json({
+                    message: 'Clientes só podem cancelar seus próprios pedidos!'
+                })
+            }
+
+            if (pedido.status === 'PAGO') {
+                return res.status(403).json({
+                    message: 'Não é possível cancelar um pedido que já foi pago!'
+                })
+            }
+
+        }
+
+        const valores = { status }
 
         await pedido.update(valores)
 
@@ -231,14 +254,14 @@ const atualizarParcial = async (req, res) => {
     const id = req.params.id
     const { status } = req.body
 
-const valores = { status }
-
     try {
 
         const pedido = await Pedido.findOne({
             where: {
                 id: id,
-                usuario_id: req.usuario.id
+                ...(req.usuario.tipo !== 'admin' && {
+                    usuario_id: req.usuario.id
+                })
             }
         })
 
@@ -247,6 +270,24 @@ const valores = { status }
                 message: 'Pedido não encontrado!'
             })
         }
+
+        if (req.usuario.tipo !== 'admin') {
+
+            if (status !== 'CANCELADO') {
+                return res.status(403).json({
+                    message: 'Clientes só podem cancelar seus próprios pedidos!'
+                })
+            }
+
+            if (pedido.status === 'PAGO') {
+                return res.status(403).json({
+                    message: 'Não é possível cancelar um pedido que já foi pago!'
+                })
+            }
+
+        }
+
+        const valores = { status }
 
         await pedido.update(valores)
 
@@ -272,13 +313,25 @@ const excluir = async (req, res) => {
         const pedido = await Pedido.findOne({
             where: {
                 id: id,
-                usuario_id: req.usuario.id
+                ...(req.usuario.tipo !== 'admin' && {
+                    usuario_id: req.usuario.id
+                })
             }
         })
 
         if (!pedido) {
             return res.status(404).json({
                 message: 'Pedido não encontrado!'
+            })
+        }
+
+        // Cliente não pode excluir pedidos pagos
+        if (
+            req.usuario.tipo !== 'admin' &&
+            pedido.status === 'PAGO'
+        ) {
+            return res.status(403).json({
+                message: 'Não é permitido excluir pedidos que já foram pagos!'
             })
         }
 
