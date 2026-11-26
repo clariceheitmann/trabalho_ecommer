@@ -141,8 +141,8 @@ const produtos = [
         album: 'Greatest Hits',
         ano: 1998,
         categoria: 'Hip Hop / Rap',
-        formato: 'CD',
-        preco: 89.90,
+        formato: 'CASSETE',
+        preco: 99.90,
         estoque: 10
     },
 
@@ -151,8 +151,8 @@ const produtos = [
         album: 'All Eyez on Me',
         ano: 1996,
         categoria: 'Hip Hop / Rap',
-        formato: 'VINIL',
-        preco: 149.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 5
     },
 
@@ -161,7 +161,7 @@ const produtos = [
         album: 'R U Still Down? (Remember Me)',
         ano: 1997,
         categoria: 'Hip Hop / Rap',
-        formato: 'CD',
+        formato: 'CASSETE',
         preco: 79.90,
         estoque: 8
     },
@@ -171,8 +171,8 @@ const produtos = [
         album: 'Strictly 4 My N.I.G.G.A.Z...',
         ano: 1993,
         categoria: 'Hip Hop / Rap',
-        formato: 'CD',
-        preco: 74.90,
+        formato: 'CASSETE',
+        preco: 79.90,
         estoque: 7
     },
 
@@ -196,8 +196,8 @@ const produtos = [
         album: 'Super Trouper',
         ano: 1980,
         categoria: 'Pop',
-        formato: 'VINIL',
-        preco: 129.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 5
     },
 
@@ -206,8 +206,8 @@ const produtos = [
         album: 'Arrival',
         ano: 1976,
         categoria: 'Pop',
-        formato: 'VINIL',
-        preco: 119.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 6
     },
 
@@ -216,8 +216,8 @@ const produtos = [
         album: 'Voulez-Vous',
         ano: 1979,
         categoria: 'Pop',
-        formato: 'CD',
-        preco: 69.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 8
     },
 
@@ -236,8 +236,8 @@ const produtos = [
         album: 'The Album',
         ano: 1977,
         categoria: 'Pop',
-        formato: 'VINIL',
-        preco: 119.90,
+        formato: 'CASSETE',
+        preco: 79.90,
         estoque: 5
     },
 
@@ -261,8 +261,8 @@ const produtos = [
         album: 'Dirt',
         ano: 1992,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 149.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 5
     },
 
@@ -271,7 +271,7 @@ const produtos = [
         album: 'Facelift',
         ano: 1990,
         categoria: 'Rock',
-        formato: 'CD',
+        formato: 'CASSETE',
         preco: 79.90,
         estoque: 8
     },
@@ -281,8 +281,8 @@ const produtos = [
         album: 'Jar of Flies',
         ano: 1994,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 139.90,
+        formato: 'CASSETE',
+        preco: 79.90,
         estoque: 5
     },
 
@@ -301,8 +301,8 @@ const produtos = [
         album: 'Unplugged',
         ano: 1996,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 139.90,
+        formato: 'CASSETE',
+        preco: 99.90,
         estoque: 5
     },
 
@@ -316,8 +316,8 @@ const produtos = [
         album: 'Abbey Road',
         ano: 1969,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 179.90,
+        formato: 'CASSETE',
+        preco: 99.90,
         estoque: 5
     },
 
@@ -336,8 +336,8 @@ const produtos = [
         album: 'Sgt. Pepper’s Lonely Hearts Club Band',
         ano: 1967,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 169.90,
+        formato: 'CASSETE',
+        preco: 99.90,
         estoque: 5
     },
 
@@ -346,8 +346,8 @@ const produtos = [
         album: 'Rubber Soul',
         ano: 1965,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 159.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 5
     },
 
@@ -356,8 +356,8 @@ const produtos = [
         album: 'The Beatles (White Album)',
         ano: 1968,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 189.90,
+        formato: 'CASSETE',
+        preco: 99.90,
         estoque: 4
     },
 
@@ -366,8 +366,8 @@ const produtos = [
         album: 'Revolver',
         ano: 1966,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 159.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 5
     },
 
@@ -376,7 +376,7 @@ const produtos = [
         album: 'Help!',
         ano: 1965,
         categoria: 'Rock',
-        formato: 'CD',
+        formato: 'CASSETE',
         preco: 79.90,
         estoque: 8
     },
@@ -396,8 +396,8 @@ const produtos = [
         album: 'Magical Mystery Tour',
         ano: 1967,
         categoria: 'Rock',
-        formato: 'CD',
-        preco: 79.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 7
     },
 
@@ -406,8 +406,8 @@ const produtos = [
         album: 'A Hard Day’s Night',
         ano: 1964,
         categoria: 'Rock',
-        formato: 'CD',
-        preco: 74.90,
+        formato: 'CASSETE',
+        preco: 79.90,
         estoque: 7
     },
 
@@ -496,8 +496,8 @@ const produtos = [
         album: 'Rumours',
         ano: 1977,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 159.90,
+        formato: 'CASSETE',
+        preco: 99.90,
         estoque: 5
     },
 
@@ -516,8 +516,8 @@ const produtos = [
         album: 'Tusk',
         ano: 1979,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 169.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 4
     },
 
@@ -874,8 +874,8 @@ const produtos = [
         album: 'Bleach',
         ano: 1989,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 139.90,
+        formato: 'CASSETE',
+        preco: 79.90,
         estoque: 5
     },
 
@@ -884,8 +884,8 @@ const produtos = [
         album: 'In Utero',
         ano: 1993,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 159.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 5
     },
 
@@ -894,8 +894,8 @@ const produtos = [
         album: 'Nevermind',
         ano: 1991,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 169.90,
+        formato: 'CASSETE',
+        preco: 99.90,
         estoque: 5
     },
 
@@ -904,8 +904,8 @@ const produtos = [
         album: 'MTV Unplugged in New York',
         ano: 1994,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 159.90,
+        formato: 'CASSETE',
+        preco: 99.90,
         estoque: 5
     },
 
@@ -964,8 +964,8 @@ const produtos = [
         album: 'Ten',
         ano: 1991,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 159.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 5
     },
 
@@ -974,8 +974,8 @@ const produtos = [
         album: 'Vs.',
         ano: 1993,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 149.90,
+        formato: 'CASSETE',
+        preco: 79.90,
         estoque: 5
     },
 
@@ -999,8 +999,8 @@ const produtos = [
         album: 'Wish You Were Here',
         ano: 1975,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 179.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 5
     },
 
@@ -1009,8 +1009,8 @@ const produtos = [
         album: 'The Dark Side of the Moon',
         ano: 1973,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 189.90,
+        formato: 'CASSETE',
+        preco: 99.90,
         estoque: 5
     },
 
@@ -1019,8 +1019,8 @@ const produtos = [
         album: 'The Wall',
         ano: 1979,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 189.90,
+        formato: 'CASSETE',
+        preco: 99.90,
         estoque: 5
     },
 
@@ -1029,8 +1029,8 @@ const produtos = [
         album: 'Animals',
         ano: 1977,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 169.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 5
     },
 
@@ -1409,8 +1409,8 @@ const produtos = [
         album: 'Meat Is Murder',
         ano: 1985,
         categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 149.90,
+        formato: 'CASSETE',
+        preco: 79.90,
         estoque: 5
     },
 
@@ -1554,8 +1554,8 @@ const produtos = [
         album: 'Doggystyle',
         ano: 1993,
         categoria: 'Hip Hop / Rap',
-        formato: 'VINIL',
-        preco: 159.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 5
     },
 
@@ -1564,7 +1564,7 @@ const produtos = [
         album: 'Tha Doggfather',
         ano: 1996,
         categoria: 'Hip Hop / Rap',
-        formato: 'CD',
+        formato: 'CASSETE',
         preco: 79.90,
         estoque: 8
     },
@@ -1624,8 +1624,8 @@ const produtos = [
         album: 'The Chronic',
         ano: 1992,
         categoria: 'Hip Hop / Rap',
-        formato: 'VINIL',
-        preco: 169.90,
+        formato: 'CASSETE',
+        preco: 99.90,
         estoque: 5
     },
 
@@ -1669,8 +1669,8 @@ const produtos = [
         album: 'A Tábua de Esmeralda',
         ano: 1974,
         categoria: 'MPB',
-        formato: 'VINIL',
-        preco: 169.90,
+        formato: 'CASSETE',
+        preco: 99.90,
         estoque: 5
     },
 
@@ -1679,8 +1679,8 @@ const produtos = [
         album: 'África Brasil',
         ano: 1976,
         categoria: 'MPB',
-        formato: 'VINIL',
-        preco: 169.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 5
     },
 
@@ -1714,8 +1714,8 @@ const produtos = [
         album: 'Rappa Mundi',
         ano: 1996,
         categoria: 'MPB',
-        formato: 'CD',
-        preco: 69.90,
+        formato: 'CASSETE',
+        preco: 79.90,
         estoque: 8
     },
 
@@ -1849,8 +1849,8 @@ const produtos = [
         album: 'Exagerado',
         ano: 1985,
         categoria: 'MPB',
-        formato: 'VINIL',
-        preco: 139.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 5
     },
 
@@ -1859,8 +1859,8 @@ const produtos = [
         album: 'Só Se For a Dois',
         ano: 1987,
         categoria: 'MPB',
-        formato: 'CD',
-        preco: 69.90,
+        formato: 'CASSETE',
+        preco: 79.90,
         estoque: 7
     },
 
@@ -1869,8 +1869,8 @@ const produtos = [
         album: 'Ideologia',
         ano: 1988,
         categoria: 'MPB',
-        formato: 'VINIL',
-        preco: 139.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 5
     },
 
@@ -1919,8 +1919,8 @@ const produtos = [
         album: 'Fruto Proibido',
         ano: 1975,
         categoria: 'MPB',
-        formato: 'VINIL',
-        preco: 159.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 5
     },
 
@@ -1949,8 +1949,8 @@ const produtos = [
         album: 'Entradas e Bandeiras',
         ano: 1976,
         categoria: 'MPB',
-        formato: 'VINIL',
-        preco: 149.90,
+        formato: 'CASSETE',
+        preco: 79.90,
         estoque: 5
     },
 
@@ -2088,16 +2088,6 @@ const produtos = [
         artista: 'Legião Urbana',
         album: 'Legião Urbana',
         ano: 1985,
-        categoria: 'Rock',
-        formato: 'VINIL',
-        preco: 149.90,
-        estoque: 5
-    },
-
-    {
-        artista: 'Legião Urbana',
-        album: 'Dois',
-        ano: 1986,
         categoria: 'Rock',
         formato: 'VINIL',
         preco: 149.90,
@@ -2379,8 +2369,8 @@ const produtos = [
         album: 'Kill ’Em All',
         ano: 1983,
         categoria: 'Metal',
-        formato: 'VINIL',
-        preco: 159.90,
+        formato: 'CASSETE',
+        preco: 89.90,
         estoque: 5
     },
 
@@ -2399,8 +2389,8 @@ const produtos = [
         album: 'Master of Puppets',
         ano: 1986,
         categoria: 'Metal',
-        formato: 'VINIL',
-        preco: 179.90,
+        formato: 'CASSETE',
+        preco: 99.90,
         estoque: 5
     },
 
@@ -2870,7 +2860,7 @@ async function adicionarProdutos() {
                 // ATUALIZA PRODUTO
                 // ------------------------------------------
 
-                await existente.update({
+                const dadosAtualizacao = {
 
                     descricao: descricao,
 
@@ -2878,7 +2868,15 @@ async function adicionarProdutos() {
 
                     categoria_id: categoriaId
 
-                })
+                }
+
+                // Atualiza formato e preço somente dos produtos selecionados para cassete
+                if (item.formato === 'CASSETE') {
+                    dadosAtualizacao.formato = item.formato
+                    dadosAtualizacao.preco = item.preco
+                }
+
+                await existente.update(dadosAtualizacao)
 
                 atualizados++
 
@@ -3080,20 +3078,25 @@ async function adicionarProdutos() {
 
         console.log('========================================\n')
 
+        return {
+            adicionados,
+            atualizados,
+            existentes,
+            estoquesCriados,
+            capasEncontradas,
+            capasNaoEncontradas
+        }
 
-    } catch (err) {
 
-        console.error(
-            '\n❌ Erro ao cadastrar produtos:'
-        )
+       } catch (err) {
 
+        console.error('\n❌ Erro ao cadastrar produtos:')
         console.error(err)
 
-    } finally {
-
-        await conn.close()
+        throw err
     }
 }
 
 
-adicionarProdutos()
+module.exports = adicionarProdutos
+

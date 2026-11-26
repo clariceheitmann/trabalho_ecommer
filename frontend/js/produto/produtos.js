@@ -4,6 +4,18 @@ const baseUrl = 'http://localhost:3000'
 
 let produtosEncontrados = []
 
+// Verifica se existe um formato selecionado pela página inicial
+function aplicarFiltroDaURL() {
+
+    const parametros = new URLSearchParams(window.location.search)
+    const formato = parametros.get('formato')
+
+    if (formato) {
+        document.getElementById('filtroFormato').value = formato
+    }
+
+}
+
 
 // ======================================================
 // CARREGAR PRODUTOS
@@ -31,7 +43,9 @@ async function carregarProdutos() {
         localStorage.setItem('produtos', JSON.stringify(produtosEncontrados))
 
         preencherGeneros()
-        mostrarProdutos()
+
+        aplicarFiltroDaURL()
+        buscarProdutos()
 
 
     } catch (erro) {
@@ -397,7 +411,7 @@ function fecharModal() {
 // Fecha o modal ao clicar fora do conteúdo
 document.getElementById('modalProduto').addEventListener(
     'click',
-    function(evento) {
+    function (evento) {
 
         if (evento.target === this) {
             fecharModal()
@@ -407,7 +421,7 @@ document.getElementById('modalProduto').addEventListener(
 )
 
 // Fecha o modal ao pressionar Esc
-document.addEventListener('keydown', function(evento) {
+document.addEventListener('keydown', function (evento) {
 
     if (evento.key === 'Escape') {
         fecharModal()
@@ -593,10 +607,68 @@ document.getElementById('btnLimparBusca').addEventListener('click', () => {
     mostrarProdutos()
 })
 
+// ======================================================
+// IMPORTAR PRODUTOS
+// ======================================================
 
+const btnImportarProdutos = document.getElementById('btnImportarProdutos')
 
+if (btnImportarProdutos) {
 
+    btnImportarProdutos.addEventListener('click', async () => {
 
+        const confirmar = confirm(
+            'Deseja realmente importar os produtos para o catálogo?'
+        )
+
+        if (!confirmar) return
+
+        try {
+
+            btnImportarProdutos.disabled = true
+            btnImportarProdutos.textContent = 'Importando produtos...'
+            document.getElementById('progressoImportacao').hidden = false
+
+            const token = localStorage.getItem('token')
+
+            const resposta = await fetch(`${baseUrl}/produtos/importar`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+
+            const dados = await resposta.json()
+
+            if (!resposta.ok) {
+                throw new Error(dados.mensagem || 'Erro ao importar produtos.')
+            }
+
+            alert(
+                `Importação concluída!\n\n` +
+                `Adicionados: ${dados.resultado.adicionados}\n` +
+                `Atualizados: ${dados.resultado.atualizados}\n` +
+                `Capas encontradas: ${dados.resultado.capasEncontradas}`
+            )
+
+            await carregarProdutos()
+
+        } catch (erro) {
+
+            console.error('Erro na importação:', erro)
+            alert(erro.message)
+
+        } finally {
+
+            btnImportarProdutos.disabled = false
+            btnImportarProdutos.textContent = '♫ Importar produtos'
+            document.getElementById('progressoImportacao').hidden = true
+
+        }
+
+    })
+
+}
 
 
 // ======================================================

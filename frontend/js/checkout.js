@@ -114,14 +114,11 @@ formulario.addEventListener('submit', async (event) => {
     const cep = document.getElementById('cep').value.trim()
     const rua = document.getElementById('rua').value.trim()
     const numero = document.getElementById('numero').value.trim()
-    const bairro = document.getElementById('bairro').value.trim()
-    const cidade = document.getElementById('cidade').value.trim()
-    const estado = document.getElementById('estado').value.trim()
 
 
     // Juntar os campos em um endereço completo
 
-    const endereco = `${rua}, ${numero} - ${bairro}, ${cidade} - ${estado}, CEP: ${cep}`
+    const endereco = `${rua}, ${numero}, CEP: ${cep}`
 
     try {
 

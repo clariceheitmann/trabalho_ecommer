@@ -1,4 +1,10 @@
 const token = localStorage.getItem('token')
+
+if (!token) {
+    alert('Você precisa fazer login como administrador.')
+    return
+}
+
 const usuarioSalvo = localStorage.getItem('usuario')
 
 if (!token || !usuarioSalvo) {

@@ -231,50 +231,39 @@ a {
 
 /* ===== CATEGORIAS ===== */
 
-.categorias {
-    padding: 70px 8%;
-    text-align: center;
-}
-
-.categorias h2 {
-    font-size: 36px;
-    color: #633C25;
-}
-
-.descricao {
-    margin: 12px 0 35px;
-    color: #80634C;
-}
-
 .categoria-cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 60px auto 70px;
 }
 
 .categoria {
-    padding: 35px 20px;
+    padding: 25px 18px;
+    min-height: 220px;
     border: 3px solid #633C25;
     border-radius: 20px 5px 20px 5px;
     transition: .3s;
 }
 
 .categoria:hover {
-    transform: translateY(-10px) rotate(-1deg);
+    transform: translateY(-7px) rotate(-1deg);
     box-shadow: 7px 7px 0 #633C25;
 }
 
 .categoria span {
-    font-size: 65px;
+    font-size: 48px;
 }
 
 .categoria h3 {
-    font-size: 27px;
-    margin: 12px 0;
+    font-size: 24px;
+    margin: 8px 0;
 }
 
 .categoria p {
     line-height: 1.5;
+    font-size: 15px;
 }
 
 .vinil {
@@ -287,7 +276,6 @@ a {
 
 .fita {
     background: #3D8792;
-    color: white;
 }
 
 

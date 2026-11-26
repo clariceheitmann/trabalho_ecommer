@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const adicionarProdutos = require('./adicionarProdutos')
 
 const categoriaController = require('./controller/categoria.controller')
 const entregaController = require('./controller/entrega.controller')
@@ -62,6 +63,34 @@ app.post('/login/admin', loginController.loginAdmin)
 // =====================================================
 // ROTAS PRIVADAS
 // =====================================================
+
+// IMPORTAR PRODUTOS
+app.post(
+    '/produtos/importar',
+    verificarToken,
+    verificarAdmin,
+    async (req, res) => {
+
+        try {
+
+            const resultado = await adicionarProdutos()
+
+            res.status(200).json({
+                mensagem: 'Produtos importados com sucesso!',
+                resultado
+            })
+
+        } catch (err) {
+
+            res.status(500).json({
+                mensagem: 'Erro ao importar produtos.',
+                erro: err.message
+            })
+
+        }
+
+    }
+)
 
 // USUÁRIOS
 // Somente administradores podem listar e pesquisar todos os usuários
